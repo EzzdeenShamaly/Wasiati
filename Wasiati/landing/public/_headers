@@ -1,0 +1,14 @@
+# Cloudflare Pages headers — security + caching for the marketing landing.
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  # connect-src is REQUIRED by pricing.js: it fetches the live catalog from the API so
+  # prices can never drift from what checkout charges. Without it, `default-src 'self'`
+  # would block the request and every card would fall back to "see plans".
+  Content-Security-Policy: default-src 'self'; connect-src 'self' https://api.wasiati.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self'; base-uri 'self'; form-action 'self' https://app.wasiati.com
+
+/styles.css
+  Cache-Control: public, max-age=31536000, immutable

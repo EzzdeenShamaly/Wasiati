@@ -1,0 +1,126 @@
+name: wasiati
+description: "Wasiati — Sharia-compliant digital will & legacy platform."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # Localization (English + Arabic, RTL). flutter_localizations provides the
+  # Material/Cupertino/Widgets delegates that flip directionality for `ar`.
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+  cupertino_icons: ^1.0.8
+
+  # Brand design system (path dep, linked by Melos)
+  wasiati_design_system:
+    path: ../../packages/design_system
+
+  # State management + DI
+  flutter_riverpod: ^2.6.1
+  riverpod_annotation: ^2.6.1
+
+  # Navigation
+  go_router: ^14.6.2
+
+  # Networking
+  dio: ^5.7.0
+
+  # Secure token storage (Keychain / Keystore on mobile)
+  flutter_secure_storage: ^9.2.2
+
+  # Non-secret per-device UI preferences (theme mode). Deliberately not
+  # flutter_secure_storage: that store is for the refresh token, and a Keychain
+  # round trip to learn whether the user prefers dark mode is the wrong tool.
+  shared_preferences: ^2.5.3
+
+  # Open hosted Stripe Checkout / Billing Portal URLs
+  url_launcher: ^6.3.1
+
+  # Client-side vault encryption (AES-256-GCM, PBKDF2)
+  cryptography: ^2.7.0
+
+  # Google Sign-In. The free sign-in path: an OAuth login is exempt from the login OTP
+  # (auth.service loginWithOAuth), so every account that uses it costs nothing per sign-in
+  # instead of a message. Pinned to 6.x deliberately -- 7.x is an API rewrite
+  # (GoogleSignIn.instance + authenticate()) and this app wants the stable surface.
+  google_sign_in: ^6.2.1
+
+  # Video legacy: pick a file to upload, and record via webcam/mic.
+  file_picker: ^8.1.2
+  camera: ^0.11.0+2
+  # Plays the take BACK before the owner commits to it. The camera plugin only previews
+  # the LIVE stream, so without a player a recording could not be watched at all — the one
+  # thing you want to do before sending a message to your family. Handles the web blob:
+  # URL and a native file path alike.
+  video_player: ^2.9.2
+  # Direct (not just transitive) so the recorder can revoke camera_web's blob URLs,
+  # which the plugin itself never frees.
+  web: ^1.1.0
+
+  # Admin dashboard charts
+  fl_chart: ^0.69.0
+
+  # Immutable models / sealed unions
+  freezed_annotation: ^2.4.4
+  json_annotation: ^4.9.0
+  printing: ^5.14.3
+  file_saver: ^0.3.1
+
+  # Ameen voice: mic dictation (Web Speech API on web) + spoken replies.
+  speech_to_text: ^7.0.0
+  flutter_tts: ^4.2.0
+  flutter_svg: ^2.2.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+  # Test-only: stands a fake camera behind CameraPlatform.instance, which is the only
+  # way to hold a start in flight. camera.dart re-exports the types but not the
+  # interface, so the test cannot reach it through the direct dep above.
+  camera_platform_interface: ^2.12.0
+  # Test-only: web_camera_pause_chrome_test drives the REAL web plugin — the same
+  # CameraPlugin the generated registrant installs — to prove pause/resume reach
+  # MediaRecorder rather than CameraPlatform's UnimplementedError default. A direct
+  # dep so that import is honest; the version is what `camera` resolves anyway.
+  camera_web: ^0.3.5
+  build_runner: ^2.4.13
+  freezed: ^2.5.7
+  json_serializable: ^6.9.0
+  riverpod_generator: ^2.6.3
+
+flutter:
+  uses-material-design: true
+  generate: true
+
+  # Bundled so the design's typography renders instantly and offline — no runtime
+  # google_fonts fetch (which on web falls back to a generic sans until/if it loads).
+  # Fraunces + Public Sans are variable fonts; Flutter maps fontWeight to the wght axis.
+  # Arabic: IBM Plex Sans Arabic (UI/body, v2.2 — replaces Almarai) + Amiri
+  # (Qur'an/hadith serif).
+  fonts:
+    - family: Fraunces
+      fonts:
+        - asset: assets/fonts/Fraunces.ttf
+    - family: Public Sans
+      fonts:
+        - asset: assets/fonts/PublicSans.ttf
+    - family: Amiri
+      fonts:
+        - asset: assets/fonts/Amiri-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Amiri-Bold.ttf
+          weight: 700
+    - family: IBM Plex Sans Arabic
+      fonts:
+        - asset: assets/fonts/IBMPlexSansArabic-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/IBMPlexSansArabic-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/IBMPlexSansArabic-Bold.ttf
+          weight: 700

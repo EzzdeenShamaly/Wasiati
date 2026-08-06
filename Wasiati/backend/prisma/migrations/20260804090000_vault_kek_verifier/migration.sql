@@ -1,0 +1,22 @@
+-- A passphrase check for the vault, which had none.
+--
+-- Unlock validated only that the typed passphrase was >= 10 characters. A typo therefore
+-- derived a DIFFERENT KEK and unlocked the vault anyway: item labels are stored in
+-- plaintext, so the list rendered normally and nothing looked wrong. Every secret added
+-- after that point was encrypted under a key the user would never reproduce. The server
+-- holds no plaintext and there is no recovery (DECISIONS §19, and the screen's own warning
+-- says "cannot be recovered — not even by us"), so those items were gone permanently, and
+-- the vault silently ended up holding items under two different keys.
+--
+-- kekVerifier is one AES-GCM blob of a fixed known string, encrypted under the KEK. The
+-- client checks it at unlock and refuses to proceed when it does not decrypt.
+--
+-- It is not a secret and not a weakening: an attacker holding it already holds the item
+-- ciphertexts, which are equally usable as offline brute-force targets.
+--
+-- Nullable, and never backfilled: the server cannot compute it (it has no passphrase and no
+-- KEK, by design). An existing vault adopts one on its next successful unlock — the client
+-- proves the KEK against an existing item first, then writes it. A vault with no items and
+-- no verifier adopts whatever passphrase is used next, which is the same thing "first use"
+-- has always meant.
+ALTER TABLE "Vault" ADD COLUMN "kekVerifier" TEXT;

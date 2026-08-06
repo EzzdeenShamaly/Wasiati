@@ -1,0 +1,339 @@
+/* Wasiati landing — brand tokens mirror app/packages/design_system and the
+   DV2.1 dev-handoff package (WASIATI_SPEC v2.2 + DESIGN_TOKENS). Light "Parchment"
+   + dark "Night green" (no pure black). */
+:root {
+  --parchment: #ECE3D0; --parchment-light: #F5EFE1; --parchment-deep: #EDE6D4;
+  --green: #2F4A3D; --green-soft: #4A6B5A; --green-tint: #EBEFE7;
+  --gold: #A87B33; --gold-soft: #C89A4E; --gold-deep: #8A6222;
+  --ink: #1C2333; --text: #1C2333; --muted: #6B6455; --faint: #8A8370;
+  --body-color: #3E3A2F;
+  --success: #2F7D5B; --info: #3A5673;
+  --card: #F5EFE1; --bg: #ECE3D0; --sunken: #EDE6D4;
+  --hairline: rgba(47,74,61,.14); --hairline2: rgba(47,74,61,.25);
+  --btn: #2F4A3D; --btn-text: #F5EFE1;
+  --on-green-muted: #CBD6CC;
+  --display: 'Fraunces', Georgia, serif;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --body: 'Public Sans', system-ui, sans-serif;
+  /* v2.2: Arabic UI runs = IBM Plex Sans Arabic (replaces Almarai — DECISIONS §13).
+     Qur'an & hadith (classical Naskh) = Amiri. Mirrors the Flutter design system. */
+  --arabic: 'IBM Plex Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
+  --arabic-serif: 'Amiri', 'Times New Roman', serif;
+}
+/* Dark: default from OS, unless the user forced light. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --parchment: #151C18; --parchment-light: #1E2721; --parchment-deep: #253029;
+    --text: #ECE3D0; --ink: #ECE3D0; --muted: #9DB3A4; --faint: #7E9587;
+    --body-color: #D8CFBA;
+    --card: #1E2721; --bg: #151C18; --sunken: #253029;
+    --hairline: rgba(236,227,208,.13); --hairline2: rgba(236,227,208,.2);
+    --green: #4A6B5A; --green-soft: #4A6B5A;
+    --gold-soft: #C9A45E; --gold-deep: #C9A45E;
+    --btn: #4A6B5A;
+  }
+}
+/* Explicit user override wins in both directions. */
+:root[data-theme="dark"] {
+  --parchment: #151C18; --parchment-light: #1E2721; --parchment-deep: #253029;
+  --text: #ECE3D0; --ink: #ECE3D0; --muted: #9DB3A4; --faint: #7E9587;
+  --body-color: #D8CFBA;
+  --card: #1E2721; --bg: #151C18; --sunken: #253029;
+  --hairline: rgba(236,227,208,.13); --hairline2: rgba(236,227,208,.2);
+  --green: #4A6B5A; --green-soft: #4A6B5A;
+  --gold-soft: #C9A45E; --gold-deep: #C9A45E;
+  --btn: #4A6B5A;
+}
+
+* { box-sizing: border-box; margin: 0; }
+/* Paginated feel: three "screens" — (verse + hero), (hadith + why), (plans + footer).
+   `proximity` snaps to each screen's start as you scroll, but never traps you inside a
+   screen taller than the viewport (plans + footer is tall), so overflow stays reachable. */
+html { scroll-behavior: smooth; scroll-snap-type: y proximity; }
+body {
+  font-family: var(--body); background: var(--bg); color: var(--text);
+  line-height: 1.55; -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+/* Three full-viewport screens: (verse + hero), (hadith + why), (plans + footer).
+   Each fills the viewport and snaps to its start; content flows from the top and the
+   screen grows past 100vh when its content is taller (so nothing is ever cut off). */
+.screen { min-height: 100vh; scroll-snap-align: start; display: flex; flex-direction: column; }
+.screen > .hero, .screen > .why { flex: 1 0 auto; justify-content: center; }
+/* "Save vs a lawyer" line under the price (prototype). */
+.plan .save-line { font-size: 11.5px; font-weight: 700; color: var(--gold-deep); margin: -2px 0 4px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.15; letter-spacing: -.01em; }
+a { color: inherit; text-decoration: none; }
+img, svg { max-width: 100%; }
+
+/* Keyboard focus — visible gold ring (prototype: 3px gold, offset 2). */
+:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 8px; }
+a:focus-visible, .btn:focus-visible { border-radius: 12px; }
+.toggle:focus-visible { outline-offset: 4px; }
+
+/* ---------- top nav (prototype: pad 22px 48px desktop / 18px mobile) ---------- */
+.nav {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 22px 48px;
+}
+.brand { display: flex; align-items: center; gap: 11px; }
+.brand .name { font-family: var(--display); font-size: 20px; font-weight: 600; color: var(--text); }
+.brand .ar-mark { font-family: var(--arabic); font-size: 14px; color: var(--gold); }
+.seal { width: 36px; height: 36px; flex: none; }
+.nav-links { display: flex; align-items: center; gap: 22px; font-size: 13.5px; font-weight: 600; flex: none; }
+.nav-links a { color: var(--green); }
+.nav-links .lang { font-family: var(--arabic); }
+
+/* theme toggle — 30×16 track, 12px knob, 8px sun/moon (DESIGN_TOKENS switch spec) */
+.toggle {
+  width: 30px; height: 16px; border-radius: 99px; border: none; cursor: pointer;
+  background: var(--hairline2); position: relative; padding: 0; flex: none;
+}
+.toggle .knob {
+  position: absolute; top: 2px; inset-inline-start: 2px; width: 12px; height: 12px;
+  border-radius: 50%; background: #F5EFE1; display: grid; place-items: center;
+  transition: inset-inline-start .18s ease;
+}
+:root[data-theme="dark"] .toggle .knob { inset-inline-start: 16px; }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .toggle .knob { inset-inline-start: 16px; } }
+.toggle .knob svg { width: 8px; height: 8px; stroke: #A87B33; }
+.toggle .sun { display: block; } .toggle .moon { display: none; }
+:root[data-theme="dark"] .toggle .sun { display: none; }
+:root[data-theme="dark"] .toggle .moon { display: block; }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]) .toggle .sun { display: none; }
+  :root:not([data-theme="light"]) .toggle .moon { display: block; }
+}
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 14px 26px; border-radius: 12px; font-family: inherit;
+  font-weight: 600; font-size: 14px; min-height: 44px; border: 1.5px solid transparent;
+  cursor: pointer; transition: background .15s, color .15s, border-color .15s;
+}
+.btn.primary { background: var(--btn); color: var(--btn-text); }
+.btn.primary:hover { background: var(--green-soft); }
+.btn.text { color: var(--gold-deep); background: none; padding-inline: 6px; font-size: 15px; }
+.btn.outline { border-color: var(--green); color: var(--green); background: none; }
+.btn.small { padding: 10px 18px; border-radius: 11px; font-size: 13px; min-height: 0; }
+/* hero pair is slightly larger (prototype: 16/26 @15, r13) */
+.hero .btn.primary { padding: 16px 26px; font-size: 15px; border-radius: 13px; }
+
+/* ---------- Qur'an band — full-bleed green (DV2.1 retune: block pad 20px 0,
+   h2 pad 20px, radius 0, hex positions transcribed from the Landing block) ---------- */
+.ayah-band {
+  position: relative; overflow: hidden; flex-shrink: 0;
+  background: #2F4A3D; color: #F5EFE1;
+  margin: 0; padding: 20px 0; border-radius: 0;
+  display: flex; flex-direction: column; gap: 10px; text-align: center; align-items: center;
+}
+.ayah-inner {
+  position: relative; z-index: 1; display: flex; flex-direction: column;
+  gap: 12px; align-items: center; text-align: center; width: 100%;
+  font-family: var(--arabic); font-size: 24px; color: #F5EFE1; line-height: 2;
+}
+.ayah {
+  font-family: var(--arabic-serif); line-height: 1.5; font-size: 44px;
+  text-align: center; direction: rtl; font-weight: 400; max-width: 100%;
+  padding: 20px; margin: 0; letter-spacing: 0;
+}
+.ayah-ref { position: relative; font-size: 14px; padding-top: 5px; direction: rtl; }
+.ayah-en {
+  font-size: 16px; color: #9DB3A4; max-width: 80%; line-height: 1.6;
+  font-style: italic; font-weight: 600;
+}
+.ayah-divider { width: 44px; height: 1px; background: rgba(201,164,94,.5); }
+
+/* hexagon watermark (double-hexagon motif) — positions inline per the block */
+.hx { position: absolute; opacity: .16; transform: rotate(18deg); color: var(--gold-soft); pointer-events: none; }
+
+/* ---------- hero (prototype: grid 1.1fr 1fr, gap 40, pad 40) ---------- */
+.hero {
+  display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; padding: 40px;
+  align-items: center;
+}
+.hero-copy { display: flex; flex-direction: column; gap: 20px; text-align: start; }
+.hero .eyebrow { font-size: 14px; color: #A87B33; font-weight: 700; letter-spacing: .08em; }
+.hero h1 { font-family: var(--serif); font-size: 52px; font-weight: 600; margin: 0; line-height: 1.1; text-wrap: pretty; }
+:root[dir="rtl"] .hero h1 { font-family: var(--arabic); line-height: 1.35; }
+.hero .lede { margin: 0; font-size: 16px; color: #5A5343; line-height: 1.6; max-width: 480px; }
+:root[data-theme="dark"] .hero .lede { color: var(--muted); }
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .hero .lede { color: var(--muted); } }
+.hero .cta { display: flex; gap: 12px; flex-wrap: wrap; justify-content: flex-start; }
+
+/* hero visual — sealed will card (prototype hardcodes the parchment card in
+   both themes; title color pinned so dark mode stays legible) */
+.hero-visual { display: flex; justify-content: center; }
+.will-card {
+  width: min(360px, 100%); background: #F5EFE1; border: 1px solid rgba(47,74,61,.18);
+  border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 16px;
+  box-shadow: 0 28px 60px rgba(28,35,51,.16); transform: rotate(-2deg); position: relative;
+  color: #1C2333;
+}
+:root[dir="rtl"] .will-card { transform: rotate(2deg); }
+.will-card .head { display: flex; align-items: center; justify-content: space-between; }
+.will-card .head span { font-family: var(--display); font-size: 17px; font-weight: 600; }
+:root[dir="rtl"] .will-card .head span { font-family: var(--arabic); font-weight: 700; }
+.will-card .lines { display: flex; flex-direction: column; gap: 9px; }
+.will-card .lines i { display: block; height: 9px; border-radius: 5px; background: #E2D6BC; }
+.share-bar { display: flex; height: 16px; border-radius: 99px; overflow: hidden; }
+.share-bar b { display: block; }
+.share-labels { display: flex; font-size: 11px; color: #6B6455; }
+.share-labels span { text-align: center; white-space: nowrap; }
+.will-card .sealed { border-top: 1px solid rgba(47,74,61,.12); padding-top: 12px; display: flex; align-items: center; gap: 8px; font-size: 12px; color: #2F7D5B; font-weight: 600; }
+
+/* ---------- hadith + callout section (DV2.1: card padding 30px→40px 10px) ---------- */
+.callout-section {
+  position: relative; overflow: hidden; flex-shrink: 0; padding: 0;
+  display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center;
+}
+.hadith-card {
+  position: relative; width: 100%; background: var(--card); padding: 40px 10px;
+  display: flex; flex-direction: column; align-items: center; gap: 0; text-align: center;
+}
+.hadith-card .scripture-seal { width: 72px; height: 72px; flex: none; }
+.hadith-ar {
+  font-family: var(--arabic-serif); direction: rtl; font-size: 34px; color: var(--gold-deep);
+  line-height: 1.9; font-weight: 500; width: 100%; position: relative; padding: 5px 0;
+}
+.hadith-en {
+  font-size: 13px; color: var(--muted); line-height: 1.6; font-style: italic;
+  text-align: center; width: 90%; font-weight: 700; padding: 5px 0;
+}
+:root[dir="rtl"] .hadith-en, :root[dir="rtl"] .ayah-en { font-style: normal; }
+.callout {
+  font-family: var(--display); font-size: 32px; font-weight: 600; margin: 0;
+  max-width: 70%; line-height: 1.25; text-wrap: balance; text-align: center; padding: 5px 0;
+}
+.scripture-cta { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 6px; }
+.scripture-sub { margin: 0; font-size: 15px; color: var(--muted); max-width: 60%; line-height: 1.6; padding: 5px 0; }
+
+/* ---------- why Wasiati (prototype: pad 20, gap 20, 5 cards, gap 12) ---------- */
+.why { padding: 20px; display: flex; flex-direction: column; gap: 20px; align-items: center; }
+.why h2 { font-family: var(--display); font-size: 24px; font-weight: 600; text-align: center; }
+.why .cards {
+  display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px;
+  width: 100%; max-width: 1120px;
+}
+.value {
+  background: var(--card); border: 1px solid var(--hairline); border-radius: 18px;
+  padding: 20px; display: flex; flex-direction: column; gap: 8px; text-align: start;
+}
+.value h3 { font-family: inherit; font-size: 14.5px; font-weight: 700; line-height: 1.4; letter-spacing: 0; }
+.value p { font-size: 13px; color: var(--muted); line-height: 1.55; }
+.value .icon svg { width: 30px; height: 30px; }
+
+/* ---------- pricing (4 plans per DECISIONS §10/§13; card cosmetics per prototype) ---------- */
+.pricing { padding: 34px 26px 8px; }
+.pricing .inner { max-width: 1120px; margin: 0 auto; display: flex; flex-direction: column; gap: 6px; align-items: center; }
+.pricing h2 { font-family: var(--display); font-size: 24px; font-weight: 600; color: var(--text); text-align: center; }
+.pricing .lede { text-align: center; color: var(--muted); font-size: 12.5px; }
+.pricing .cards {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;
+  align-items: stretch; width: 100%; margin-top: 16px;
+}
+.plan {
+  position: relative; background: var(--card); border: 1px solid var(--hairline);
+  border-radius: 18px; padding: 22px; display: flex; flex-direction: column; gap: 10px;
+  text-align: start;
+}
+/* `display:flex` above beats the UA's [hidden] rule, so it needs saying explicitly:
+   pricing.js hides a tier the visitor's region cannot buy (e.g. Ultimate in KSA/QA). */
+.plan[hidden] { display: none; }
+.plan.popular { border: 2px solid var(--gold); }
+.plan .badge {
+  position: absolute; top: -11px; inset-inline-start: 18px;
+  background: var(--gold-soft); color: #1C2333; font-size: 10px; font-weight: 700;
+  letter-spacing: .06em; padding: 4px 11px; border-radius: 99px;
+}
+.plan h3 { font-family: var(--display); font-size: 18px; font-weight: 600; color: var(--text); letter-spacing: 0; }
+:root[dir="rtl"] .plan h3 { font-family: var(--arabic); }
+.plan .price { font-family: var(--display); font-size: 27px; font-weight: 600; color: var(--text); }
+.plan .price .per { font-family: var(--body); font-size: 12px; font-weight: 600; color: var(--muted); }
+/* Arabic-Indic price digits have no glyphs in Fraunces — use the Arabic UI face in RTL. */
+:root[dir="rtl"] .plan .price { font-family: var(--arabic); font-weight: 700; }
+.plan .cadence { font-size: 12px; color: var(--faint); margin-top: -6px; }
+.plan ul { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 6px; margin-top: 4px; flex: 1; }
+.plan li { font-size: 12.5px; color: var(--body-color); line-height: 1.45; }
+.plan .cta { margin-top: auto; padding-top: 12px; }
+.plan .cta .btn { width: 100%; padding: 12px 0; border-radius: 12px; font-size: 13px; font-weight: 600; min-height: 44px; }
+.pricing .note { text-align: center; font-size: 11px; color: var(--faint); line-height: 1.5; max-width: 720px; margin-top: 10px; }
+
+/* billing-period toggle — prototype cycle control: sunken track r12 pad 5 */
+.bill-toggle { align-self: center; display: inline-flex; gap: 6px; padding: 5px; border-radius: 12px; background: var(--sunken); margin-top: 14px; }
+.bill-opt {
+  font-family: inherit; font-weight: 600; font-size: 12px; color: var(--muted);
+  background: none; border: none; cursor: pointer; padding: 9px 17px; border-radius: 9px;
+  display: inline-flex; align-items: center; gap: 7px; transition: background .15s, color .15s;
+}
+.bill-opt.is-active { background: var(--green); color: #F5EFE1; }
+.bill-opt .save { font-size: 9.5px; font-weight: 700; color: #F5EFE1; background: var(--gold); padding: 2px 7px; border-radius: 99px; }
+/* pricing cycle toggle — show only the active cycle's price + cadence span.
+   Default (data-bill=monthly) shows p-monthly; one-time and yearly are hidden. */
+.plan .price .p-once, .plan .price .p-yearly,
+.plan .cadence .p-once, .plan .cadence .p-yearly { display: none; }
+.pricing[data-bill="once"] .plan .price .p-monthly,
+.pricing[data-bill="once"] .plan .cadence .p-monthly,
+.pricing[data-bill="yearly"] .plan .price .p-monthly,
+.pricing[data-bill="yearly"] .plan .cadence .p-monthly { display: none; }
+.pricing[data-bill="once"] .plan .price .p-once,
+.pricing[data-bill="once"] .plan .cadence .p-once { display: inline; }
+.pricing[data-bill="yearly"] .plan .price .p-yearly,
+.pricing[data-bill="yearly"] .plan .cadence .p-yearly { display: inline; }
+
+/* ---------- carousel dots (mobile) — 9px, active green, inactive hair2 ---------- */
+.dots { display: none; gap: 8px; justify-content: center; padding-top: 2px; }
+.pricing .dots { padding-top: 10px; }
+.dots button { width: 9px; height: 9px; border-radius: 50%; background: var(--hairline2); border: none; padding: 0; cursor: pointer; flex: none; }
+.dots button.is-active { background: var(--green); }
+
+/* ---------- footer (prototype: hairline top, margins 20, pad 30) ---------- */
+footer {
+  border-top: 1px solid var(--hairline); margin: 20px; padding: 30px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+footer .disclaimer { font-size: 11px; color: var(--faint); line-height: 1.6; }
+footer .links { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
+footer .links a { color: var(--gold-deep); font-size: 11.5px; font-weight: 600; }
+footer .links a:hover { color: var(--gold); }
+footer .copy { font-size: 10.5px; color: var(--faint); }
+
+/* ---------- responsive (prototype "mob" values) ---------- */
+@media (max-width: 820px) {
+  .nav { padding: 18px; gap: 10px; }
+  .nav-links { gap: 14px; }
+  .nav-links .hide-sm { display: none; }
+  .ayah { font-size: 30px; }
+  .hero { grid-template-columns: 1fr; gap: 28px; padding: 28px 18px; }
+  .hero-copy { text-align: center; align-items: center; }
+  .hero .cta { justify-content: center; }
+
+  /* Why & Plans become swipeable carousels with dot indicators (spec: mobile) */
+  .why .cards, .pricing .cards {
+    grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 86%;
+    overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+    justify-content: flex-start;
+  }
+  .why .cards::-webkit-scrollbar, .pricing .cards::-webkit-scrollbar { display: none; }
+  .value, .plan { scroll-snap-align: center; }
+  .pricing .cards { padding-top: 14px; }
+  .dots { display: flex; }
+
+  /* decorative seals reduce to two corner-anchored marks per section (spec) */
+  .ayah-ref { position: static; } /* tr seal anchors to the band, not the ref line */
+  svg.hx { display: none; }
+  svg.hx[data-m] { display: block; }
+  svg.hx[data-m="tr"] { left: auto !important; right: -34px !important; top: -30px !important; bottom: auto !important; width: 120px !important; height: 120px !important; }
+  svg.hx[data-m="bl"] { left: -38px !important; right: auto !important; top: auto !important; bottom: -34px !important; width: 110px !important; height: 110px !important; }
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+}

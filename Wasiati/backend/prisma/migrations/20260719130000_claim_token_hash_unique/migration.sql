@@ -1,0 +1,12 @@
+-- ClaimAccessToken.tokenHash becomes the lookup key.
+--
+-- The token is a 256-bit random value hashed with SHA-256 (matching RefreshToken), NOT
+-- bcrypt. bcrypt's cost is a defence for low-entropy secrets; against a 256-bit token it
+-- buys nothing, and its per-row salt would make the hash unlookupable — forcing callers to
+-- supply willId to narrow the scan, which is exactly the scoping hole this design closes.
+-- With a unique index, willId is read OUT of the token, so no portal route ever accepts a
+-- will identifier and a token cannot be aimed at another estate.
+--
+-- IF NOT EXISTS: on a fresh database this runs after the table is created here; on the
+-- development database the table already existed without the index. Idempotent either way.
+CREATE UNIQUE INDEX IF NOT EXISTS "ClaimAccessToken_tokenHash_key" ON "ClaimAccessToken"("tokenHash");

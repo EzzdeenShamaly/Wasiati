@@ -1,0 +1,13 @@
+# Template for android/key.properties — the release-signing wiring read by
+# app/build.gradle.kts. Copy to key.properties (same directory) and fill in real
+# values. key.properties, *.jks and *.keystore are all gitignored: NOTHING in this
+# family of files may ever be committed. Full walkthrough: docs/MOBILE_RELEASE.md.
+#
+# Without key.properties, release builds fall back to debug signing on purpose —
+# buildable everywhere, uploadable nowhere.
+storePassword=REPLACE_WITH_KEYSTORE_PASSWORD
+keyPassword=REPLACE_WITH_KEY_PASSWORD
+keyAlias=upload
+# Relative paths resolve against android/app/ — keep the keystore out of the repo
+# tree entirely; an absolute path outside the checkout is the safest choice.
+storeFile=C:/absolute/path/to/upload-keystore.jks

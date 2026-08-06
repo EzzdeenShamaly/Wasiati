@@ -1,0 +1,147 @@
+name: backend
+
+on:
+  push:
+    paths: ["backend/**", ".github/workflows/backend.yml"]
+  pull_request:
+    paths: ["backend/**", ".github/workflows/backend.yml"]
+
+defaults:
+  run:
+    working-directory: backend
+
+# Least privilege: the default GITHUB_TOKEN is often write-all. These jobs only read the
+# repo, so a compromised action can't push commits/tags or tamper with releases.
+permissions:
+  contents: read
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: wasiati
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: wasiati_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U wasiati" --health-interval 5s
+          --health-timeout 5s --health-retries 10
+      redis:
+        image: redis:7-alpine
+        ports: ["6379:6379"]
+        options: >-
+          --health-cmd "redis-cli ping" --health-interval 5s
+          --health-timeout 3s --health-retries 10
+    env:
+      DATABASE_URL: postgresql://wasiati:password@localhost:5432/wasiati_test
+      REDIS_URL: redis://localhost:6379
+      SESSION_SECRET: ci-test-secret-please-override
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+          # The lockfile is the workspace root's (this is a pnpm workspace); a wrong path
+          # here makes setup-node error out and the whole job — the security-test gate —
+          # never runs.
+          cache-dependency-path: pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm prisma generate
+      - run: pnpm lint:check
+      - run: pnpm exec tsc --noEmit
+      - run: pnpm prisma migrate deploy
+      - run: pnpm test
+      - run: pnpm build
+
+  # The host-side build-test job cannot see packaging defects: it never builds the
+  # Docker image, so a wrong entrypoint path or a missing runtime shared library ships
+  # undetected. Both of those actually happened (dist/src/main.js; the prisma engine's
+  # libssl). This job builds the real image and boots it, which is the only thing that
+  # would have caught either at PR time.
+  image:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: wasiati
+          POSTGRES_PASSWORD: password
+          POSTGRES_DB: wasiati_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U wasiati" --health-interval 5s
+          --health-timeout 5s --health-retries 10
+      redis:
+        image: redis:7-alpine
+        ports: ["6379:6379"]
+        options: >-
+          --health-cmd "redis-cli ping" --health-interval 5s
+          --health-timeout 3s --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build the production image
+        run: docker build -f Dockerfile -t wasiati-backend:ci .
+      - name: Assert the entrypoint exists where CMD expects it
+        # Catches the dist/src/main.js regression directly: statSync exits non-zero if
+        # the file CMD ["node", "dist/main.js"] runs is not there.
+        run: docker run --rm --entrypoint node wasiati-backend:ci -e "require('fs').statSync('/app/dist/main.js')"
+      - name: Boot the image and wait for it to serve
+        # A clean boot means express resolved AND the prisma query engine loaded and
+        # connected — so this catches both the phantom-dependency and the libssl-engine
+        # classes. --network host lets the container reach the service containers on
+        # localhost. The app boots fine against an empty (unmigrated) DB, so no migrate
+        # step is needed.
+        #
+        # The image runs NODE_ENV=production, so env.validation.ts demands the full
+        # production posture — every secret-shaped value here is a THROWAWAY that exists
+        # only inside this job. Keep this block in sync with env.validation.ts: when a
+        # new variable becomes required in production, this boot is the gate that finds
+        # out, by failing exactly like an undeployed real environment would.
+        run: |
+          docker run -d --name smoke --network host \
+            -e PORT=4000 -e REGION=US \
+            -e SESSION_SECRET=ci-smoke-only-not-a-real-secret-0123456789 \
+            -e MFA_SECRET_KEY=ci-smoke-only-mfa-key-not-real-9876543210 \
+            -e APP_BASE_URL=https://app.wasiati.example \
+            -e SERVED_REGIONS=US,CA,KSA \
+            -e PAYMENT_RETURN_HOSTS=app.wasiati.example \
+            -e COOKIE_SECURE=true \
+            -e OTP_DEV_ECHO=false \
+            -e DATABASE_URL=postgresql://wasiati:password@localhost:5432/wasiati_test \
+            -e REDIS_URL=redis://localhost:6379 \
+            wasiati-backend:ci
+          for i in $(seq 1 30); do
+            if docker logs smoke 2>&1 | grep -q "running on port"; then
+              echo "Image booted and is serving."
+              docker rm -f smoke >/dev/null
+              exit 0
+            fi
+            if [ "$(docker inspect -f '{{.State.Status}}' smoke)" = "exited" ]; then
+              echo "::error::Container exited during boot:"
+              docker logs smoke
+              exit 1
+            fi
+            sleep 2
+          done
+          echo "::error::Timed out waiting for the image to boot:"
+          docker logs smoke
+          exit 1
+
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: pnpm audit --audit-level=high || true # report; do not fail build yet

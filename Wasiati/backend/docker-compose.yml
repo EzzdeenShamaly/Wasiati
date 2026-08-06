@@ -1,0 +1,32 @@
+# DEV ONLY. Ports bind to 127.0.0.1 so the weak-password Postgres, unauthenticated
+# Redis, and the backend (which reads real keys from .env) are not exposed to the LAN —
+# Docker would otherwise publish them past the host firewall.
+version: '3.8'
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: wasiati
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: wasiati_us
+    ports:
+      - '127.0.0.1:5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - '127.0.0.1:6379:6379'
+
+  backend:
+    build: .
+    env_file: .env
+    ports:
+      - '127.0.0.1:4000:4000'
+    depends_on:
+      - postgres
+      - redis
+
+volumes:
+  postgres_data:

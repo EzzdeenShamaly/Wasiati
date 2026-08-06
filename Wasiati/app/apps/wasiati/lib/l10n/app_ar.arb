@@ -1,0 +1,1856 @@
+{
+  "@@locale": "ar",
+  "appName": "وصيتي",
+  "navHome": "الرئيسية",
+  "navWills": "الوصايا",
+  "navVault": "الخزنة",
+  "navBurial": "الدفن",
+  "navGuided": "بمساعدتنا",
+  "navLegacy": "الإرث",
+  "navIdentity": "الهوية",
+  "navPlans": "الباقات",
+  "navAdmin": "الإدارة",
+  "navUsers": "المستخدمون",
+  "navClaims": "المطالبات",
+  "navMore": "المزيد",
+  "navSettings": "الإعدادات",
+  "commonSave": "حفظ",
+  "commonCancel": "إلغاء",
+  "commonAdd": "إضافة",
+  "commonDelete": "حذف",
+  "commonRetry": "إعادة المحاولة",
+  "commonSeePlans": "عرض الباقات",
+  "commonSignOut": "تسجيل الخروج",
+  "commonBack": "رجوع",
+  "commonBackToWill": "العودة إلى الوصية",
+  "wdBackToWills": "وصاياي",
+  "brandTrustStrip": "مختومة · مشهودة · موثّقة",
+  "settingsTitle": "الإعدادات",
+  "settingsAppearance": "المظهر",
+  "settingsThemeLight": "فاتح",
+  "settingsThemeDark": "داكن",
+  "settingsThemeDarkMode": "الوضع الداكن",
+  "settingsThemeMatchSystem": "مطابقة النظام",
+  "settingsRegionLanguage": "المنطقة واللغة",
+  "settingsRegion": "المنطقة",
+  "settingsLanguage": "اللغة",
+  "settingsLanguageSystem": "حسب الجهاز",
+  "settingsLanguageEnglish": "English",
+  "settingsLanguageArabic": "العربية",
+  "settingsRegionNote": "تحدّد منطقتك العملة والقواعد الضريبية والحسابات المحلية. وهي ثابتة في حسابك لأسباب تتعلق بإقامة البيانات.",
+  "settingsSecurity": "الأمان",
+  "settingsFaceApp": "بصمة الوجه لفتح التطبيق",
+  "settingsFaceVault": "بصمة الوجه للخزنة",
+  "settingsChangePassword": "تغيير كلمة المرور",
+  "settingsChangePasswordSub": "سنرسل إليك رابط إعادة تعيين آمن عبر البريد.",
+  "settingsIdentity": "التحقق من الهوية",
+  "settingsIdentitySub": "إدارة أو استكمال التحقق من الهوية.",
+  "settingsSignOutSub": "تسجيل الخروج من هذا الجهاز.",
+  "settingsLegal": "القانون والدعم",
+  "settingsPrivacy": "سياسة الخصوصية",
+  "settingsTerms": "شروط الخدمة",
+  "settingsContact": "تواصل مع الدعم",
+  "settingsDeleteTitle": "حذف حسابي",
+  "settingsDeleteBody": "يتولى الحذف شخصٌ مختص للحماية من الاحتيال على حساب يحتوي على وصية. راسلنا وسنتحقق ونمحو بياناتك خلال ٣٠ يومًا.",
+  "settingsRequestDeletion": "طلب الحذف",
+  "settingsResetSent": "تم إرسال رابط إعادة تعيين كلمة المرور إلى {email}.",
+  "@settingsResetSent": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsLinkError": "تعذّر فتح الرابط.",
+  "settingsRoleAdmin": "مشرف",
+  "authWelcomeTagline": "وصية وإرث بكرامة ومتوافقان مع الشريعة — مختومة ومشهودة وموثّقة.",
+  "authCreateYourWill": "أنشئ وصيتك",
+  "authAlreadyHaveAccount": "لديّ حساب بالفعل",
+  "authRegionsLine": "السعودية · كندا · الولايات المتحدة",
+  "authWelcomeBack": "مرحبًا بك في وصيتي",
+  "authLoginSubtitle": "يُكتشف بلدك وعملتك من موقعك — وستؤكّدهما أثناء إنشاء وصيتك.",
+  "authEmail": "البريد الإلكتروني",
+  "authPassword": "كلمة المرور",
+  "authSignIn": "تسجيل الدخول",
+  "authForgotPassword": "نسيت كلمة المرور؟",
+  "authNoAccountCreate": "ليس لديك حساب؟ أنشئ حسابًا",
+  "authMoreWaysSoon": "طرق أخرى لتسجيل الدخول — قريبًا",
+  "authCreateAccount": "أنشئ حسابك",
+  "authRegisterSubtitle": "وصيتك وخزنتك المشفّرة وإرثك — في مكان واحد.",
+  "authRegion": "المنطقة",
+  "authPhoneOptional": "الهاتف (اختياري، للتحقق عبر الرسائل)",
+  "authPhone": "رقم الجوال",
+  "authPhoneWhy": "يُستخدم لتسجيل دخولك وللتواصل مع شهودك ووصيّك وعائلتك.",
+  "authPhoneRequired": "أدخل رقم الجوال الذي يمكننا التواصل معك عليه.",
+  "authVerifyPhoneTitle": "أكّد رقم جوالك",
+  "authVerifyPhoneSubtitle": "أرسلنا رمزاً من ٦ أرقام إلى الرقم الذي أدخلته للتو. نستخدم هذا الرقم لتسجيل دخولك وللتواصل مع شهودك ووصيّك وعائلتك.",
+  "authVerifyPhoneCta": "تأكيد الرقم",
+  "authPhoneCodeResent": "تم إرسال رمز جديد.",
+  "addrCountry": "الدولة",
+  "addrLine1": "العنوان",
+  "addrLine1Required": "أدخل عنوان الشارع.",
+  "addrLine2Optional": "شقة أو مكتب (اختياري)",
+  "addrCity": "المدينة",
+  "addrCityRequired": "أدخل المدينة.",
+  "addrState": "الولاية",
+  "addrProvince": "المقاطعة",
+  "addrEmirate": "الإمارة",
+  "addrRegion": "المنطقة",
+  "addrAreaRequired": "هذا الحقل مطلوب في دولتك.",
+  "addrPostalCode": "الرمز البريدي",
+  "addrPostalCodeOptional": "الرمز البريدي (اختياري)",
+  "addrPostalRequired": "أدخل الرمز البريدي.",
+  "addrPostalInvalid": "لا يبدو هذا الرمز البريدي صحيحاً لهذه الدولة.",
+  "addrWhy": "يحدد عنوانك القانون الذي تُكتب وصيتك بموجبه، ويظهر في الوثيقة النهائية.",
+  "authPasswordHelper": "١٠ أحرف على الأقل",
+  "authCreateAccountButton": "إنشاء الحساب",
+  "authHaveAccountSignIn": "لديك حساب بالفعل؟ سجّل الدخول",
+  "authInvalidEmail": "أدخل بريدًا إلكترونيًا صحيحًا",
+  "authEnterPassword": "أدخل كلمة المرور",
+  "authUseTenChars": "استخدم ١٠ أحرف على الأقل",
+  "authGenericError": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+  "regionUnitedStates": "الولايات المتحدة",
+  "regionCanada": "كندا",
+  "regionSaudiArabia": "السعودية",
+  "willOpeningInsert": "إدراج افتتاحية إسلامية",
+  "willOpeningSubtitle": "ابدأ بالبسملة والشهادة، مستندةً إلى القرآن والسنة. اختياري — أبقِها أو عدّلها أو احذفها.",
+  "willOpeningFull": "كاملة",
+  "willOpeningShort": "مختصرة",
+  "willOpeningInserted": "تم إدراج الافتتاحية — عدّلها أو احذفها كما تشاء.",
+  "mfaTitle": "أدخل الرمز المكوّن من ٦ أرقام",
+  "mfaResendWait": "إعادة الإرسال بعد {n} ث",
+  "mfaResendReady": "لم يصلك الرمز؟",
+  "mfaResend": "إعادة إرسال الرمز",
+  "mfaSubtitleSms": "أرسلنا رسالة نصية تحتوي على رمز من ٦ أرقام إلى هاتفك.",
+  "mfaSubtitleWhatsapp": "أرسلنا رمزًا من 6 أرقام إلى واتساب.",
+  "mfaSubtitleTotp": "افتح تطبيق المصادقة وأدخل الرمز المكوَّن من 6 أرقام.",
+  "secRcTitle": "رموز الاسترداد",
+  "secRcNone": "غير مُعدَّة — قد تفقد الوصول إذا فقدت هاتفك",
+  "secRcRemaining": "{count} من {total} متبقية",
+  "@secRcRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "secRcLow": "بقي {count} فقط — أنشئ مجموعة جديدة",
+  "@secRcLow": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "secRcGenerate": "إنشاء رموز استرداد",
+  "secRcRegenerate": "إنشاء مجموعة جديدة",
+  "secRcSaveNow": "احفظها الآن. تُعرض مرة واحدة ولا يمكن استعادتها — كل رمز يسجّل دخولك مرة واحدة إذا فقدت هاتفك.",
+  "secRcReplaces": "إنشاء مجموعة جديدة يُلغي رموزك الحالية فورًا.",
+  "secRcCopy": "نسخ الكل",
+  "secRcCopied": "تم نسخ رموز الاسترداد.",
+  "secRcDone": "لقد حفظتها",
+  "secTotpTitle": "تطبيق المصادقة",
+  "secTotpBlurb": "سجّل الدخول برمز من تطبيق مثل Google Authenticator أو 1Password. مجاني، ويعمل بدون شبكة، وأكثر أمانًا من الرسائل النصية.",
+  "secTotpOn": "مُفعَّل",
+  "secTotpOff": "غير مُفعَّل",
+  "secTotpSetUp": "إعداد",
+  "secTotpTurnOff": "إيقاف",
+  "secTotpScan": "امسح هذا الرمز في تطبيق المصادقة، أو الصق المفتاح أدناه، ثم أدخل الرمز المكوَّن من 6 أرقام.",
+  "secTotpKey": "مفتاح الإعداد",
+  "secTotpConfirm": "تأكيد",
+  "secTotpEnabled": "تم تفعيل تطبيق المصادقة. لن تصلك رسائل نصية بالرمز بعد الآن.",
+  "secTotpDisabled": "تم إيقاف تطبيق المصادقة. ستصلك الرموز مرة أخرى.",
+  "secTotpCodeLabel": "رمز من 6 أرقام",
+  "mfaSubtitleEmail": "أرسلنا رمزًا من ٦ أرقام إلى بريدك الإلكتروني.",
+  "mfaVerify": "تحقّق",
+  "forgotTitle": "إعادة تعيين كلمة المرور",
+  "forgotSubtitle": "أدخل بريدك الإلكتروني وسنرسل لك رمزًا من ٦ أرقام.",
+  "forgotSentBody": "إن كان هناك حساب مرتبط بـ {email}، فرابط إعادة التعيين في طريقه إليك. تنتهي صلاحية الرابط خلال ساعة واحدة.",
+  "@forgotSentBody": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "forgotSendCode": "إرسال الرمز",
+  "forgotCodeSentBody": "إن كان هناك حساب مرتبط بـ {email}، فرمز من ٦ أرقام في طريقه إليك — برسالة نصية إن وُجد هاتف مسجّل، وإلا فعبر البريد الإلكتروني.",
+  "@forgotCodeSentBody": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "forgotBackToSignIn": "العودة لتسجيل الدخول",
+  "forgotSendResetLink": "إرسال رابط إعادة التعيين",
+  "resetSuccess": "تمت إعادة تعيين كلمة المرور. يرجى تسجيل الدخول.",
+  "resetInvalidTitle": "رابط إعادة تعيين غير صالح",
+  "resetInvalidSubtitle": "هذا الرابط مفقود أو غير صحيح. اطلب رابطًا جديدًا.",
+  "resetRequestNew": "طلب رابط جديد",
+  "resetTitle": "اختر كلمة مرور جديدة",
+  "resetNewPasswordLabel": "كلمة المرور الجديدة",
+  "resetHelper": "١٠ أحرف على الأقل",
+  "resetValidator": "استخدم ١٠ أحرف على الأقل",
+  "resetSubmit": "إعادة تعيين كلمة المرور",
+  "verifyEmailSent": "تم إرسال رسالة التحقق.",
+  "verifyEmailVerifyingTitle": "جارٍ التحقق من بريدك",
+  "verifyEmailInvalid": "رابط التحقق هذا غير صالح أو انتهت صلاحيته.",
+  "verifyEmailResend": "إعادة إرسال رسالة التحقق",
+  "verifyEmailVerified": "تم التحقق من بريدك الإلكتروني.",
+  "verifyEmailContinue": "متابعة",
+  "verifyEmailSignIn": "تسجيل الدخول",
+  "verifyEmailTitle": "تحقّق من بريدك الإلكتروني",
+  "verifyEmailSubtitle": "تحقّق من صندوق الوارد بحثًا عن رابط التحقق.",
+  "dashGreeting": "السلام عليكم، {name}",
+  "@dashGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dashStandardPlan": "الباقة القياسية",
+  "dashCreateWill": "إنشاء وصية",
+  "dashWillsLoadError": "تعذّر تحميل وصاياك.",
+  "dashPrimaryWill": "وصيتك الأساسية",
+  "dashPrimaryWillSealed": "وصيتك — مختومة",
+  "dashHeirCount": "{count} من الورثة",
+  "@dashHeirCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dashBequest": "{pct}٪ في الوصايا",
+  "@dashBequest": {
+    "placeholders": {
+      "pct": {
+        "type": "String"
+      }
+    }
+  },
+  "dashSealed": "مختومة",
+  "dashDraft": "مسودة",
+  "dashViewWill": "عرض الوصية",
+  "dashSharesBreakdown": "تفصيل الأنصبة",
+  "dashBeginWill": "ابدأ وصيتك",
+  "dashBeginBody": "دقائق قليلة الآن توفّر على عائلتك شهورًا لاحقًا. نحسب الأنصبة الشرعية أثناء تقدّمك.",
+  "dashCreateYourWill": "أنشئ وصيتك",
+  "dashPlanLoadError": "تعذّر تحميل باقتك.",
+  "dashYourPlan": "باقتك",
+  "dashCompedAccess": "وصول مجاني",
+  "dashFeatureUnlimitedEdits": "تعديلات غير محدودة للوصية",
+  "dashFeatureEncryptedVault": "خزنة مشفّرة",
+  "dashFeatureVideoLegacy": "رسائل فيديو — بريميوم",
+  "dashVerified": "الهوية موثّقة",
+  "dashUpgradePremium": "الترقية إلى بريميوم",
+  "dashHeirs": "الورثة",
+  "dashHeirsCaption": "المذكورون في وصيتك",
+  "dashWitnesses": "الشهود",
+  "dashWitnessesCaption": "الشاهدون على وصيتك",
+  "dashTrustees": "الأوصياء",
+  "dashTrusteesCaption": "الذين ينفّذونها",
+  "dashIdPending": "قيد المراجعة",
+  "dashIdUnverified": "الهوية غير موثّقة",
+  "dashChecklistTitle": "إرثك، مرتّب",
+  "dashChecklistCount": "{done} / {total}",
+  "dashCkIdentity": "الهوية موثّقة",
+  "dashCkHeirs": "الورثة مضافون",
+  "dashCkSealed": "الوصية مختومة",
+  "dashCkVideo": "سجّل رسالة فيديو",
+  "dashWillsSummaryTitle": "وصاياك",
+  "dashSealedCountLine": "{count} مختومة · مشهودة",
+  "dashNoDraftLine": "لا مسودات",
+  "dashDraftLbl": "مسودة",
+  "dashDraftStep": "الخطوة {step} من ٦",
+  "dashContinueDraft": "متابعة",
+  "dashOpen": "فتح",
+  "dashVault": "الخزنة",
+  "dashSecretsStored": "أسرار محفوظة",
+  "dashEncryptedLocked": "تشفير على الجهاز · مقفلة",
+  "dashHeirContacts": "بيانات الورثة",
+  "dashContactsMissing": "ناقصة",
+  "dashContactsComplete": "مكتملة",
+  "dashContactsMeta": "اسم وجوال وبريد لكل وارث",
+  "dashConfirmed": "مؤكّد",
+  "dashTrustee": "الوصي",
+  "dashPendingCode": "الرمز معلّق",
+  "dashResendSms": "إعادة إرسال الرمز",
+  "dashFeatureVideoLegacyUnlocked": "رسائل فيديو للذكرى",
+  "dashRefReminder": "شارك وصيتي واكسب ٢٫٥٪ من السنة الأولى لكل صديق — ويحصل هو على خصم ١٠٪.",
+  "burialTitle": "التخطيط للدفن",
+  "burialSubtitle": "اطّلع على تكلفة دفن إسلامي كريم في مدينتك اليوم، وما يعادلها بدفعات صغيرة متساوية — بلا فوائد ولا أرباح.",
+  "burialCity": "المدينة",
+  "burialCityHint": "الرياض",
+  "burialCostToday": "التكلفة اليوم",
+  "burialMaxPeriod": "١٠ سنوات هي أطول خطة.",
+  "burialSavePlan": "احفظ التقدير",
+  "burialCovers": "يشمل الغسل والكفن وخدمات الجنازة والقطعة والدفن. وعند إتاحة الدفع المسبق، سيُحجَز قبرك لدى مسجد قريب بسعر اليوم وتُحفَظ دفعاتك لك — لا نأخذ فوائد ولا أرباحًا. باقة ألتيميت، كندا والولايات المتحدة.",
+  "burialYearsShort": "{years} سنوات",
+  "@burialYearsShort": {
+    "placeholders": {
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "burialPlanHeader": "تقدير تكلفة الدفن",
+  "burialPlanHeaderCity": "تقدير تكلفة الدفن — {city}",
+  "@burialPlanHeaderCity": {
+    "placeholders": {
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "burialAddedToSub": "ستكون شهريًا",
+  "burialPerMonth": "{money} / شهريًا",
+  "@burialPerMonth": {
+    "placeholders": {
+      "money": {
+        "type": "String"
+      }
+    }
+  },
+  "burialFundedBy": "التمويل الكامل بحلول",
+  "burialWantRealNumber": "تريد رقمًا حقيقيًا؟",
+  "burialQuoteDesc": "سنطلب عرض سعر من مزوّدي خدمات الجنائز الإسلامية القريبين منك.",
+  "burialRequestQuote": "اطلب عرض سعر",
+  "burialUltimatePlan": "باقة ألتيميت (الولايات المتحدة وكندا)",
+  "burialUltimateDesc": "التخطيط للدفن جزء من باقة ألتيميت.",
+  "burialEstimateSummary": "{cost} · {months} دفعة متساوية · بلا فائدة ولا ربح",
+  "@burialEstimateSummary": {
+    "placeholders": {
+      "cost": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      }
+    }
+  },
+  "burialProviderQuote": "عرض سعر المزوّد: {amount}",
+  "@burialProviderQuote": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "burialProviderQuoteNotes": "عرض سعر المزوّد: {amount} · {notes}",
+  "@burialProviderQuoteNotes": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "notes": {
+        "type": "String"
+      }
+    }
+  },
+  "burialQuoteRequested": "تم طلب عرض السعر — يقوم أحد المسؤولين بالحصول على عرض حقيقي.",
+  "burialRequestRealQuote": "اطلب عرض سعر حقيقي",
+  "burialSavedPlans": "خططك المحفوظة",
+  "burialPlanSaved": "تم حفظ التقدير.",
+  "burialEnterCityCost": "أدخل المدينة وتكلفة اليوم.",
+  "adminCommerceEyebrow": "الإدارة — التجارة",
+  "adminCommerceTitle": "الكتالوج والعروض والترويج",
+  "adminCommerceTabPlans": "الباقات",
+  "adminCommerceTabPromotions": "أكواد الخصم",
+  "adminCommerceTabOffers": "العروض",
+  "adminConsoleTitle": "لوحة التحكم",
+  "adminConsolePill": "ADMIN",
+  "adminPlanPriceLabel": "السعر ({currency})",
+  "@adminPlanPriceLabel": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "adminPlanPriceUpdated": "تم تحديث السعر — فعّال في كل مكان.",
+  "adminPlanEditPrice": "تعديل السعر",
+  "adminPromoNewTitle": "كود خصم جديد",
+  "adminPromoCodeLabel": "الكود (مثال: LAUNCH25)",
+  "adminPromoTypeLabel": "النوع",
+  "adminPromoTypePercent": "خصم نسبة مئوية",
+  "adminPromoTypeAmount": "خصم مبلغ (دولار)",
+  "adminPromoValuePercentLabel": "النسبة (١-١٠٠)",
+  "adminPromoValueAmountLabel": "المبلغ (سنتات)",
+  "adminPromoCreate": "إنشاء",
+  "adminPromoCreated": "تم إنشاء كود الخصم.",
+  "adminPromoNewButton": "كود جديد",
+  "adminPromoEmpty": "لا توجد أكواد خصم بعد.",
+  "adminPromoUsed": "استُخدم {count} مرة",
+  "@adminPromoUsed": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminPromoLimitsSection": "الحدود",
+  "adminPromoMaxRedemptionsLabel": "الحد الأقصى للاستخدام",
+  "adminPromoMaxRedemptionsHelper": "اتركه فارغًا لاستخدام غير محدود",
+  "adminPromoStartsAtLabel": "يبدأ",
+  "adminPromoEndsAtLabel": "ينتهي",
+  "adminPromoDateAny": "أي وقت",
+  "adminPromoDateClear": "مسح",
+  "adminPromoErrorEndBeforeStart": "تاريخ الانتهاء يجب أن يكون بعد تاريخ البدء.",
+  "adminPromoErrorCodeRequired": "أدخل الكود.",
+  "adminPromoUsedOf": "استُخدم {used} من {max}",
+  "@adminPromoUsedOf": {
+    "placeholders": {
+      "used": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "adminPromoWindowFrom": "من {date}",
+  "@adminPromoWindowFrom": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "adminPromoWindowUntil": "حتى {date}",
+  "@adminPromoWindowUntil": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "adminPromoStatusLive": "مباشر",
+  "adminPromoStatusScheduled": "مجدول",
+  "adminPromoStatusExpired": "منتهي",
+  "adminPromoStatusExhausted": "بلغ الحد",
+  "adminPromoStatusInactive": "متوقف",
+  "adminPromoEditTitle": "تعديل كود الخصم",
+  "adminPromoEditTooltip": "تعديل",
+  "adminPromoUpdated": "تم تحديث كود الخصم.",
+  "adminPromoArchive": "أرشفة",
+  "adminPromoArchived": "تمت أرشفة كود الخصم — ويمكن إعادة تفعيله في أي وقت.",
+  "adminPromoReinstate": "إعادة تفعيل",
+  "adminPromoReinstated": "تمت إعادة تفعيل كود الخصم.",
+  "adminPromoFirstTimeOnlyLabel": "للاشتراك الأول فقط",
+  "adminPromoFirstTimeOnlyHelper": "يُرفَض هذا الكود لمن سبق له الشراء.",
+  "adminOfferEmpty": "لا توجد عروض بعد.",
+  "adminOfferLive": "مباشر",
+  "adminOfferOff": "متوقف",
+  "adminOfferEditTitle": "تعديل العرض",
+  "adminOfferEditTooltip": "تعديل",
+  "adminOfferTitleLabel": "العنوان",
+  "adminOfferSubtitleLabel": "العنوان الفرعي",
+  "adminOfferBadgeLabel": "الشارة",
+  "adminOfferCtaLabel": "نص الزر",
+  "adminOfferErrorTitleRequired": "العنوان مطلوب.",
+  "adminOfferSaved": "تم تحديث العرض.",
+  "adminOfferActivated": "العرض فعّال الآن.",
+  "adminOfferDeactivated": "أُوقف العرض.",
+  "adminOfferDeleteTitle": "حذف هذا العرض؟",
+  "adminOfferDeleteBody": "يختفي من واجهة المتجر فورًا. وخلافًا لأكواد الخصم، لا يمكن استرجاع عرض محذوف.",
+  "adminOfferDeleted": "حُذف العرض.",
+  "relHusband": "الزوج",
+  "relWife": "الزوجة",
+  "relSon": "الابن",
+  "relDaughter": "الابنة",
+  "relFather": "الأب",
+  "relMother": "الأم",
+  "relGrandfather": "الجَد",
+  "relGrandmother": "الجَدة",
+  "relBrother": "أخ شقيق",
+  "relSister": "أخت شقيقة",
+  "relMaternalSibling": "أخ/أخت لأم",
+  "relSonSon": "ابن الابن (حفيد)",
+  "relSonDaughter": "بنت الابن (حفيدة)",
+  "relPaternalGrandmother": "جدة (لأب)",
+  "relMaternalGrandmother": "جدة (لأم)",
+  "relConsanguineBrother": "أخ لأب",
+  "relConsanguineSister": "أخت لأب",
+  "relFullNephew": "ابن الأخ الشقيق",
+  "relConsanguineNephew": "ابن الأخ لأب",
+  "relFullUncle": "عم شقيق",
+  "relConsanguineUncle": "عم لأب",
+  "relFullCousin": "ابن العم الشقيق",
+  "relConsanguineCousin": "ابن العم لأب",
+  "cwPageTitle": "أنشئ وصيتك",
+  "cwStep1": "الخطوة ١ من ٤ — العائلة والورثة",
+  "cwFamilyHeirs": "العائلة والورثة",
+  "cwWhoHeirs": "من هم ورثتك؟",
+  "cwHeirsSubtitle": "أضف أفراد العائلة؛ تُحسب الأنصبة تلقائيًا وفق الفرائض.",
+  "cwSavedAuto": "حُفظت المسودة — يمكنك المغادرة والمتابعة لاحقًا",
+  "cwFillAi": "اطلب من أمين تعبئتها",
+  "cwBack": "‹ رجوع",
+  "cwContinueBequests": "المتابعة إلى الوصايا ›",
+  "cwStep2": "الخطوة ٢ من ٤ — الوصية",
+  "cwBequestTitle": "الثلث الحر",
+  "cwBequestSubtitle": "يجوز الإيصاء بما لا يزيد عن ثلث التركة لجهة خيرية أو لمن لا يرث — ربيب أو صديق. أنصبة ورثتك المقدَّرة لا تُمَسّ أبدًا.",
+  "cwBequestWhoLabel": "من يتلقاها",
+  "cwBequestWhoHint": "جهة خيرية، ربيب، صديق…",
+  "cwBequestAmount": "الوصية",
+  "cwOfEstate": "من التركة",
+  "cwOfFreeThird": "من الثلث الحر",
+  "cwWithinCap": "ضمن حد الثلث",
+  "cwBequestHelp": "اسحب لتحديد المقدار. لا يمكن أن يتجاوز الثلث (⅓) — فالفرائض مقدَّمة دائمًا.",
+  "cwCreateMyWill": "أنشئ وصيتي ›",
+  "cwBequestNameNeeded": "اذكر من يتلقى الوصية أولًا.",
+  "cwContinueWords": "المتابعة إلى الكلمات ›",
+  "cwStep3": "الخطوة ٣ من ٤ — الكلمات",
+  "cwWordsTitle": "كلمات لعائلتي",
+  "cwWordsSubtitle": "رسالة شخصية داخل وصيتك — تُسلَّم معها، حتى ٥٠٠٠ حرف.",
+  "cwWordsHint": "بسم الله الرحمن الرحيم. هذا ما أوصي به أهلي: أشهد أن لا إله إلا الله…    ↵ اضغط Enter لبدء الوصية الجامعة — أو اكتب ما تشاء",
+  "cwWordsDefault": "بسم الله الرحمن الرحيم.\n\nهذا ما أوصي به أهلي: أشهد أن لا إله إلا الله وحده لا شريك له، وأن محمداً عبده ورسوله، وأن الجنة حق، والنار حق، وأن الساعة آتية لا ريب فيها، وأن الله يبعث من في القبور.\n\nأوصيكم بتقوى الله، وأن تصلحوا ذات بينكم، وتطيعوا الله ورسوله إن كنتم مؤمنين. حافظوا على الصلاة، وبرّوا بعضكم بعضاً، وسامحوني فيما قصّرت. اقضوا ديني، واذكروني بدعائكم.",
+  "cwRelation": "صلة القرابة",
+  "cwName": "الاسم",
+  "cwLivePreview": "معاينة الفرائض المباشرة",
+  "cwLivePreviewShort": "الفرائض",
+  "cwHeirCount": "{count, plural, =1{وارث واحد} =2{وارثان} few{{count} ورثة} other{{count} وارثًا}}",
+  "@cwHeirCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "cwUpdatesAsType": "يتحدّث أثناء الكتابة",
+  "cwPreviewFootnote": "تتبع الأنصبة الفرائض بناءً على الورثة الذين أدخلتهم. يعيد الخادم الحساب ويعتمد القسمة النهائية عند المتابعة.",
+  "cwAddHeirPrompt": "أضف وارثًا لرؤية التوزيع المباشر.",
+  "cwSexLabel": "أنا",
+  "cwMale": "ذكر",
+  "cwFemale": "أنثى",
+  "cwWivesLabel": "الزوجات",
+  "cwSpousesHelp": "حتى أربع زوجات — يُقسَم نصيب الزوجية بينهن بالتساوي.",
+  "cwHusbandLabel": "الزوج",
+  "cwChildrenLabel": "الأبناء",
+  "cwParentsLabel": "الوالدان",
+  "cwFamilyFootnote": "لا يرث إلا الورثة الأحياء وقت الوفاة. ستؤكد منطقتك أثناء إنشاء وصيتك.",
+  "cwAddExtended": "إضافة أقارب آخرين — الأجداد والإخوة والأعمام وأبناء العم",
+  "cwExtendedFamily": "الأقارب",
+  "cwSettleFootnote": "تُسدَّد الديون التي عليك وأي وصية (≤ الثلث) قبل هذه الأنصبة.",
+  "cwBeforeShares": "قبل قسمة الأنصبة",
+  "cwStep1Funeral": "مصاريف الجنازة",
+  "cwStep2Debts": "الديون التي عليك (الأموال المستحقة) — تُسدَّد بالكامل أولًا",
+  "cwStep3Bequest": "الوصية — حتى ثلث ما تبقّى",
+  "cwSharesApplyRest": "تنطبق الأنصبة أدناه على بقية التركة.",
+  "cwMadhhabQuestion": "أي مذهب فقهي تتبع؟",
+  "cwMadhhabJumhur": "الجمهور — قول الأكثرية بالعمل المعاصر، وعليه المالكية والشافعية والحنابلة",
+  "cwMadhhabHanafi": "الحنفي — يختلف عند اجتماع الجدّ مع الإخوة",
+  "cwMadhhabMaliki": "المالكي",
+  "cwMadhhabShafii": "الشافعي",
+  "cwMadhhabHanbali": "الحنبلي",
+  "cwMadhhabNote": "تختلف المذاهب في موضع واحد لدى هؤلاء الورثة: هل يقاسم الجدُّ الإخوة (الجمهور) أم يحجبهم (الحنفي). أما ردّ الفائض على الورثة فعليه العمل المعاصر في المذاهب.",
+  "cwComputedPer": "محسوبة وفق: {school}",
+  "@cwComputedPer": {
+    "placeholders": {
+      "school": {
+        "type": "String"
+      }
+    }
+  },
+  "cwDisclaimer": "أفهم أن هذا المستند يعبّر عن رغباتي وفق مبادئ الميراث الإسلامي، وأن وصيتي لا تقدّم استشارة قانونية. تختلف المتطلبات باختلاف الاختصاص القضائي؛ وقد أحتاج إلى شهود أو توثيق لضمان النفاذ.",
+  "cwStepOf": "الخطوة {step} من ٦ — {name}",
+  "cwStepName1": "العائلة والورثة",
+  "cwStepName2": "سجل الورثة",
+  "cwStepName3": "الشهود والوصي والولاية",
+  "cwStepName4": "تركتك ووصيتك",
+  "cwStepName5": "الرغبات والكلمات",
+  "cwStepName6": "المراجعة والتأكيد",
+  "cwNavBack": "رجوع",
+  "cwNavContinue": "متابعة",
+  "cwEstateTitle": "تركتك اليوم",
+  "cwEstateEdit": "تعديل الأصول والقروض",
+  "cwShowAllRows": "عرض كل {n} من الأصول والقروض",
+  "cwFxNote": "حُوّلت المبالغ الأجنبية إلى {currency} — عملتك المحلية حسب منطقتك — بسعر اليوم.",
+  "cwEstateAssets": "الأصول",
+  "cwEstateLoans": "الديون",
+  "cwEstateNet": "صافي التركة",
+  "cwEstateNote": "من جردك. تُسدَّد تكاليف الجنازة والديون أولًا، ثم وصيتك (بحد أقصى الثلث)، ثم أنصبة الفرائض. أسرار الخزنة خارج الوصية — تُفرج منفصلة ومشفّرة.",
+  "cwEstateEmpty": "لا شيء هنا بعد — اجرد ما تملك وما عليك حتى لا تبحث عائلتك أبدًا.",
+  "cwBequestCardTitle": "الوصية — الثلث الحر",
+  "cwBequestCardSub": "للصدقة الجارية أو لمن لا يرث (ربيب، صديق). حدها ثلث التركة؛ وأنصبة الورثة لا تُمس.",
+  "cwBequestPctLabel": "الوصية — ٪ من الثلث",
+  "cwBequestHelpLead": "يجوز الإيصاء بما لا يزيد عن ثلث التركة خارج الفرائض. وصيتك الحالية تعادل",
+  "cwOfEstateDot": "من التركة.",
+  "cwWishesCardTitle": "رغبات الجنازة والدفن",
+  "cwWish1": "الغسل والتكفين وفق السنة",
+  "cwWish2": "دفن بسيط — بلا إسراف ولا تأخير",
+  "cwWish3": "ادفنوني في أقرب مقبرة للمسلمين",
+  "cwWish4": "أقيموا عزاءً — ثلاثة أيام لا أكثر",
+  "cwWish4No": "لا عزاء — يكفي الدعاء",
+  "cwWishesNote": "تُسجَّل في وصيتك حتى لا تحتار عائلتك في أصعب اللحظات.",
+  "cwSealBtn": "إنشاء وختم",
+  "cwMotherLbl": "الوالدة على قيد الحياة",
+  "cwFatherLbl": "الوالد على قيد الحياة",
+  "cwGmotherLbl": "الجدة على قيد الحياة",
+  "cwGmotherMaternalLbl": "الجدة — أم الأم",
+  "cwGmotherPaternalLbl": "الجدة — أم الأب",
+  "cwGfatherLbl": "الجد لأب على قيد الحياة",
+  "cwExtendedHead": "الأقارب الممتدون — يُحسبون فقط عند استحقاقهم",
+  "cwBrothersLbl": "إخوة أشقاء",
+  "cwSistersLbl": "أخوات شقيقات",
+  "cwUnclesLbl": "أعمام",
+  "cwCousinsLbl": "أبناء عم",
+  "cwDhawuNote": "إن كان لك ابن فلا شيء لإخوتك وأعمامك وأبناء عمك — يحجبهم حجب حرمان؛ ومع بنات فقط قد يأخذ العم الباقي بعد الفروض. العمّات والأخوال وأولادهم من ذوي الأرحام: يورّثهم الحنفية عند عدم وجود صاحب فرض أو عاصب؛ ولا يورّثهم المالكية والشافعية في المشهور. زوج الأم وزوجة الأب وأولاد الزوج والمتبنّون لا يرثون شرعًا — ويمكنك العطاء لهم من وصيتك (حتى الثلث) في الخطوة التالية.",
+  "cwPreviewNote": "تتحدّث الأنصبة أثناء التعديل. لكل نصيب أساسه — يظهر في خطوة المراجعة.",
+  "cwHeirRegTitle": "سجل الورثة",
+  "cwHeirRegSub": "الاسم الكامل ورقم الجوال والبريد الإلكتروني لكل وارث — مطلوبة ليُفرج عن الوصية لكل منهم عند المطالبة.",
+  "cwFullNameLbl": "الاسم الكامل",
+  "cwFullNamePh": "الاسم النظامي الكامل",
+  "cwPhoneLbl": "الهاتف",
+  "cwEmailLbl": "البريد الإلكتروني",
+  "cwPhonePh": "+966 55 123 4567",
+  "cwEmailPh": "care@bank.com",
+  "cwMinorLbl": "دون ١٨",
+  "cwGuardianNote": "دون ١٨ — يُحفظ نصيبه أمانة حتى يبلغ، تحت الوليّ المحدد في مسار الوصية (افتراضيًا: الوالد الآخر). بيانات التواصل تعود للوليّ.",
+  "cwHeirRegSeeded": "محمَّلة مسبقًا من إجاباتك عن العائلة — هؤلاء هم الورثة الذين يرثون بالفرائض، ومن كان محجوبًا لا يُدرج. عدِّل الصفوف أو أضف أو احذف حسب حاجتك.",
+  "cwAddHeirBtn": "+ إضافة وارث",
+  "cwHeirRegMissing": "يلزم اسم كامل وجوال وبريد لكل وارث قبل ختم الوصية.",
+  "cwHeirRegDone": "بيانات جميع الورثة مكتملة",
+  "cwRelOther": "أخرى",
+  "cwWitTrustTitle": "الشهود والوصي",
+  "cwWitTrustSub": "شاهدان ووصي يؤكدون عبر SMS قبل ختم الوصية. يمكنك مراجعة كل شيء دونهم.",
+  "cwRoleWitness": "شاهد",
+  "cwRoleTrustee": "وصي",
+  "cwPendingLbl": "معلّق",
+  "cwConfirmedLbl": "مؤكَّد",
+  "cwWitGateNote": "يُفتح الختم عندما يؤكد الشاهدان والوصي — وتبقى المراجعة متاحة.",
+  "cwAddWitness": "+ إضافة شاهد",
+  "cwWitnessCountReq": "{added} من {required} مطلوبين",
+  "cwWitnessMinNote": "أضف {required} شاهدين على الأقل للمتابعة — لا يمكن توقيع الوصية أو ختمها بأقل من ذلك.",
+  "cwAddTrustee": "+ إضافة وصي",
+  "cwAdd": "إضافة",
+  "cwCancel": "إلغاء",
+  "cwGuardTitle": "الولاية على الأولاد القُصّر",
+  "cwGuardSub": "من يرعى أولادك دون ١٨. افتراضيًا الوالد الآخر؛ أو وفق ترتيب الولاية الشرعي؛ أو تسمية من تثق به.",
+  "cwGParentLbl": "الوالد الآخر (افتراضي)",
+  "cwGIslamicLbl": "ترتيب الولاية الشرعي",
+  "cwGNamedLbl": "تسمية وصيّ",
+  "cwGParentNote": "يُسجَّل الوالد الآخر وليًّا على القُصّر وعلى أنصبتهم حتى يبلغوا.",
+  "cwGIslamicNote": "لا يعيّن هذا الخيار شخصاً بعينه، بل يوجّه بأن تُحدَّد رعاية أولادك والولاية على أنصبتهم وفق الأحكام الشرعية والمحكمة المختصة عند التنفيذ — وتختلف المذاهب في ذلك، وقد لا يجتمع الأمران في شخص واحد. ولاختيار الشخص بنفسك، وهو ما تجيزه المذاهب كلها، اختر «تسمية وصيّ».",
+  "cwReviewTitle": "المراجعة والتأكيد",
+  "cwReviewPeople": "الشهود والوصي والولاية",
+  "cwReviewGuardianLine": "الوليّ على القُصّر: {who}",
+  "cwWordsCount": "{count} / ٥٠٠٠",
+  "cwSealNeedsDisclaimer": "أكِّد الإقرار أعلاه للختم.",
+  "cwEstateSummaryTitle": "ملخص التركة",
+  "cwUpgrade": "ترقية",
+  "draftWillTitle": "وصيتي — قيد الإعداد",
+  "draftLbl": "مسودة",
+  "draftContinue": "متابعة",
+  "draftAutosaved": "محفوظة تلقائيًا",
+  "rsVideoTitle": "فيديو لعائلتك",
+  "rsVideoGateNote": "رسائل الفيديو ميزة بريميوم. رقِّ باقتك لتسجيل فيديو مشفّر لأحبائك.",
+  "rsVideoRecord": "تسجيل فيديو",
+  "rsVideoUpload": "رفع فيديو",
+  "rsVideoSkip": "تخطَّ الآن",
+  "rsVideoNote": "سجّل الآن أو ارفع ملفًا — يُشفَّر كالخزنة ويُفرج عنه مع الوصية. يرى الورثة وجود الرسالة فقط.",
+  "rsVideoSavedNote": "مشفّر · محفوظ في خزنتك · يُعرض بعد الإفراج",
+  "rsVideoDelete": "حذف",
+  "rsVideoDeferredNote": "مؤجّل — وصيتك مكتملة بدونه؛ يمكنك إضافة فيديو في أي وقت.",
+  "rsVideoRecordNow": "سجّل الآن",
+  "rsVideoSavedToast": "شُفّر الفيديو وحُفظ في خزنتك",
+  "rsVideoDeferredToast": "تم التخطي — يمكنك إضافة فيديو من وصيتك في أي وقت",
+  "rsVideoMsgLabel": "رسالة فيديو",
+  "rsVideoBadFile": "اختر ملف فيديو بصيغة mp4 أو webm أو mov.",
+  "wlTitle": "وصاياك",
+  "wlSubtitle": "يمكن إعادة فتح الوصية المختومة للتعديل في الباقة القياسية وما فوقها.",
+  "wlCreateWill": "إنشاء وصية",
+  "wlCapNote": "يمكنك الاحتفاظ بثلاث مسودات كحدّ أقصى — احذف واحدة لبدء أخرى.",
+  "wlNoWillsTitle": "لا توجد وصايا بعد",
+  "wlNoWillsSubtitle": "تستغرق وصيتك نحو عشر دقائق. نرشدك في كل خطوة.",
+  "wlCreateYourWill": "أنشئ وصيتك",
+  "wlPrimaryWill": "وصيتي الأساسية",
+  "wlAdditionalWill": "وصية إضافية",
+  "wlSealed": "مختومة",
+  "wlDraftNotSealed": "مسودة — لم تُختم بعد",
+  "wlMetaSealed": "مختومة",
+  "wlMetaDraft": "مسودة",
+  "wlMetaBequest": "وصية {pct}٪ من الثلث",
+  "@wlMetaBequest": {
+    "placeholders": {
+      "pct": {
+        "type": "String"
+      }
+    }
+  },
+  "wlTitleSealed": "{title} — مختومة",
+  "wlMetaWitnesses": "أكّد {confirmed} من {required} شهود",
+  "wlMetaUpdated": "آخر تحديث {date}",
+  "wlSealedSupersede": "خُتمت في {date} — وأي وصية مختومة أحدث تحل محلها تلقائيًا",
+  "wlSecondWillTitle": "وصية ثانية",
+  "wlSecondWillBody": "لأصول في بلد آخر أو لتفضيل مذهب فقهي مختلف.",
+  "wlStart": "ابدأ",
+  "wlOpen": "فتح",
+  "wlSharesBreakdown": "تفصيل الأنصبة",
+  "wlContinue": "متابعة",
+  "wlCreateAnotherPrompt": "بحاجة إلى وصية منفصلة لاختصاص قضائي آخر؟ ",
+  "wlCreateAnother": "إنشاء وصية أخرى",
+  "wlLoadErrorTitle": "تعذّر تحميل وصاياك.",
+  "wlTryAgain": "حاول مرة أخرى",
+  "wlDeleteWill": "حذف الوصية",
+  "wlDocsExtraTitle": "وثائق تكميلية — خارج الوصية",
+  "wlPoaTitle": "وكالة مالية",
+  "wlPoaSub": "تخوّل وكيلًا موثوقًا إدارة أموالك إن عجزت — منفصلة عن الوصية وسارية في حياتك.",
+  "wlHcdTitle": "التوجيه الصحي",
+  "wlHcdSub": "رغباتك العلاجية ووكيل صحي، بمراعاة الضوابط الشرعية — منفصل عن الوصية وساري في حياتك.",
+  "wlDocSigned": "موقّعة",
+  "wlDocNotStarted": "لم تبدأ",
+  "wlDocPrepare": "إعداد وتوقيع",
+  "wlDocEdit": "تعديل",
+  "wlDocSaveSign": "حفظ وتوقيع",
+  "wlDocAgentNameLbl": "اسم الوكيل الكامل",
+  "wlDocWishesLbl": "الرغبات العلاجية",
+  "wlDocWishesPh": "مثال: لا إطالة للإنعاش؛ يُستشار وكيلي الصحي وأهل العلم",
+  "wlDocAgentLine": "الوكيل: {name} · شُهدت رقميًا",
+  "wlDocToastSigned": "وُقّعت وشُهدت رقميًا · حُفظت مع وثائقك",
+  "wlDocGatedNudge": "متاحة مع باقتي بريميوم وألتيميت.",
+  "wlDirectivesLink": "وثيقتان منفصلتان ساريتان في حياتك. أدرهما من صفحة الوصايا.",
+  "wlManage": "إدارة",
+  "wlDeleteWillTitle": "أتريد حذف هذه الوصية؟",
+  "wlDeleteWillBody": "يحذف هذا نهائيًا الوصية المختومة وأنصبتها ووصاياها والأصول المسجّلة فيها. خزنتك لا تتأثر. نحتاج إلى التأكد من هويتك.",
+  "wlDeleteDraftTitle": "حذف هذه المسودة؟",
+  "wlDeleteDraftBody": "سيُحذف هذا المسودة نهائياً بكل ما سُجّل فيها — الورثة والأنصبة والوصايا والأصول. لم تُوقَّع ولم يشهد عليها أحد، فلن يتأثر شيء آخر. خزنتك لا تُمَس. نحتاج إلى التأكد من هويتك.",
+  "wlDeleteOtpLabel": "أدخل الرمز المُرسَل عبر الرسائل",
+  "wlDeleteDone": "تم حذف الوصية.",
+  "sealTitle": "تم ختم وصيتك",
+  "sealBody": "مشهودة، ومحسوبة وفق الفرائض، ومشفّرة وآمنة. عسى ألّا يُحتاج إليها إلى زمن بعيد.",
+  "sealWry": "«الحمد لله أنهم لن يقرأوا هذا إلا بعد رحيلي.»",
+  "sealViewWill": "عرض الوصية",
+  "sealDownloadPdf": "تصدير PDF",
+  "sealBackHome": "العودة للرئيسية",
+  "sealPdfComingSoon": "يجري تجهيز تصدير PDF للإصدار.",
+  "rsStep3": "الخطوة ٦ من ٦ — المراجعة والختم",
+  "rsReadTitle": "اقرأها كما ستقرأها عائلتك",
+  "rsReadSubtitle": "راجع كل سطر. بعد الختم، تتطلب التغييرات إعادة فتح (الباقة القياسية وما فوقها).",
+  "rsHeirsTitle": "الورثة والأنصبة — محسوبة وفق الفرائض",
+  "rsEditHeirs": "تعديل الورثة",
+  "rsNoHeirs": "لم يُسجَّل أي وارث.",
+  "rsBequestsTitle": "الوصايا — الثلث المُتاح",
+  "rsEditBequests": "تعديل الوصايا",
+  "rsBequestNone": "لا شيء — يمكن ترك ما يصل إلى الثلث خارج الأنصبة.",
+  "rsWithinCap": "ضمن حد الثلث.",
+  "rsMessageTitle": "كلمات لعائلتي",
+  "rsEditMessage": "تعديل الرسالة",
+  "rsNoMessage": "لم تُضَف رسالة شخصية بعد.",
+  "rsPeopleTitle": "الشهود والوصي",
+  "rsEditPeople": "تعديل الأشخاص",
+  "rsNoneAdded": "لم يُضَف أحد",
+  "rsWitnessTrusteeLine": "الشهود: {witnesses}   ·   الوصي: {trustees} (يُرسَل الرمز عند الختم)",
+  "@rsWitnessTrusteeLine": {
+    "placeholders": {
+      "witnesses": {
+        "type": "String"
+      },
+      "trustees": {
+        "type": "String"
+      }
+    }
+  },
+  "rsWitnessesInline": "الشهود:",
+  "rsTrusteeInline": "الوصي:",
+  "rsCodeSentSuffix": "(يُرسَل الرمز عند الختم)",
+  "rsDocPreview": "معاينة المستند",
+  "rsLastWill": "الوصية الأخيرة",
+  "rsFullText": "النص الكامل · English + العربية · PDF بعد الختم",
+  "rsReviewedConfirm": "أفهم أن وصيتي تقدم حساب الفرائض للإرشاد، وليست فتوى أو استشارة قانونية، وأن تركتي تُقسم وفق الشريعة (الفرائض). أؤكد صحة البيانات أعلاه.",
+  "rsSealMyWill": "اختم وصيتي",
+  "rsSignMyWill": "وقّع وصيتي",
+  "rsWaitingWitnesses": "بانتظار الشهود",
+  "rsSignedWaitingNote": "لقد وقّعت. تُختَم وصيتك بمجرد تأكيد شهودك عبر الرسائل النصية (وقّع {signed} من {required}).",
+  "rsSignNote": "توقيعك الرقمي يقفل الوصية، ثم يُطلَب من شهودك التأكيد عبر رسالة نصية.",
+  "rsSignedNoWitnesses": "لقد وقّعت. أضِف شهودك في تفاصيل الوصية ليؤكّدوا عبر الرسائل النصية — ثم يمكنك الختم.",
+  "rsWitnessCodesNote": "تُرسَل رموز الشهود عبر الرسائل لحظة الختم.",
+  "rsVerifyEmailNotice": "أكّد بريدك الإلكتروني قبل الختم — فهو العنوان الذي سيُتواصل عبره مع شهودك ووصيّك وورثتك.",
+  "rsVerifyEmailCta": "تأكيد بريدي الإلكتروني",
+  "wdMyPrimaryWill": "وصيتي الأساسية",
+  "wdSealedEstate": "مختومة · تركة {tier}",
+  "@wdSealedEstate": {
+    "placeholders": {
+      "tier": {
+        "type": "String"
+      }
+    }
+  },
+  "wdDraftNotSealed": "مسودة — لم تُختم بعد",
+  "wdReopenToEdit": "إعادة الفتح للتعديل",
+  "wdReopenSnack": "إعادة الفتح للتعديل متاحة في الباقة القياسية وما فوقها.",
+  "wdReviseOpened": "فُتحت مسودة مراجعة. تبقى وصيتك المختومة سارية حتى تختم النسخة الجديدة.",
+  "dashRefOpen": "عرض الإحالات",
+  "settingsReferrals": "الإحالات ورصيد الحساب",
+  "settingsReferralsSub": "رمز دعوتك، ورابط المشاركة، والرصيد المكتسب.",
+  "wdDownloadPdf": "تنزيل PDF",
+  "wdExportWaitingOn": "في انتظار: {parties}",
+  "wdExportWaitingWitnesses": "{count, plural, =1{شاهد واحد} =2{شاهدين} few{{count} شهود} other{{count} شاهدًا}}",
+  "wdExportWaitingTrustee": "الوصي",
+  "wdExportChecking": "جارٍ التحقق من التوقيعات…",
+  "wdReviewSeal": "المراجعة والختم ›",
+  "wdAssetsTitle": "الأصول والديون التي ينبغي أن يعرفها ورثتك",
+  "wdAssetsSubtitle": "جرد — الحسابات والممتلكات وأي أموال مستحقة.",
+  "wdLegacyTitle": "رسائل لعائلتك",
+  "wdLegacySubtitle": "سجّل رسائل فيديو وصوت — تُسلَّم مع وصيتك.",
+  "wdShariaShares": "الأنصبة — الفرائض",
+  "wdThHeir": "الوارث",
+  "wdThBasis": "الأساس",
+  "wdThShare": "النصيب",
+  "wdNoHeirs": "لم يُسجَّل أي وارث بعد.",
+  "wdTotalToHeirs": "الإجمالي للورثة",
+  "wdAddBequest": "إضافة وصية",
+  "wdBequestUsed": "استُخدم {pct}٪ من التركة",
+  "@wdBequestUsed": {
+    "placeholders": {
+      "pct": {
+        "type": "String"
+      }
+    }
+  },
+  "wdBequestCap": "الحد ٣٣٫٣٪",
+  "wdNoBequests": "لا وصايا بعد — يمكن ترك ما يصل إلى الثلث خارج أنصبة الفرائض.",
+  "wdAddBequestTitle": "إضافة وصية",
+  "wdBeneficiary": "المستفيد",
+  "wdPercentOfEstate": "٪ من التركة",
+  "wdFreeThirdHelper": "الثلث المتاح: بحد أقصى ٣٣٫٣٣٪ إجمالًا",
+  "wdReviewerNote": "عند وفاتك، يقدّم الوصيّ مطالبة. يتحقق منها مراجع من وصيتي قبل الإفراج عن أي شيء — لا شيء يحدث تلقائيًا.",
+  "wdMessageHint": "عائلتي الغالية — سامحوني على تقصيري، واذكروني بدعائكم، وابقوا متقاربين…",
+  "wdMessagePartOfWill": "جزء من وصيتك · يُفرَج عنه معها",
+  "wdSaveMessage": "حفظ الرسالة",
+  "wdMessageSaved": "تم حفظ الرسالة مع وصيتك.",
+  "wdWitnesses": "الشهود",
+  "wdTrustees": "الأوصياء",
+  "wdAddWitnessTitle": "إضافة شاهد",
+  "wdAddTrusteeTitle": "إضافة وصيّ",
+  "wdAddWitnessBtn": "+ إضافة شاهد",
+  "wdAddTrusteeBtn": "+ إضافة وصيّ",
+  "wdFullName": "الاسم الكامل",
+  "wdPhone": "الهاتف (+…)",
+  "wdEmailOptional": "البريد الإلكتروني (اختياري)",
+  "wdInviteUnreached": "لم نتمكن من الوصول إليهم برسالة نصية أو بريد إلكتروني — تحقق من الرقم أو تواصل معهم بنفسك.",
+  "wdResend": "إعادة الإرسال",
+  "wdSendCode": "إرسال الرمز",
+  "wdNoneAddedYet": "لم يُضَف أحد بعد.",
+  "wdStatusConfirmed": "مؤكَّد عبر الرسائل",
+  "wdStatusCodeSent": "أُرسِل الرمز · بانتظار التأكيد",
+  "wdStatusPending": "قيد الانتظار — لم يُرسَل رمز بعد",
+  "wdIdMatched": "الهوية مطابقة",
+  "wdCodeSentSms": "تم إرسال رمز التحقق عبر الرسائل.",
+  "wdCodeSentDev": "أُرسِل الرمز (تطوير): {code}",
+  "@wdCodeSentDev": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "wdUnpublish": "إلغاء النشر",
+  "wdUnpublishTitle": "إلغاء نشر هذه الوصية؟",
+  "wdUnpublishBody": "تعود الوصية إلى مسودة ولا تعود سارية. يُمحى توقيعك وتوقيعات الشهود جميعها — والختم من جديد إجراء كامل — وسيُبلَّغ الشهود الذين وقّعوا.",
+  "wdStepUpSmsSent": "أدخل رمز التأكيد الذي أرسلناه إلى هاتفك عبر رسالة نصية.",
+  "wdStepUpEmailSent": "أدخل رمز التأكيد الذي أرسلناه إلى بريدك الإلكتروني.",
+  "wdStepUpCodeLabel": "رمز التأكيد",
+  "wdUnpublishDone": "أُلغي نشر الوصية وعادت إلى مسودة.",
+  "wdErrorLoadTitle": "تعذّر تحميل هذه الوصية.",
+  "assetEyebrow": "وصيتي الأساسية — الأصول",
+  "assetTitle": "ما الذي ينبغي أن يعرفه ورثتك؟",
+  "assetSubtitle": "جرد، لا تقييم — حتى لا يضيع شيء أو يُنسى.",
+  "assetAddButton": "إضافة أصل",
+  "assetAddLoan": "إضافة قرض",
+  "assetSectionAssets": "الأصول",
+  "assetSectionLoans": "القروض والالتزامات",
+  "assetInvTitle": "أضِف إلى الجرد",
+  "assetInvEditTitle": "تعديل عنصر الجرد",
+  "assetExport": "تصدير إلى Excel",
+  "assetInvAsset": "أصل",
+  "assetInvLoan": "قرض",
+  "assetColAsset": "الأصل",
+  "assetColCategory": "الفئة",
+  "assetColHeldWith": "محفوظ لدى",
+  "assetColPhone": "الهاتف",
+  "assetColEmail": "البريد",
+  "assetColValue": "القيمة",
+  "assetColStatus": "الحالة",
+  "assetFieldName": "الاسم",
+  "assetFieldHeldWith": "محفوظ لدى / الجهة",
+  "assetFieldLender": "مستحق لـ / الجهة المُقرِضة",
+  "assetFieldCategory": "الفئة",
+  "assetFieldValueCurrency": "القيمة والعملة",
+  "assetFieldPhone": "الهاتف",
+  "assetFieldEmail": "البريد الإلكتروني",
+  "assetFieldAccountRef": "الحساب / الآيبان",
+  "assetHintName": "مثال: ذهب — صندوق أمانات",
+  "asNameRequired": "أعطِ هذا الأصل اسماً حتى تتعرف عليه عائلتك.",
+  "asValueInvalid": "أدخل القيمة رقماً، مثال: ٢٥٠٬٠٠٠.",
+  "assetHintHeldWith": "مثال: البنك الأهلي",
+  "assetHintValue": "250,000",
+  "assetHintPhone": "+966 55 123 4567",
+  "assetHintEmail": "care@bank.com",
+  "assetHintAccountRef": "مثال: SA03 8000 0000 6080 1016 7519",
+  "assetRefHelper": "رقم الحساب أو الآيبان مع جهة اتصال، ليعرف ورثتك أين يوجد الأصل تحديدًا وبمن يتصلون. يظهر مقنَّعًا في القائمة.",
+  "assetCurrencyHelper": "تُسجَّل القيمة بالعملة التي تختارها هنا وتُدرَج في وصيتك كما أُدخلت — بلا تحويل.",
+  "assetStatusManual": "يدوي",
+  "assetTotalsTitle": "إجمالي التركة",
+  "assetTotalAssets": "الأصول",
+  "assetNetEstate": "صافي التركة (بعد الديون)",
+  "assetRegionNote": "تعرض كندا RRSP · TFSA · RESP · RRIF؛ وتعرض الولايات المتحدة 401(k) · IRA · Roth · 529. تُسدَّد الديون التي عليك بالكامل قبل قسمة أنصبة الفرائض.",
+  "assetErrorHint": "انقر أحد الاقتراحات أعلاه لإضافة أول عنصر.",
+  "assetEmptyHint": "لم تُضَف أي أصول بعد — انقر أحد الاقتراحات أعلاه للبدء.",
+  "assetVaultNote": "ترتبط الأصول بأسرار الخزنة: يرى الورثة وجود الأصل؛ ولا يفتح الوصيّ التفاصيل إلا بعد الموافقة على المطالبة.",
+  "assetZakatTitle": "تقدير الزكاة",
+  "assetZakatSubline": "بحسب تاريخ الحول · انقر لعرض الحساب الكامل",
+  "assetZakatCaption": "الزكاة المستحقة تقديرًا",
+  "assetAddTitle": "إضافة أصل",
+  "assetLabelField": "التسمية (مثال: شقة، الرياض)",
+  "assetKindField": "النوع",
+  "assetNotesField": "ملاحظات (اختياري)",
+  "assetSuggestedFor": "مقترح لـ {region}",
+  "@assetSuggestedFor": {
+    "placeholders": {
+      "region": {
+        "type": "String"
+      }
+    }
+  },
+  "assetDebtsHeading": "الديون والالتزامات — تُسدَّد قبل الأنصبة",
+  "assetRegionKsa": "🇸🇦 السعودية",
+  "assetRegionCa": "🇨🇦 كندا",
+  "assetRegionUs": "🇺🇸 الولايات المتحدة",
+  "assetKindRealEstate": "عقار",
+  "assetKindBank": "بنك / حساب",
+  "assetKindPension": "معاش تقاعدي",
+  "assetKindVehicle": "مركبة",
+  "assetKindBusiness": "نشاط تجاري",
+  "assetKindLiability": "دين / أموال مستحقة",
+  "assetKindOther": "أخرى",
+  "assetRealEstate": "عقار",
+  "assetBankAccount": "حساب بنكي",
+  "assetVehicle": "مركبة",
+  "assetBusiness": "نشاط تجاري",
+  "assetGold": "ذهب / مجوهرات",
+  "assetEndOfService": "مكافأة نهاية الخدمة",
+  "assetGosiPension": "معاش التأمينات (GOSI)",
+  "assetLoanOwed": "قرض / أموال مستحقة",
+  "assetMortgage": "رهن عقاري",
+  "assetCreditCard": "رصيد بطاقة ائتمان",
+  "assetUnpaidZakat": "زكاة / مستحقات غير مدفوعة",
+  "assetValueField": "القيمة التقديرية (اختياري)",
+  "assetAmountOwed": "المبلغ المستحق (اختياري)",
+  "assetCurrencyField": "العملة",
+  "lgEyebrow": "رسائل الإرث",
+  "lgTitle": "كلماتٌ يحتفظون بها",
+  "lgSubtitle": "تُسلَّم إلى عائلتك مع وصيتك — لا قبل ذلك أبدًا. قل ما لا يقوله المستند.",
+  "lgLoadError": "تعذّر تحميل وصاياك الآن.",
+  "lgCreateFirst": "أنشئ وصيتك أولًا — تُحفَظ رسالتك معها.",
+  "lgWrittenMessage": "رسالة مكتوبة",
+  "lgHint": "إلى عائلتي — شكرًا لكم على كل شيء. حين تقرؤون هذا…",
+  "lgSealedNote": "وصيتك مختومة — تعديل الرسالة يعيد فتحها لإعادة الختم.",
+  "lgPrivateNote": "تبقى خاصة حتى تُسلَّم وصيتك إلى ورثتك.",
+  "lgMessageSaved": "تم حفظ الرسالة.",
+  "lgVideoTitle": "رسائل فيديو وصوت",
+  "lgVideoBadge": "بريميوم · قريبًا",
+  "lgVideoBody": "سجّل مقطع فيديو أو رسالة صوتية قصيرة لكل شخص تسمّيه — مشفّرة من طرف إلى طرف وتُسلَّم مع وصيتك فقط. نبنيها على الخزنة المشفّرة نفسها التي تستخدمها مستنداتك؛ ولم تُفعَّل بعد، لذا لا ندّعي أنها جاهزة.",
+  "lgNotifySnack": "سنُعلمك فور جاهزية رسائل الفيديو.",
+  "lgNotifyButton": "أعلمني عند جاهزيتها",
+  "lgStartWill": "ابدأ وصية",
+  "kycTitle": "التحقق من الهوية",
+  "kycSubtitle": "مطلوب مرة واحدة قبل ختم وصيتك. يتم عبر نفاذ في السعودية — أو Stripe Identity خارجها.",
+  "kycLoadError": "تعذّر تحميل حالة التحقق الخاصة بك.",
+  "kycNafathSnack": "يظهر التحقق عبر نفاذ عندما يكون عنوانك في السعودية — يُفعَّل عند الإطلاق.",
+  "kycVerifiedTitle": "تم التحقق منك",
+  "kycVerifiedBody": "يمكن ختم وصاياك وسيُعتمد ما يقدّمه وصيّك من مطالبات.",
+  "kycInProgress": "التحقق قيد التنفيذ",
+  "kycNeedsRetry": "يحتاج محاولة أخرى",
+  "kycVerifyTitle": "لم تُوثَّق هويتك بعد",
+  "kycPendingBody": "نراجع مستنداتك — عادةً في أقل من دقيقتين.",
+  "kycRejectedBody": "تعذّر التحقق من هويتك. يرجى المحاولة مرة أخرى بمستند مختلف.",
+  "kycVerifyBody": "وثّق هويتك مرة واحدة لتتمكن من ختم وصاياك ولتُقبل مطالبات وصيّك.",
+  "kycVerifyNafath": "التحقق عبر نفاذ",
+  "kycNafathSub": "الهوية الرقمية الوطنية السعودية",
+  "kycContinueVerification": "متابعة التحقق",
+  "kycAllStates": "جميع الحالات",
+  "kycStateUnverified": "غير موثّق",
+  "kycStateUnverifiedSub": "التحقق عبر نفاذ (السعودية) أو Stripe Identity",
+  "kycOutsideNote": "خارج السعودية؟ سيتم التحقق عبر Stripe Identity.",
+  "kycStatePending": "قيد المراجعة",
+  "kycStatePendingSub": "عادةً أقل من دقيقتين؛ سنُعلمك",
+  "kycStateVerified": "موثّق",
+  "kycStateVerifiedSub": "يفتح الختم والمطالبات",
+  "kycStateRejected": "مرفوض",
+  "kycStateRejectedSub": "يُعرض السبب؛ حاول مرة أخرى بمستند مختلف",
+  "vaultPassphraseShort": "يجب أن تتكوّن عبارة المرور من ١٠ أحرف على الأقل.",
+  "vaultAddSecretTitle": "إضافة سر",
+  "vaultLabelField": "التسمية (مثال: دخول البنك)",
+  "vaultSecretField": "قيمة السر (كلمة مرور، رقم سري، مفتاح…)",
+  "vaultSiteField": "الموقع أو التطبيق (اختياري)",
+  "vaultUserField": "اسم المستخدم أو البريد (اختياري)",
+  "vaultNotesField": "ملاحظات (اختياري — رموز الاسترداد، أي فرع، بمن يُتَّصل)",
+  "vaultAddHint": "أدخل كل حساب في عنصر مستقل: الموقع أو التطبيق، واسم المستخدم الذي تدخل به، والسر نفسه — فمن سيحتاج هذا يومًا ليس أنت، وكلمة مرور بلا موقع ولا اسم مستخدم لا تنفع أحدًا.",
+  "vaultEncryptSave": "تشفير وحفظ",
+  "vaultUnlockTitle": "الخزنة مقفلة",
+  "vaultUnlockSubtitle": "كل ما بداخلها مشفّر على جهازك. لا يمكن لوصيتي قراءته أبدًا.",
+  "vaultFaceIdSnack": "يُفعَّل فتح Face ID على جهازك عند الإطلاق.",
+  "vaultUnlockFaceId": "الفتح عبر Face ID",
+  "vaultOr": "أو عبارة المرور",
+  "vaultPassphraseHint": "عبارة مرور الخزنة",
+  "vaultUnlockPassphrase": "فتح",
+  "vaultForgotWarn": "إذا فقدت عبارة المرور وبصمة الوجه، لا يمكن استعادة الخزنة — ولا حتى نحن. وهذا هو المقصود.",
+  "vaultTitle": "الخزنة",
+  "vaultSubtitle": "مشفّرة على جهازك قبل أن تغادره. لا نخزّن سوى النص المشفّر.",
+  "vaultUnlocked": "مفتوحة",
+  "vaultAutoLockIn": "قفل تلقائي بعد {n} ث",
+  "@vaultAutoLockIn": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "vaultRevealFootnote": "يُخفى المكشوف تلقائيًا بعد ١٠ ثوانٍ.",
+  "vaultDecryptFailed": "تعذّر فك تشفير هذا السر بعبارة المرور الحالية. ربما حُفظ بعبارة أخرى — اقفل الخزنة وجرّب عبارة مرور مختلفة.",
+  "vaultAddSecretBtn": "إضافة سر",
+  "vaultLockNow": "اقفل الآن",
+  "vaultEmptyTitle": "خزنتك فارغة",
+  "vaultEmptySubtitle": "أضف سرًّا ستحتاجه عائلتك — رقم آيبان، صك ملكية، عبارة استرداد.",
+  "vaultWarnCallout": "إذا نسيت عبارة المرور، فلا يمكن استرداد هذه الأسرار — لا منّا ولا من أحد. فكّر في مشاركة تلميح مع وصيّك.",
+  "vaultUpgradeTitle": "الخزنة جزء من الباقة القياسية",
+  "vaultUpgradeBody": "تحفظ أرقام الحسابات والصكوك وكلمات المرور مشفّرة لعائلتك.",
+  "dcRejectTitle": "رفض المطالبة",
+  "dcReason": "السبب",
+  "dcRejectReasonRequired": "يلزم ذكر سبب مكتوب للرفض.",
+  "dcReject": "رفض",
+  "dcEyebrow": "الإدارة — مطالبات الوفاة",
+  "dcTitle": "قائمة المطالبات",
+  "dcCareNote": "مراجعة بشرية دائمًا. الرفض يتطلّب سببًا. والإفراج إجراء منفصل ومسجَّل.",
+  "dcNoPending": "لا توجد مطالبات معلّقة.",
+  "dcSubmittedBy": "مقدَّمة من {phone}",
+  "@dcSubmittedBy": {
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "dcSubmittedByFor": "مقدَّمة من {phone} · بشأن {email}",
+  "@dcSubmittedByFor": {
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      },
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "dcCertificateOnFile": "الشهادة محفوظة",
+  "dcViewCertificate": "عرض الشهادة",
+  "dcCertificateOpenFailed": "تعذّر فتح الشهادة. لا توافق على هذا الطلب قبل الاطلاع عليها.",
+  "dcStartReview": "بدء المراجعة",
+  "dcApprove": "موافقة",
+  "dcRelease": "إفراج",
+  "dcStatusSubmitted": "مقدَّمة",
+  "dcStatusUnderReview": "قيد المراجعة",
+  "dcStatusApproved": "موافَق عليها",
+  "dcStatusReleased": "مُفرَج عنها",
+  "dcStatusRejected": "مرفوضة",
+  "navBurialQuotes": "أسعار الدفن",
+  "bqEyebrow": "الإدارة — أسعار الدفن",
+  "bqTitle": "طلبات عروض الأسعار",
+  "bqCareNote": "الطلب يعني أن العميل يريد سعرًا حقيقيًا. اتصل بالمساجد ودور الجنازة في مدينته، ثم سجّل السعر هنا — وسيظهر للعميل في صفحة الدفن.",
+  "bqNoPending": "لا توجد طلبات بانتظار الرد.",
+  "bqRequestedBy": "بطلب من {email}",
+  "@bqRequestedBy": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "bqEstimateLine": "الأساس {base} · المتوقع {projected} خلال {years} سنة",
+  "@bqEstimateLine": {
+    "placeholders": {
+      "base": {
+        "type": "String"
+      },
+      "projected": {
+        "type": "String"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "bqQuotedLine": "السعر المقدَّم: {amount}",
+  "@bqQuotedLine": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "bqStatusRequested": "بانتظار عرض السعر",
+  "bqStatusQuoted": "تم التسعير",
+  "bqRecordQuote": "تسجيل السعر",
+  "bqQuoteDialogTitle": "تسجيل السعر الفعلي",
+  "bqAmountLabel": "المبلغ ({currency})",
+  "@bqAmountLabel": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "bqNotesLabel": "ملاحظات (اختياري)",
+  "bqNotesHelper": "مثال: أي مسجد قدّم السعر وما الذي يشمله",
+  "bqErrorAmountRequired": "أدخل المبلغ.",
+  "bqQuoteSaved": "تم تسجيل السعر — يمكن للعميل رؤيته الآن.",
+  "auEyebrow": "الإدارة — المستخدمون",
+  "auUsersCount": "{count} مستخدم",
+  "@auUsersCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "auRefresh": "تحديث",
+  "auByRegion": "المستخدمون حسب المنطقة",
+  "auIdVerification": "التحقق من الهوية",
+  "auByRole": "حسب الدور",
+  "auNoData": "لا توجد بيانات",
+  "auAllUsers": "جميع المستخدمين",
+  "auColEmail": "البريد",
+  "auColPhone": "الهاتف",
+  "auColRegion": "المنطقة",
+  "auColRole": "الدور",
+  "auColId": "الهوية",
+  "auColEmailVerified": "البريد موثّق",
+  "auColComp": "مجاني",
+  "auColLastIp": "آخر IP",
+  "auColJoined": "الانضمام",
+  "auTitle": "المستخدمون",
+  "auExportExcel": "تصدير إلى Excel",
+  "auStatTotalUsers": "إجمالي المستخدمين",
+  "auStatSealedWills": "وصايا مختومة",
+  "auStatIdVerified": "هوية موثّقة",
+  "auStatDeltaWeek": "+{count} هذا الأسبوع",
+  "auStatInReview": "{pct}٪ قيد المراجعة",
+  "auColUser": "المستخدم",
+  "auColPlan": "الباقة",
+  "auColIdentity": "الهوية",
+  "auPlanFree": "مجانية",
+  "auPlanBasic": "الأساسية",
+  "auPlanStandard": "القياسية",
+  "auPlanPremium": "المميزة",
+  "auPlanUltimate": "القصوى",
+  "auCompTitle": "وصول ممنوح (Comp)",
+  "auCompBody": "امنح {email} فئة دون دفع — تعتمد عليه حسابات العروض التجريبية والاختبار والدعم.",
+  "@auCompBody": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "auCompTierLabel": "الفئة",
+  "auCompGrant": "منح",
+  "auCompRevoke": "إلغاء المنح",
+  "auCompGranted": "تم المنح.",
+  "auCompRevoked": "أُلغي المنح.",
+  "auCompChip": "ممنوح · {tier}",
+  "@auCompChip": {
+    "placeholders": {
+      "tier": {
+        "type": "String"
+      }
+    }
+  },
+  "prLoadError": "تعذّر تحميل الأسعار:",
+  "prPlansFor": "باقات {region}",
+  "@prPlansFor": {
+    "placeholders": {
+      "region": {
+        "type": "String"
+      }
+    }
+  },
+  "prPricesIn": "الأسعار بـ {currency} · محدّدة حسب المنطقة · قابلة للتعديل من الإدارة",
+  "@prPricesIn": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "prNoPlans": "لا توجد باقات مُعدّة لهذه المنطقة بعد.",
+  "prChoose": "اختر {plan}",
+  "@prChoose": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "prUltimateTitle": "ألتيميت — التخطيط للدفن والجنازة",
+  "prNotInRegion": "غير متاحة في منطقتك",
+  "prUltimateSub": "دفعات دفنٍ مسبقة تُضاف إلى اشتراكك.",
+  "prLearnMore": "اعرف المزيد",
+  "prAlreadySubscribed": "مشترك بالفعل؟",
+  "prBillingSub": "الفواتير، طريقة الدفع، الإلغاء في أي وقت.",
+  "prManageBilling": "إدارة الفوترة",
+  "prPromoTitle": "رمز الخصم",
+  "prPromoHint": "مثال: RAMADAN30",
+  "prApply": "تطبيق",
+  "prCouldNotCheck": "تعذّر التحقق من الكود.",
+  "prCodeApplied": "تم تطبيق الكود",
+  "prInvalidCode": "كود غير صالح",
+  "prGatedTitle": "تحفظ الخزنة المشفّرة أرقام الحسابات والصكوك وكلمات المرور بأمان لعائلتك.",
+  "prGatedSub": "إنها جزء من الباقة القياسية — تظهر هنا كتذكير لطيف، لا كحاجز.",
+  "prUpgrade": "الترقية",
+  "prBillingMonthly": "شهريًا",
+  "prBillingAnnual": "سنويًا",
+  "prCycleOnce": "مرة واحدة",
+  "prCycleYearly": "سنوي",
+  "prTwoMonthsFree": "شهران مجانًا",
+  "prOneTimeNote": "مرة واحدة: ادفع مرة واحتفظ بوصيتك وخزنتك وجردك مدى الحياة. التحديثات وإعادة الختم مشمولة؛ دفعات الدفن تتطلب اشتراك ألتيميت نشطًا.",
+  "prPlansTitle": "الباقات",
+  "prPlansSubtitle": "الأسعار محدّدة تلقائيًا لمنطقتك — {region} · {currency}",
+  "prCycleYearlySave": "وفّر ١٠٪",
+  "prMonthlyCommit": "كل باقات الاشتراك بحد أدنى التزام سنة واحدة غير قابل للاسترداد. يمكنك الترقية أو التخفيض بين الباقات في الفوترة الشهرية فقط. تُدفع خيارات المرة الواحدة والسنوية مقدمًا.",
+  "prNoUltimateNote": "باقة ألتيميت غير متاحة في {region} — الدفن بلا تكلفة هنا، فلا شيء يُخطط له أو يُموَّل. تظهر تلقائيًا للأعضاء في أمريكا وكندا.",
+  "prChoosePlan": "اختر الباقة",
+  "prMostPopular": "الأكثر شيوعًا",
+  "prLiveLabel": "مباشر",
+  "aiFatal503": "لم تُفعَّل المساعدة الذكية على هذا الخادم بعد. لا يزال بإمكانك إعداد وصيتك يدويًا.",
+  "aiResumed": "مرحبًا بعودتك — تستمر محادثتك من حيث توقفت.",
+  "aiGuidedIntake": "الإعداد بمساعدتنا",
+  "aiPremium": "بريميوم",
+  "aiTalkThrough": "لنتحدّث عن الأمر",
+  "aiComposerHint": "اكتب إجابتك…",
+  "aiMicListen": "تحدّث إلى أمين",
+  "aiMicStop": "إيقاف",
+  "aiMicListening": "أستمع… تحدّث الآن",
+  "aiCaptured": "ما الذي سجّلته",
+  "aiHeirs": "الورثة",
+  "aiHeirsNone": "لا شيء بعد — سأدرجهم هنا أثناء حديثنا.",
+  "aiAssets": "الأصول",
+  "aiAssetsNone": "لا شيء بعد.",
+  "aiReadyTitle": "جاهز عندما تكون مستعدًا",
+  "aiReadyBody": "سأحوّل هذا إلى وصية مكتملة يمكنك مراجعتها وتعديلها وختمها.",
+  "aiTurnIntoWill": "حوّل هذا إلى وصية",
+  "aiHintCard": "لا شيء هنا نهائي. كل ما تقوله يصبح مسودة قابلة للتعديل — وتُحسَب الأنصبة الشرعية لك بعد ذلك.",
+  "aiGatedBadge": "ميزة بريميوم",
+  "aiGatedTitle": "تحدّث لتُنشئ وصيتك",
+  "aiGatedBody": "يتيح لك الإعداد بمساعدتنا بناء وصيتك بالمحادثة بدلًا من النماذج — صِف عائلتك وتركتك بكلماتك، ونحن ننظّمها لك. وهي جزء من باقتي بريميوم وألتيميت.",
+  "aiBuildByHand": "إعداد وصية يدويًا",
+  "prBillingCancelSub": "إلغاء الاشتراك",
+  "prBillingResume": "استئناف الاشتراك",
+  "kycVerifyDocument": "تحقّق من هويتي",
+  "kycUnavailable": "يجري تفعيل التحقق من الهوية. لا حاجة لأي إجراء منك الآن.",
+  "prPromoCheckoutNote": "يعمل أيضًا في Stripe.",
+  "prUltimateRegionSub": "متاح في كندا والولايات المتحدة فقط.",
+  "relBaytAlMal": "بيت المال",
+  "@burialContributionSummary": {
+    "placeholders": {
+      "months": {
+        "type": "int"
+      },
+      "cost": {
+        "type": "String"
+      }
+    }
+  },
+  "burialContributionPeriod": "مدة الدفعات",
+  "burialContributionSummary": "{months} دفعة متساوية · الإجمالي {cost} بالضبط — بلا فوائد ولا أرباح.",
+  "burialTerms": "هذا تقدير وليس خطة دفع. لم يُخصم أي مبلغ ولا يُحتفظ لك بأي أموال حتى الآن — الدفع المسبق غير متاح على حسابك، ولن نأخذ شيئًا قبل أن نسألك. تُظهر الأرقام تكلفة القبر في هذه المدينة اليوم وما يعادلها شهريًا لتتمكن من التخطيط. وعند إتاحة الدفع المسبق، ستكون دفعاتك أموالك أنت، تُحفَظ لك وقابلة للاسترداد في أي وقت.",
+  "cwMadhhabMalikiShafii": "المالكي / الشافعي — القول الكلاسيكي",
+  "refTitle": "ادعُ صديقًا",
+  "refSubtitle": "يحصل صديقك على خصم ١٠٪، وتكسب أنت ٢٫٥٪ من قيمة سنته الأولى أو عملية الشراء لمرة واحدة.",
+  "refYourCode": "رمز الدعوة الخاص بك",
+  "refCopyLink": "نسخ الرابط",
+  "refCopied": "تم نسخ رابط المشاركة",
+  "refInvited": "المدعوّون",
+  "refRewarded": "المكافآت",
+  "refCapped": "بلغت الحد",
+  "refCreditAvailable": "الرصيد المتاح",
+  "refCreditHeld": "محتجز",
+  "refCreditHeldNote": "يصبح رصيد الدعوة قابلًا للإنفاق بعد {days} يومًا من شراء صديقك، وهي مدة تغطي فترة الاسترداد.",
+  "refEarnedThisYear": "المكتسب هذا العام",
+  "refYearlyCap": "من حدّ {cap} سنويًا",
+  "refHaveCode": "لديك رمز دعوة؟",
+  "refEnterCode": "أدخل الرمز",
+  "refApply": "تطبيق",
+  "refApplied": "تم تطبيق رمز الدعوة.",
+  "refCodeChip": "سيُطبَّق رمز الدعوة {code}",
+  "refTerms": "ينطبق على الخطط السنوية والخطة لمرة واحدة فقط. الخطط الشهرية غير مؤهلة.",
+  "refLoadError": "تعذّر تحميل تفاصيل الدعوة.",
+  "refHistoryTitle": "سجل الرصيد",
+  "refHistoryEmpty": "لا يوجد نشاط في الرصيد بعد.",
+  "refHistoryError": "تعذّر تحميل سجل الرصيد.",
+  "refHistoryReasonReferral": "مكافأة دعوة صديق",
+  "refHistoryReasonPurchase": "خُصم من عملية شراء",
+  "refHistoryReasonAdjustment": "تسوية يدوية",
+  "refHistoryReasonRefund": "استرداد",
+  "refHistorySpendable": "قابل للصرف في {date}",
+  "@refHistorySpendable": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "navReferrals": "ادعُ صديقًا",
+  "@refCreditHeldNote": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@refYearlyCap": {
+    "placeholders": {
+      "cap": {
+        "type": "String"
+      }
+    }
+  },
+  "@refCodeChip": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "navZakat": "الزكاة",
+  "zakatBackToAssets": "‹ العودة إلى الأصول",
+  "zakatBackToDashboard": "‹ العودة إلى لوحة المعلومات",
+  "zakatTitle": "تقدير الزكاة",
+  "zakatSubtitle": "على نقدك وأرصدتك البنكية وأسهمك وذهبك.",
+  "zakatDue": "الزكاة المستحقة",
+  "zakatNoneDue": "لا زكاة مستحقة",
+  "zakatBelowNisab": "مالك الزكوي أقل من النصاب البالغ {nisab}.",
+  "zakatBase": "الوعاء الزكوي",
+  "zakatNisab": "النصاب (٨٥ جرامًا من الذهب)",
+  "zakatRate": "النسبة — ربع العشر",
+  "zakatHawl": "تاريخ الحول",
+  "zakatHawlNotSet": "غير محدد",
+  "zakatSetHawl": "حدّد تاريخ الحول",
+  "zakatHawlHijriOnly": "هجري فقط — اليوم (١–٣٠) وشهر حولك الزكوي.",
+  "zakatHawlDay": "اليوم",
+  "zakatHawlMonth": "الشهر",
+  "zakatHawlSaved": "تم حفظ تاريخ الحول",
+  "zakatCryptoExcluded": "العملات الرقمية غير محتسبة في الوعاء الزكوي.",
+  "zakatUnconverted": "{count} من الأصول بعملة {currency} غير محتسبة: لا يوجد سعر صرف ثابت لعملتك، ولن نخمّنه.",
+  "zakatPayNow": "أدِّ زكاتك",
+  "zakatDisclaimer": "قد لا يكون هذا التقدير محسوبًا بشكل صحيح لحالتك وليس حكمًا شرعيًا. يفترض أن الأسهم بنيّة المتاجرة، ويستثني مسكنك ومركباتك ومعاشك، ويتجاهل الديون الخصومة من الزكاة، ويستخدم نصابًا تقريبيًا. عقار التجارة وعروض التجارة وحالات أخرى لها أحكامها — تحقق مع عالم أو هيئة الزكاة قبل الدفع.",
+  "zakatUnavailable": "تقدير الزكاة غير متاح حاليًا.",
+  "zakatBasisCash": "النقد الحاضر — زكوي بالكامل.",
+  "zakatBasisBank": "الأرصدة البنكية — تُعامل معاملة النقد.",
+  "zakatBasisShares": "الأسهم — تُزكّى بقيمتها السوقية، بنيّة المتاجرة.",
+  "zakatBasisGold": "الذهب — يُزكّى بقيمته.",
+  "checkinTitle": "التحقق من النشاط",
+  "checkinSubtitle": "سنسألك بين حين وآخر عمّا إذا كنت بخير. وإذا لم تُجب على تذكيرين، يُبلَّغ وصيّك — ولا يُفرج عن شيء.",
+  "checkinEnable": "تفعيل التحقق",
+  "checkinFrequency": "كل كم",
+  "checkinMonthly": "شهريًا",
+  "checkinQuarterly": "كل ثلاثة أشهر",
+  "checkinYearly": "سنويًا",
+  "checkinLoadError": "تعذّر تحميل أحدث إعدادات التحقق — نعرض الإعدادات الافتراضية.",
+  "checkinLastConfirmed": "آخر تأكيد",
+  "checkinNever": "لا يوجد",
+  "checkinConfirmNow": "أنا بخير",
+  "checkinConfirmed": "شكرًا لك. أُعيد ضبط التذكيرات.",
+  "checkinTrusteeAlerted": "تم إبلاغ وصيّك بأنك لم تستجب للتحقق.",
+  "claimPolicyTitle": "من يحق له الإبلاغ عن وفاتي",
+  "claimPolicyTrustee": "وصيّي فقط",
+  "claimPolicyHeirs": "الورثة، مع المستندات",
+  "claimPolicyBoth": "كلاهما",
+  "claimPolicySaved": "تم الحفظ",
+  "settingsSaveFailed": "تعذّر حفظ التغيير.",
+  "hijriMonth1": "محرّم",
+  "hijriMonth2": "صفر",
+  "hijriMonth3": "ربيع الأول",
+  "hijriMonth4": "ربيع الآخر",
+  "hijriMonth5": "جمادى الأولى",
+  "hijriMonth6": "جمادى الآخرة",
+  "hijriMonth7": "رجب",
+  "hijriMonth8": "شعبان",
+  "hijriMonth9": "رمضان",
+  "hijriMonth10": "شوال",
+  "hijriMonth11": "ذو القعدة",
+  "hijriMonth12": "ذو الحجة",
+  "@zakatBelowNisab": {
+    "placeholders": {
+      "nisab": {
+        "type": "String"
+      }
+    }
+  },
+  "@zakatUnconverted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "zakatCatCash": "النقد",
+  "zakatCatBank": "الأرصدة البنكية",
+  "zakatCatShares": "الأسهم",
+  "zakatCatGold": "الذهب",
+  "assetKindCash": "نقد",
+  "assetKindShares": "أسهم",
+  "assetKindGold": "ذهب",
+  "assetKindCrypto": "عملات رقمية",
+  "exportTitle": "تنزيل وصيتك",
+  "exportFormat": "الصيغة",
+  "exportFormatTable": "قائمة منظّمة",
+  "exportFormatTableSub": "الورثة والأنصبة والوصايا في جداول.",
+  "exportFormatEssay": "وصية سرديّة",
+  "exportFormatEssaySub": "المحتوى نفسه مكتوبًا كنصٍّ وصائي.",
+  "wpPreviewHead": "معاينة",
+  "wpEstateFormat": "شكل التركة",
+  "wpFormatTable": "جدول",
+  "wpFormatNarrative": "سرد",
+  "wpSharesAs": "عرض الأنصبة",
+  "wpSharesPercent": "٪",
+  "wpSharesFraction": "كسر",
+  "wpFormatHelp": "كيف تظهر أصولك وديونك في الوصية المُصدَّرة — جدول مرتّب، أو صياغة وصائية منسابة تُكتب نيابةً عنك.",
+  "wpPreviewFailed": "تعذّر عرض المعاينة. حاول مرة أخرى.",
+  "wpPreviewRetry": "إعادة المحاولة",
+  "exportLanguage": "اللغة",
+  "exportLangEnglish": "English",
+  "exportLangArabic": "العربية",
+  "exportDownload": "تنزيل",
+  "adminContentTitle": "المحتوى",
+  "adminContentSubtitle": "حرّر النصوص الظاهرة للمستخدم. تُنشَر التغييرات مباشرةً فوق نصوص التطبيق المضمّنة.",
+  "adminContentKey": "المفتاح",
+  "adminContentEn": "الإنجليزية",
+  "adminContentAr": "العربية",
+  "adminContentNote": "ملاحظة (اختياري)",
+  "adminContentPublished": "منشور",
+  "adminContentDraft": "مسودة",
+  "adminContentAdd": "إضافة نص",
+  "adminContentEdit": "تحرير",
+  "adminContentSave": "نشر",
+  "adminContentRemove": "إزالة التجاوز",
+  "adminContentRemoved": "أُعيد إلى النص المضمّن.",
+  "adminContentSaved": "نُشر مباشرةً.",
+  "adminContentHistory": "السجل",
+  "adminContentEmpty": "لا تجاوزات بعد. أضف واحدًا لتغيير نص دون إصدار تطبيق جديد.",
+  "adminContentBothRequired": "يلزم إدخال الإنجليزية والعربية معًا.",
+  "adminContentEditedBy": "{who} · {when}",
+  "navAdminContent": "المحتوى",
+  "@adminContentEditedBy": {
+    "placeholders": {
+      "who": {
+        "type": "String"
+      },
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "wsChooseTitle": "كيف تودّ كتابة وصيتك؟",
+  "wsChooseSubtitle": "كلا الطريقين ينتهيان بالمراجعة نفسها — تؤكد كل تفصيلة قبل أن يُختم شيء.",
+  "wsAmeenTitle": "تحدّث إلى أمين",
+  "wsAmeenSub": "أجب عن أسئلة يسيرة بكلماتك، فيصوغ أمين وصيتك. لا يُضاف شيء دون تأكيدك.",
+  "wsAmeenBadge": "مشمول في باقتك",
+  "wsAmeenVerse": "الأمين — الاسم الذي عُرف به النبي ﷺ قبل البعثة",
+  "wsFormTitle": "النموذج الموجَّه",
+  "wsFormSub": "املأه بنفسك خطوةً بخطوة مع عرضٍ حيٍّ للأنصبة.",
+  "wsFormMeta": "≈ ٥ دقائق · يُحفظ تلقائيًا",
+  "wsChooseNote": "يمكنك التبديل في أي وقت — ما يؤكده أمين يظهر في النموذج، وإجابات النموذج يراها أمين.",
+  "wsAmeenPremium": "ميزة بريميوم",
+  "vaultExport": "تصدير",
+  "vaultExportWarnTitle": "تصدير الأسرار نصًا مقروءًا؟",
+  "vaultExportWarnBody": "الملف الناتج غير مُشفَّر — من يقرؤه يملك كل سرّ في هذه الخزنة. احفظه فقط في مكان آمن كالخزنة نفسها، كخزنة منزلية أو صندوق أمانات مصرفي، واحذف الملف فور انتهاء الغرض منه.",
+  "vaultExportConfirm": "تصدير كنص عادي",
+  "vaultExportHeader": "خزنة وصيتي — صُدِّرت في {date}",
+  "vaultExportHeaderWarn": "هذا الملف غير مُشفَّر. من يقرؤه يقرأ كل سرّ أدناه. احذفه بعد الاستعمال.",
+  "vaultExportDone": "صُدِّر {count} من الأسرار إلى wasiati-vault.txt. احذف الملف فور انتهاء الغرض منه.",
+  "vaultExportSkipped": "تعذّرت قراءة {count} من العناصر فأُسقطت من الملف.",
+  "vaultImport": "استيراد كلمات المرور",
+  "vaultImportTitle": "استيراد من Chrome أو كلمات مرور Apple",
+  "vaultImportHow": "صدّر كلمات مرورك إلى ملف CSV ثم الصق محتواه أدناه. يُشفَّر كل شيء على هذا الجهاز قبل الحفظ — والنص الذي تلصقه لا يغادر جهازك غير مُشفَّر.",
+  "vaultImportPaste": "الصق محتوى ملف CSV هنا",
+  "vaultImportPreview": "تم العثور على {count} كلمة مرور",
+  "vaultImportNone": "لم يُعثر على كلمات مرور — هل هذا ملف تصدير من Chrome أو Apple؟",
+  "vaultImportSkipped": "تم تخطّي {count} صفوف (بلا كلمة مرور).",
+  "vaultImportRun": "استيراد {count}",
+  "vaultImporting": "جارٍ الاستيراد…",
+  "vaultImportDone": "تم استيراد {count} كلمة مرور.",
+  "vaultImportDeleteFile": "احذف الآن ملف CSV المُصدَّر من جهازك، فهو غير مُشفَّر.",
+  "@vaultImportPreview": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@vaultImportSkipped": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@vaultImportRun": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@vaultImportDone": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "vidTitle": "الرسائل المرئية",
+  "vidSubtitle": "رسالة مصوّرة لأهلك تُفرَج مع وصيتك. مشفّرة، ولا يراها أحد سواك حتى ذلك الحين.",
+  "vidStorage": "{used} من {quota} مستخدَمة",
+  "vidStorageFull": "امتلأت مساحتك البالغة ١ غيغابايت. احذف مقطعًا أو راسلنا للحصول على رابط رفع آمن.",
+  "vidNone": "لا مقاطع بعد.",
+  "vidAdd": "أضِف مقطعًا",
+  "vidUploadFile": "رفع ملف",
+  "vidRecord": "سجّل الآن",
+  "vidRecordSoon": "التسجيل قادم قريبًا — ارفع ملفًا في الوقت الحالي.",
+  "vidDelete": "حذف",
+  "vidDeleted": "تم حذف المقطع.",
+  "vidUnavailable": "لم تُفعَّل مساحة الفيديو بعد.",
+  "vidDeleteConfirm": "حذف هذا المقطع؟ لا يمكن التراجع.",
+  "vidPlay": "تشغيل المقطع",
+  "vidPlayError": "تعذّر فتح هذا المقطع. حاول مرة أخرى.",
+  "vidScanPending": "لا يزال هذا المقطع قيد الفحص. حاول بعد قليل.",
+  "vidScanFailed": "لم يجتز هذا المقطع الفحص الأمني ولا يمكن تشغيله.",
+  "@vidStorage": {
+    "placeholders": {
+      "used": {
+        "type": "String"
+      },
+      "quota": {
+        "type": "String"
+      }
+    }
+  },
+  "vidBadType": "اختر ملف MP4 أو WEBM أو MOV.",
+  "vidUploaded": "تم رفع المقطع.",
+  "vrTitle": "سجّل رسالة",
+  "vrStart": "ابدأ التسجيل",
+  "vrStop": "إيقاف",
+  "vrPause": "إيقاف مؤقت",
+  "vrResume": "متابعة",
+  "vrPauseFailed": "تعذّر الإيقاف المؤقت. التسجيل ما زال مستمرًا.",
+  "vrTimeLeft": "بقي {time}",
+  "vrMaxLengthReached": "بلغت ساعة واحدة — تم حفظ تسجيلك وهو جاهز للمراجعة.",
+  "vrRetake": "إعادة",
+  "vrUse": "استخدم هذا المقطع",
+  "vrPermission": "يلزم الإذن بالكاميرا والميكروفون للتسجيل.",
+  "vrNoCamera": "لا توجد كاميرا على هذا الجهاز.",
+  "vrBusy": "الكاميرا مستخدَمة من تطبيق آخر. أغلقه ثم أعد المحاولة.",
+  "vrInsecure": "يتطلب التسجيل اتصالًا آمنًا (https).",
+  "vrUnsupported": "لا يدعم هذا المتصفح تسجيل الفيديو. جرّب Chrome أو Edge أو Safari — أو ارفع ملفًا بدلًا من ذلك.",
+  "vrFailed": "توقف التسجيل بشكل غير متوقع. يرجى المحاولة مرة أخرى.",
+  "vrTooLarge": "هذا التسجيل أكبر من أن يُرفع. سجّل رسالة أقصر، أو ارفع ملفًا بدلًا من ذلك.",
+  "vrRecording": "جارٍ التسجيل…",
+  "vrUploading": "جارٍ الرفع…",
+  "authContinueGoogle": "Google",
+  "authContinueApple": "Apple",
+  "authUsePasskey": "المتابعة بمفتاح المرور",
+  "authContinueNafath": "المتابعة عبر نفاذ",
+  "authContinueEmail": "المتابعة بالبريد الإلكتروني",
+  "authRecommended": "موصى به",
+  "authOr": "أو",
+  "authGoogleFailed": "لم يكتمل تسجيل الدخول بجوجل. حاول مرة أخرى.",
+  "authGoogleMisconfigured": "تسجيل الدخول بجوجل غير مكتمل الإعداد في هذا التطبيق. استخدم طريقة أخرى.",
+  "authMethodSoon": "طريقة تسجيل الدخول هذه غير مفعّلة في هذه النسخة بعد — استخدم البريد الإلكتروني الآن.",
+  "authDetectedRegion": "البلد المُكتشف: {info}",
+  "lndHeroTitle": "لا تدَع ليلتين تمرّان دون وصية",
+  "lndHeroSub": "وصية النبي ﷺ تُكرمها في دقائق — فرائض محسوبة، وأسرار محفوظة، وكلمات تصل لمن تحب.",
+  "lndCtaStart": "ابدأ وصيتي",
+  "lndCtaPlans": "عرض الباقات",
+  "lndWhyTitle": "لماذا وصيتي",
+  "lndWhy1t": "إرثك كله في مكان واحد",
+  "lndWhy1d": "الوصية والخزنة المشفّرة وتقدير الزكاة ورسائل الفيديو ورغبات الدفن — كل ما ستحتاجه عائلتك، معًا ومحدّثًا دائمًا.",
+  "lndWhy2t": "بلغتك وعلى مذهبك",
+  "lndWhy2d": "عربي أو إنجليزي بالكامل — حتى الوصية المصدَّرة. الجمهور افتراضًا، أو الحنفي والمالكي والشافعي والحنبلي. والأسعار بعملتك.",
+  "lndWhy3t": "لا تنتهي عند الختم",
+  "lndWhy3d": "اطمئنان دوري ما دمت حيًّا؛ وعند المطالبة يراجع إنسانٌ المستندات، ثم تصل وصيتك وخزنتك وفيديوهاتك إلى ورثتك.",
+  "lndWhy4t": "دقائق، لا ساعات محاماة",
+  "lndWhy4d": "أربع خطوات موجّهة، أنصبة حية أثناء الكتابة، وختم اليوم — بجزء يسير من أتعاب المحامي، بالعربية أو الإنجليزية وبدخول نفاذ.",
+  "lndWhy5t": "بسيطة، عن قصد",
+  "lndWhy5d": "سؤال واحد واضح في كل مرة — بلا مصطلحات قانونية ولا نماذج تشبه المحكمة. وما لا يلزمك لا تُسأل عنه أبدًا.",
+  "lndDisclaimer": "وصيتي ليست مكتب محاماة، وموظفوها ليسوا محامين. لا شيء في هذا الموقع يقصد إنشاء علاقة محامٍ بموكّل، واستخدامك لوصيتي لا ينشئ ولن ينشئ علاقة كهذه بينك وبين وصيتي. وصيتي ليست بديلاً عن استشارة محامٍ ولا تقدّم مشورة قانونية من أي نوع. نحن نوفّر خدمة تتيح لك الإجابة عن سلسلة من الأسئلة وإكمال وصيتك بنفسك. لمزيد من المعلومات، راجع إخلاء المسؤولية وشروط الاستخدام.",
+  "lndLegalLink": "إخلاء المسؤولية وشروط الاستخدام",
+  "lndPrivacyLink": "سياسة الخصوصية",
+  "lndCopyright": "© 2026 Wasiati Inc.",
+  "prPerMonth": "/شهر",
+  "prPerYear": "/سنة",
+  "prUltimateNotOneTime": "الباقة القصوى اشتراك. التخطيط المسبق للدفن فيها يُموَّل عبر مساهمات على مدى ٣ أو ٥ أو ١٠ سنوات، لذلك لا تتوفر كشراء لمرة واحدة — اختر الاشتراك الشهري أو السنوي لتضمينها.",
+  "billingTitle": "الفوترة",
+  "billingSubtitle": "باقتك ووسيلة الدفع والفواتير.",
+  "billingCurrentPlan": "الباقة الحالية",
+  "billingRenewsOn": "تتجدد في {date} · {price}",
+  "billingRenewsOnPlain": "تتجدد في {date}",
+  "billingEndsOn": "ينتهي الوصول في {date}",
+  "billingCancelling": "سيتم الإلغاء في نهاية الفترة — وصيتك وخزنتك تبقى لك.",
+  "billingPastDueLine": "تعذّر الدفع في {date}",
+  "@billingPastDueLine": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "billingPastDueHelp": "لم نتمكّن من السحب من بطاقتك وسنعيد المحاولة. حدّث بطاقتك أدناه للحفاظ على باقتك — بعد عدة محاولات فاشلة تُلغى الباقة.",
+  "billingPaymentMethod": "وسيلة الدفع",
+  "billingChangeCard": "تغيير البطاقة",
+  "billingCardOnFile": "بطاقة محفوظة",
+  "billingNoCard": "لا توجد بطاقة محفوظة",
+  "billingCardUnavailable": "إدارة البطاقة غير متاحة في هذه البيئة.",
+  "billingInvoices": "الفواتير",
+  "billingNoInvoices": "لا فواتير بعد. ستظهر إيصالاتك هنا بعد أول دفعة.",
+  "billingPaid": "مدفوعة",
+  "billingRefunded": "مُستردة",
+  "billingCreditApplied": "{amount} مدفوعة من رصيد الحساب",
+  "billingProviderNote": "تُعالج المدفوعات وبيانات البطاقة عبر Stripe — لا تخزن وصيتي بطاقتك أبدًا.",
+  "billingNoPlanTitle": "ليس لديك اشتراك نشط",
+  "billingNoPlanBody": "اختر باقة للبدء. وصيتك وخزنتك تبقى لك في الحالتين.",
+  "billingSeePlans": "عرض الباقات",
+  "billingInvoiceError": "تعذّر تنزيل هذه الفاتورة.",
+  "billingCancelConfirmTitle": "إلغاء اشتراكك؟",
+  "billingCancelConfirmBody": "يستمر وصولك حتى نهاية الفترة المدفوعة. وصيتك وخزنتك تبقى لك. وتتوقف أي مساهمات دفن وتُعاد إليك.",
+  "billingCancelConfirmKeep": "الاحتفاظ بباقتي",
+  "billingCancelled": "سينتهي اشتراكك في نهاية هذه الفترة.",
+  "billingResumed": "سيستمر اشتراكك.",
+  "billingLoadError": "تعذّر تحميل تفاصيل الفوترة.",
+  "portalTitle": "بوابة الورثة والوصي",
+  "portalSub": "وصول للقراءة فقط للورثة والوصي. تُفتح فقط بعد موافقة المراجع البشري على المطالبة والإفراج عن الوصية.",
+  "portalRoleHeir": "أنا وارث",
+  "portalRoleTrustee": "أنا الوصي",
+  "portalEmailPh": "البريد المسجّل في الوصية",
+  "portalContinue": "متابعة",
+  "portalCodeTitle": "تأكيد هويتك",
+  "portalCodeSub": "أدخل الرمز المكوّن من ٦ أرقام المرسل إلى جوالك المسجّل.",
+  "portalCodeSubEmail": "أدخل الرمز المكوّن من ٦ أرقام المرسل إلى بريدك المسجّل.",
+  "portalCodeResendWait": "يمكنك طلب رمز آخر خلال {seconds} ثانية",
+  "@portalCodeResendWait": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "portalCodeResendReady": "لم يصلك الرمز؟",
+  "portalCodeResend": "إرسال رمز آخر",
+  "portalChipHeir": "وارث",
+  "portalChipTrustee": "الوصي",
+  "portalReadOnly": "قراءة فقط",
+  "portalSignOut": "خروج من البوابة",
+  "portalPendingTitle": "المطالبة قيد المراجعة",
+  "portalPendingSub": "يراجع موظف بشري المستندات. يُفتح الوصول فور الموافقة والإفراج — وسنُشعرك.",
+  "portalApprovedTitle": "تمت الموافقة — بانتظار الإفراج",
+  "portalApprovedSub": "قُبلت المطالبة. يُفرج عن الوصية عندما يؤكد جميع الورثة المسجلين — أو يتجاوز الوصي التأكيدات.",
+  "heirApprovalsTitle": "تأكيدات الورثة على الإفراج",
+  "heirConfirmBtn": "أؤكد الإفراج عن الوصية",
+  "heirConfirmedNote": "سُجّل تأكيدك",
+  "portalWaitOthers": "بانتظار بقية التأكيدات — أو تجاوز الوصي.",
+  "trusteeOverrideBtn": "تجاوز — الإفراج دون اكتمال التأكيدات",
+  "overrideOnNote": "سُجّل تجاوز الوصي — الإفراج متاح.",
+  "portalConfirmedMark": "أكّد",
+  "portalAwaitingMark": "بالانتظار",
+  "portalRejectedTitle": "لم تُقبل هذه المطالبة",
+  "portalRejectedSub": "لم يتمكن المراجع من الموافقة على المطالبة بناءً على المستندات المقدّمة. إن كنت ترى أن في الأمر خطأً، فردّ على الرسالة التي أرسلناها إليك وسننظر فيها من جديد.",
+  "portalIstirjaa": "إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ",
+  "heirTitle": "أُفرج لك عن وصية {estateName}",
+  "@heirTitle": {
+    "placeholders": {
+      "estateName": {
+        "type": "String"
+      }
+    }
+  },
+  "heirSub": "تم التحقق من المطالبة والموافقة عليها. كل ما يلي متاح لك الآن — خذ وقتك.",
+  "wordsTitle": "كلمات لعائلتي",
+  "heirSharesTitle": "قسمة التركة",
+  "heirBequestsTitle": "الوصايا",
+  "heirVideoTitle": "رسالة فيديو لك",
+  "heirVideoMeta": "سُجّلت {date}",
+  "@heirVideoMeta": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "heirVideoOpen": "تشغيل رسالة الفيديو",
+  "heirNoWords": "لم تُترك رسالة مكتوبة في هذه الوصية.",
+  "portalDebtsNote": "تُسدَّد الديون قبل توزيع الأنصبة.",
+  "portalLoadError": "تعذّر تحميل هذه الوصية. من فضلك استخدم الرابط الذي أرسلناه إليك.",
+  "portalReportDeath": "أحتاج إلى الإبلاغ عن وفاة",
+  "pcLookupTitle": "الإبلاغ عن وفاة",
+  "pcLookupSub": "إن تُوفّي شخص تعرفه وتعتقد أن لديه وصية محفوظة لدينا، فأخبرنا كيف نجده. سنتواصل مباشرة مع المذكورين في الوصية — ولا يمكننا إخبارك بوجود وصية من عدمه.",
+  "pcDeceasedLbl": "المتوفّى",
+  "pcDeceasedPh": "بريده الإلكتروني أو رقم جواله",
+  "pcClaimantLbl": "أنت",
+  "pcClaimantPh": "بريدك الإلكتروني أو رقم جوالك",
+  "pcLookupBtn": "متابعة",
+  "pcAckTitle": "شكرًا لك",
+  "pcAckBody": "إن كانت هناك وصية، فقد أشعرنا المذكورين فيها. وسيصل كل مذكور رسالة تحوي رابطًا للمتابعة. ولا يلزمك شيء آخر الآن.",
+  "pcAckClose": "تم",
+  "pcInviteTitle": "بدء الإفراج عن وصية",
+  "pcInviteSub": "أنت مذكور في وصية محفوظة لدينا، وقد طلب أحدهم منّا بدء إجراءات الإفراج عنها. خذ وقتك — لا يُفرج عن شيء قبل أن يراجعه إنسان لدينا.",
+  "pcNameLbl": "اسمك الكامل",
+  "pcNamePh": "الاسم النظامي الكامل",
+  "pcCertTitle": "شهادة الوفاة",
+  "pcCertSub": "صورة أو نسخة ممسوحة من شهادة الوفاة. يفحصها مراجع بشري بنفسه؛ ولا يُفرج عن شيء تلقائيًا.",
+  "pcCertChoose": "إرفاق الشهادة",
+  "pcCertUploading": "جارٍ الإرسال…",
+  "pcCertAttached": "أُرفق {fileName}",
+  "@pcCertAttached": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "pcCertRequired": "يلزم إرفاق الشهادة قبل الإرسال.",
+  "pcCertTooLarge": "حجم هذا الملف يتجاوز {size}. من فضلك أرفق صورة أو نسخة ممسوحة أصغر.",
+  "@pcCertTooLarge": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "pcCertBadType": "لا يمكن قبول هذا النوع من الملفات. من فضلك أرفق ملف PDF أو صورة.",
+  "pcCertOnce": "يحمل هذا الرابط شهادة واحدة. إن كان هذا هو الملف الخطأ، فردّ على الرسالة التي أرسلناها إليك وسنرسل رابطًا جديدًا.",
+  "pcSubmitBtn": "إرسال للمراجعة",
+  "pcDoneTitle": "وصلتنا",
+  "pcDoneSub": "سينظر مراجع في الشهادة بنفسه. وسنكتب إليك حين يستجد شيء — ولا يلزمك فعل أي شيء آخر. أعان الله قلبك.",
+  "pcLinkInvalidTitle": "لم يعد هذا الرابط صالحًا",
+  "pcLinkInvalidSub": "قد يكون الرابط منتهي الصلاحية أو استُخدم من قبل. وإن كنت لا تزال بحاجة إلى الإبلاغ عن وفاة، فيمكنك البدء من جديد.",
+  "pcStartOver": "البدء من جديد",
+  "burialEstimateOnlyNote": "تقدير فقط — لم يُفعَّل أي دفع.",
+  "tcTitle": "اختارك صاحب وصية وصيًّا له",
+  "tcSub": "السلام عليكم. طلب منك صاحب وصية محفوظة لدى وصيتي أن تكون وصيَّ وصيته.",
+  "tcDuties": "كوصيّ ستقوم بـ: تأكيد الوفاة لوصيتي، وبدء المطالبة بشهادة الوفاة، ومتابعة الإفراج عن الوصية للورثة. لا ترى محتوى الوصية في حياة صاحبها أبدًا.",
+  "tcAcceptBtn": "قبول الدور",
+  "tcDecline": "رفض",
+  "tcCodeSub": "أدخل الرمز المكوّن من ٦ أرقام المرسل إلى رقم الجوال المسجّل في الوصية.",
+  "tcDoneTitle": "أنت الوصي الآن",
+  "tcDoneSub": "نسأل الله ألا يُحتاج إليك. لن نتواصل معك إلا للتأكيد السنوي — ويومًا ما، للمطالبة.",
+  "wcTitle": "طُلب منك أن تشهد على وصية",
+  "wcSub": "السلام عليكم. اختارك صاحب وصية محفوظة لدى وصيتي شاهدًا من شهودها.",
+  "wcDuties": "كشاهد تُقرّ باسمك القانوني أن صاحب الوصية أعلن أنها وصيته، وأنه كتبها بمحض إرادته. لا ترى محتوى الوصية — بل تشهد فقط أنها كُتبت.",
+  "wcLegalNameLbl": "اسمك القانوني",
+  "wcLegalNamePh": "كما هو في هويتك تمامًا",
+  "wcLegalNameHelp": "يجب أن يطابق الاسم الذي سجّله صاحب الوصية، وإلا فلن تُسجَّل الشهادة.",
+  "wcSignBtn": "متابعة التوقيع",
+  "wcCodeSub": "أدخل الرمز المكوّن من ٦ أرقام المرسل إلى رقم الجوال المسجّل في الوصية. بإدخاله تُسجَّل شهادتك.",
+  "wcDoneTitle": "سُجّلت شهادتك",
+  "wcDoneSub": "جزاك الله خيرًا — انتهى دورك، ولا يلزمك شيء آخر.",
+  "confirmClosePage": "يمكنك إغلاق هذه الصفحة.",
+  "confirmDeclinedTitle": "لم يُتَّخذ أي إجراء",
+  "confirmDeclinedSub": "لم يُسجَّل أو يُرسَل شيء. إن غيّرت رأيك، فافتح الرابط من الرسالة النصية مرة أخرى.",
+  "confirmLinkInvalidTitle": "لم يعد هذا الرابط صالحًا",
+  "confirmLinkInvalidSub": "قد يكون الرابط ناقصًا، أو ربما سُحبت الدعوة. تواصل مع من اختارك.",
+  "portalWillPdfTitle": "الوصية نفسها",
+  "portalWillPdfSub": "الوصية المنفَّذة كما خُتمت. احتفظ بنسخة — قد تحتاجها لدى محكمة أو مصرف أو سجل عقاري.",
+  "portalWillPdfDownload": "تنزيل الوصية (PDF)",
+  "passkeyErrorUnsupported": "هذا المتصفح لا يدعم مفاتيح المرور. استخدم طريقة تسجيل دخول أخرى.",
+  "passkeyErrorCancelled": "أُلغي تسجيل الدخول بمفتاح المرور — أو لا يوجد على هذا الجهاز مفتاح مرور لوصيتي بعد. يمكنك إضافته من الإعدادات بعد تسجيل الدخول.",
+  "passkeyErrorRegisterCancelled": "أُلغي إعداد مفتاح المرور قبل اكتماله. لم يُحفَظ شيء.",
+  "passkeyErrorAlreadyRegistered": "يوجد على هذا الجهاز مفتاح مرور لحسابك بالفعل — يمكنك تسجيل الدخول به الآن.",
+  "passkeyErrorGeneric": "لم تكتمل محاولة مفتاح المرور. حاول مرة أخرى، أو استخدم طريقة تسجيل دخول أخرى.",
+  "settingsAddPasskey": "إضافة مفتاح مرور",
+  "settingsAddPasskeySub": "سجّل الدخول ببصمة الوجه أو الإصبع أو رمز الجهاز — دون رمز تحقق",
+  "pkSetupTitle": "سجّل الدخول بدون رمز",
+  "pkSetupBlurb": "خطوة واحدة أخرى، وتوفّر عليك كل مرة بعدها",
+  "pkSetupWhy": "استخدم Face ID أو Touch ID أو Windows Hello لتسجيل الدخول. بدون رسالة نصية، وبدون انتظار — ولا يمكن التصيّد به.",
+  "pkSetupCta": "إعداد",
+  "pkSetupSkip": "ليس الآن",
+  "pkSetupLater": "كلمة المرور لا تزال تعمل، ويمكنك الإعداد في أي وقت من الإعدادات.",
+  "passkeyAdded": "أُضيف مفتاح المرور — يمكنك الآن تسجيل الدخول به على هذا الجهاز.",
+  "mfaResendSent": "رمز جديد في طريقه إليك.",
+  "adminContentKeyHelp": "تُعرض هنا النصوص التي يستطيع التطبيق إظهارها فعليًا فقط.",
+  "wdContinueDraft": "أكمل مسودتك",
+  "commonBackToLegacy": "رسائل إلى عائلتي",
+  "cwToReview": "المتابعة إلى المراجعة",
+  "rsGuardianTitle": "الوصاية على الأبناء",
+  "wdocTitle": "وصيتك كما ستُقرأ",
+  "wdocSubtitle": "المستند نفسه — الملف ذاته الذي يُنتجه التنزيل. اختر أسلوب عرضه أدناه.",
+  "wdViewDocument": "عرض المستند",
+  "wdocSigningNote": "توقّع بالتأكيد أدناه، ثم يؤكّد الشاهدان والوصيّ عبر رسالة نصية. لا يُفرج عن شيء قبل تأكيدهم جميعًا.",
+  "wdocOf": "لـ {name}",
+  "wdocWillNumber": "وصية رقم {id}",
+  "wdocSealedMeta": "خُتمت {date}",
+  "wdocWitnessesConfirmed": "{count, plural, =1{تأكّد شاهد واحد} other{تأكّد {count} من الشهود}}",
+  "wdocDraftSubtitle": "مسودة — لم تُختم بعد",
+  "wdocWordsTitle": "كلمات لعائلتي",
+  "wdocWishesTitle": "رغبات الجنازة والدفن",
+  "wdocEstateTitle": "الأصول والالتزامات",
+  "wdocNetEstate": "صافي التركة",
+  "wdocEstateNote": "جرد التركة كما سُجِّل عند الختم؛ وتُسدَّد الديون قبل توزيع الأنصبة.",
+  "wdocEssayAssetsLead": "أُقرّ بأنني، حتى ختم هذه الوصية، أملك الأصول التالية: ",
+  "wdocEssayLiabilitiesLead": "وأُقرّ كذلك بالديون والالتزامات التالية، وتُسدَّد من تركتي قبل أي قسمة: ",
+  "wdocEssayHeldWith": "، لدى {institution}",
+  "wdocEssayValuedAt": "، بقيمة تقديرية {amount}",
+  "wdocEssayOwedTo": "، مستحقة لجهة {institution}",
+  "wdocEssayInAmount": "، بمبلغ {amount}",
+  "wdocEssayNetEstate": "وبعد سداد هذه الالتزامات، يبلغ صافي تركتي اليوم ما يقارب {amount}.",
+  "wdocEssayListJoin": "؛ ",
+  "wdocEssayListJoinLast": "؛ و",
+  "wdocEssayNetJoin": " و",
+  "wdocDivisionTitle": "قسمة التركة",
+  "wdocNoHeirs": "لا يوجد ورثة مسجّلون.",
+  "wdocBequest": "الوصية",
+  "wdocBequestBasis": "من الثلث — خارج الفرائض",
+  "wdocWitnessesTitle": "الشهود والوصي",
+  "wdocWitnessesCol": "الشهود",
+  "wdocTrusteeCol": "الوصي",
+  "wdocWitnessRole": "شاهد",
+  "wdocTrusteeRole": "الوصي",
+  "wdocTestatorRole": "الموصي",
+  "wdocSignedDigitally": "وُقّع رقميًا",
+  "wdocPending": "قيد الانتظار",
+  "wdocPendingCode": "الرمز معلّق",
+  "wdocNoneRecorded": "لا يوجد.",
+  "wdocSealLine": "خُتمت وشُهدت عبر وصيتي",
+  "wdocGuidance": "أنصبة الفرائض هنا محسوبة للإرشاد وليست فتوى أو استشارة قانونية؛ وتُقسم التركة وفق الشريعة (الفرائض) على المذهب الذي اختاره الموصي.",
+  "vrLensFront": "الكاميرا الأمامية",
+  "vrLensBack": "الكاميرا الخلفية",
+  "vrSwitchCamera": "تغيير الكاميرا",
+  "vrReviewTake": "تسجيلك",
+  "vrPlaybackFailed": "تعذّر تشغيل التسجيل هنا، لكنه حُفظ — يمكنك استخدامه.",
+  "vrCameraOff": "إيقاف الكاميرا",
+  "vrCameraOn": "تشغيل الكاميرا",
+  "vrCameraOffNote": "الكاميرا متوقفة — ينبغي أن ينطفئ ضوء الكاميرا.",
+  "cwExpandAll": "توسيع الكل",
+  "cwCollapseAll": "طيّ الكل",
+  "cwHeirNeedsDetails": "يحتاج بيانات",
+  "portalAcceptTrusteeTitle": "اقبل الوصاية",
+  "portalAcceptTrusteeBody": "تم تعيينك وصيًا على هذه الوصية، ولم تقبل الدور بعد. اقبله لفتح التركة وللتصرف نيابة عن الأسرة.",
+  "portalAcceptTrusteeBtn": "قبول الوصاية",
+  "portalAssetRef": "المرجع",
+  "portalInventoryNote": "تُعرض أرقام الحسابات وجهات الاتصال كاملة حتى تتمكن من الوصول إلى كل أصل. تُحذف هذه القائمة مع بقية التركة عند انتهاء مدة الاسترجاع — احفظ ما تحتاجه الآن.",
+  "apiOffline": "تعذّر الوصول إلى الخادم. تحقّق من اتصالك.",
+  "dcGateWaitingHeirs": "{count, plural, =1{لم يؤكد وريث واحد} other{لم يؤكد {count} من الورثة}}",
+  "dcGateWindow": "تفتح فترة الأمان {when}",
+  "dcGateNotSealed": "لم تُختم هذه الوصية قط",
+  "dcGateNoTrustee": "لم يؤكد أي وصي",
+  "dcGateOverride": "تم تجاوز تأكيدات الورثة بقرار من الوصي",
+  "dcGateReadyNote": "تم استيفاء كل ما يتطلبه الإفراج.",
+  "vaultPassphraseWrong": "كلمة المرور هذه لا تفتح هذه الخزنة. لم يُغيَّر شيء — تحقّق منها وحاول مرة أخرى."
+}

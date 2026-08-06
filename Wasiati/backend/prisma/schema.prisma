@@ -1,0 +1,1236 @@
+// Wasiati data model
+// NOTE: In production, each Region (KSA / CA / US) points to a DIFFERENT
+// physical database for data-residency compliance. This single schema file
+// is deployed once per region — never shared across regions.
+// DATABASE_URL selects the regional DB; REGION declares which region this
+// instance serves, and geo.util/assertResidency() refuses to write a user whose
+// region does not match. The app will not boot without a valid REGION.
+
+generator client {
+  provider      = "prisma-client-js"
+  // "native" keeps local dev working on whatever the developer is running.
+  // The musl target is named EXPLICITLY rather than left to Prisma's runtime detection,
+  // because on Alpine that detection gets it wrong: node:20-alpine ships no openssl CLI
+  // and only libssl.so.3, so `prisma generate` fell back to "openssl-1.1.x" and emitted an
+  // engine linked against libssl.so.1.1 — a library the runtime image does not have. The
+  // container died in PrismaService.onModuleInit, AFTER every Nest module had constructed,
+  // which reads like an app bug rather than a packaging one. Keep this in sync with the
+  // Dockerfile's base image: a bump to a different libc/openssl needs the matching target.
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+/// Each Region is a SEPARATE physical deployment + database (data residency).
+/// A user is only ever written to the deployment whose REGION matches their own —
+/// see ResidencyGuard / assertResidency().
+enum Region {
+  KSA
+  CA
+  US
+}
+
+enum AuthProvider {
+  EMAIL
+  GOOGLE
+  APPLE
+  MICROSOFT
+}
+
+enum VerificationStatus {
+  UNVERIFIED
+  PENDING
+  VERIFIED
+  REJECTED
+}
+
+enum IdVerificationProvider {
+  DOCUMENT // hosted document + selfie KYC vendor (US / CA)
+  NAFATH // KSA national identity (National Information Center)
+}
+
+enum SubscriptionTier {
+  BASIC // $199 one-time (+ local equivalent), immutable will
+  STANDARD // monthly subscription, unlimited edits, vault included
+  PREMIUM // + video legacy messages + AI conversational intake
+  ULTIMATE // US/CA only, + prepaid burial/funeral plan
+}
+
+enum AssetType {
+  // Generic, available everywhere
+  REAL_ESTATE
+  BANK_ACCOUNT
+  VEHICLE
+  BUSINESS_OWNERSHIP
+  PENSION
+  LIABILITY // a debt / money owed — settled in full before the fara'id shares
+  OTHER
+
+  // Zakat-relevant categories. Only CASH, BANK_ACCOUNT, SHARES and GOLD enter the
+  // zakat base; CRYPTO is deliberately its own type so it can be EXCLUDED rather
+  // than silently swept into OTHER. See ZakatService.
+  CASH
+  SHARES
+  GOLD
+  CRYPTO
+
+  // Canada-specific registered accounts
+  CA_RRSP
+  CA_TFSA
+  CA_RESP
+  CA_RRIF
+
+  // US-specific registered accounts
+  US_401K
+  US_IRA
+  US_ROTH_IRA
+  US_529_PLAN
+
+  // KSA-specific
+  KSA_END_OF_SERVICE_BENEFITS
+  KSA_GOSI_PENSION
+
+}
+
+enum SubscriptionStatus {
+  ACTIVE
+  PAST_DUE
+  CANCELED
+  INCOMPLETE
+}
+
+enum WitnessStatus {
+  PENDING
+  SIGNED
+  EXPIRED
+}
+
+enum TrusteeStatus {
+  PENDING
+  CONFIRMED
+}
+
+enum DeathClaimStatus {
+  SUBMITTED
+  UNDER_REVIEW
+  APPROVED
+  REJECTED
+  RELEASED
+}
+
+/// How often we ask the user to confirm they are alive.
+enum CheckinFrequency {
+  MONTHLY
+  QUARTERLY
+  YEARLY
+}
+
+/// Who may initiate a death claim on this user (spec §6).
+enum ClaimInitPolicy {
+  TRUSTEE_ONLY
+  HEIRS_WITH_DOCUMENTS
+  BOTH
+}
+
+model User {
+  id                     String                  @id @default(uuid())
+  email                  String                  @unique
+  // Nullable at the COLUMN level on purpose: social sign-in (Google/Apple/Microsoft) mints
+  // a user before any phone is known. Email+password signup requires it and proves it by
+  // OTP — enforced in RegisterDto and the signup verification step, not by the column.
+  // A NOT NULL here would break the social rails without tightening anything.
+  phone                  String?
+  // When the number was proven by OTP. Null means "on file but unproven". This matters more
+  // than it looks: the phone carries the login second factor, the witness and trustee
+  // invitations, and the death-claim lookup — so a typo stays silent until the moment the
+  // will is being executed and the people who must act cannot be reached.
+  phoneVerifiedAt        DateTime?
+  passwordHash           String? // null if user only uses Google/Apple
+  region                 Region
+  // --- Postal address --------------------------------------------------------------
+  // Stored STRUCTURED rather than as one free-text blob. It feeds jurisdiction (which
+  // fara'id region and which legal wording the will carries) and is printed in the executed
+  // document, and neither survives "123 Some St, somewhere". Every country's format is a
+  // subset of these fields; what differs is which are required, what they are CALLED
+  // ("province"/"emirate"/"state"), and the order they are shown in — all of which is a
+  // presentation concern, handled per-country in the form rather than in the schema.
+  addressLine1           String?
+  addressLine2           String?
+  addressCity            String?
+  // State / province / emirate / region — the administrative area, whatever it is called.
+  addressArea            String?
+  addressPostalCode      String?
+  // ISO 3166-1 alpha-2. NOT the Region enum: Region is the four markets we sell in, while a
+  // customer in one of them may well live somewhere else.
+  addressCountry         String?
+  role                   Role                    @default(USER)
+  authProvider           AuthProvider            @default(EMAIL)
+  mfaEnabled             Boolean                 @default(false)
+  mfaSecret              String? // TOTP secret, encrypted at rest
+  emailVerified          Boolean                 @default(false) // set true after email-verification flow
+  idVerificationStatus   VerificationStatus      @default(UNVERIFIED)
+  // Which KYC rail verified this user: a document vendor (US/CA) or Nafath (KSA).
+  idVerificationProvider IdVerificationProvider?
+  // Provider-side customer id (e.g. a Stripe cus_...). Provider-agnostic name.
+  providerCustomerId     String?
+  // Set when a death claim on this user is released; the daily retention job hard-
+  // deletes ALL of this user's data once this timestamp passes (default 90 days).
+  scheduledPurgeAt       DateTime?
+  // Which countdown reminders (e.g. "30","7","3") have already been emailed to the
+  // witnesses/trustees, so the daily job never sends a milestone twice.
+  retentionRemindersSent String[]                @default([])
+  // LEGAL HOLD. Set while this estate is under dispute, litigation or any preservation
+  // obligation; the posthumous purge REFUSES to run while it is set, indefinitely and
+  // regardless of scheduledPurgeAt. Contested probate is an ordinary event, and without
+  // this the product is an automated destruction system pointed at the evidence — the
+  // shape of spoliation that FRCP 37(e) exists for. Released only by an explicit admin
+  // action; the reason and the actor are kept for the audit trail.
+  legalHoldAt            DateTime?
+  legalHoldReason        String?
+  legalHoldBy            String? // admin user id who placed it
+  // Comped access for demo / testing — an admin can grant a tier without any
+  // paid subscription so the whole product can be exercised without paying.
+  // ADMIN-role users are entitled to everything regardless of these fields.
+  compTier               SubscriptionTier?
+  compExpiresAt          DateTime? // null = never expires
+  compGrantedBy          String? // admin user id who granted it (traceability)
+  /// Zakat anniversary (ḥawl). HIJRI ONLY — day 1..30 and month 1..12 of the Hijri
+  /// calendar. Personal to each user; never derived from a Gregorian date.
+  hawlDay                Int?
+  hawlMonth              Int?
+
+  // --- Inactivity check-in (a death trigger, not a marketing ping) ------------
+  /// When on, we periodically ask "are you still with us?". Two unanswered
+  /// reminders alert the trustee. Off by default: this must be opted into.
+  checkinEnabled       Boolean          @default(false)
+  checkinFrequency     CheckinFrequency @default(QUARTERLY)
+  /// Last time the user confirmed they are alive (answered a check-in, in effect).
+  lastCheckinAt        DateTime?
+  /// Reminders sent since the last confirmation. At 2, the trustee is alerted.
+  checkinRemindersSent Int              @default(0)
+  /// Set when the trustee has been alerted, so we alert once and not every night.
+  checkinAlertedAt     DateTime?
+  /// Who may start a death claim on this user.
+  claimInitPolicy      ClaimInitPolicy  @default(BOTH)
+  createdAt            DateTime         @default(now())
+  updatedAt            DateTime         @updatedAt
+
+  wills               Will[]
+  vault               Vault?
+  subscriptions       Subscription[]
+  trusteeFor          Trustee[]                @relation("TrusteeUser")
+  otpCodes            OtpCode[]
+  burialEstimates     BurialEstimateRequest[]
+  passkeys            PasskeyCredential[]
+  recoveryCodes       RecoveryCode[]
+  refreshTokens       RefreshToken[]
+  emailVerifications  EmailVerificationToken[]
+  passwordResets      PasswordResetToken[]
+  loginChallenges     LoginChallenge[]
+  nafathVerifications NafathVerification[]
+  burialPlans         BurialPrepaymentPlan[]
+
+  referralCode     ReferralCode?
+  referralsMade    Referral[]      @relation("ReferralsMade")
+  referralReceived Referral?       @relation("ReferralReceived")
+  accountCredits   AccountCredit[]
+  files            FileObject[]
+  invoices         Invoice[]
+  directives       DirectiveDocument[]
+}
+
+// --- Referral programme -----------------------------------------------------
+// The FRIEND gets 10% off at checkout (a discount, not credit). The REFERRER earns
+// 2.5% of the friend's first-year value as ACCOUNT CREDIT in our own AccountCredit
+// ledger, held for 100 days before it becomes spendable. Qualifying purchase: an
+// annual subscription or the one-time Basic plan — monthly does NOT qualify.
+// Two caps: $500-equivalent per referrer per year, and 100 payouts per year across
+// the programme. See ReferralsService and docs/DECISIONS.md §5.
+
+enum ReferralStatus {
+  PENDING // referred user attached, no qualifying purchase yet
+  QUALIFIED // qualifying purchase made; credit not yet granted
+  REWARDED // credit granted to both sides
+  CAPPED // qualified, but the yearly payout cap was already reached
+  REJECTED // self-referral, refund, or fraud
+}
+
+/// One stable, shareable code per user.
+model ReferralCode {
+  id        String   @id @default(uuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  code      String   @unique
+  createdAt DateTime @default(now())
+
+  @@index([code])
+}
+
+model Referral {
+  id             String         @id @default(uuid())
+  referrerId     String
+  referrer       User           @relation("ReferralsMade", fields: [referrerId], references: [id], onDelete: Cascade)
+  // A user can only ever be referred once — enforced by the unique constraint.
+  referredUserId String         @unique
+  referredUser   User           @relation("ReferralReceived", fields: [referredUserId], references: [id], onDelete: Cascade)
+  code           String
+  status         ReferralStatus @default(PENDING)
+
+  qualifyingEvent          String? // 'ANNUAL_SUBSCRIPTION' | 'ONE_TIME'
+  qualifiedAt              DateTime?
+  rewardedAt               DateTime?
+  // Calendar year the payout counts against, for both yearly caps.
+  rewardYear               Int?
+  /// The friend's first-year value that the 2.5% commission was taken of, in MINOR
+  /// units — kept so a payout can always be re-derived and audited.
+  referrerRewardBasisMinor Int?
+  /// 2.5% of the basis, in MINOR units. Referrer and friend are always in the same
+  /// region (regions are separate databases), so no currency conversion is possible.
+  referrerRewardMinor      Int?
+  referrerRewardCurrency   String?
+  /// Credit is visible immediately but only SPENDABLE once the hold expires —
+  /// it covers the refund/chargeback window on the friend's purchase.
+  referrerRewardMaturesAt  DateTime?
+  /// The friend's benefit is a discount at checkout (10%), not account credit.
+  referredDiscountPercent  Int?
+  rejectedReason           String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([referrerId])
+  @@index([status, rewardYear])
+}
+
+// One row per registered passkey (a user can have several — phone, laptop, etc.)
+model PasskeyCredential {
+  id           String   @id @default(uuid())
+  userId       String
+  user         User     @relation(fields: [userId], references: [id])
+  credentialId String   @unique // base64url credential ID from the authenticator
+  publicKey    String // base64-encoded public key
+  counter      BigInt   @default(0)
+  deviceType   String? // 'singleDevice' | 'multiDevice', from simplewebauthn
+  transports   String? // comma-separated, e.g. 'internal,hybrid'
+  createdAt    DateTime @default(now())
+}
+
+model OtpCode {
+  id          String    @id @default(uuid())
+  userId      String?
+  user        User?     @relation(fields: [userId], references: [id])
+  destination String // phone number or email the code was sent to
+  codeHash    String // never store the raw code
+  purpose     String // 'login_mfa' | 'witness_sign' | 'trustee_confirm' | 'death_claim_safety_check' | 'will_step_up'
+  expiresAt   DateTime
+  consumedAt  DateTime?
+  // Failed guesses against THIS code. The code is burned once it reaches
+  // OTP_MAX_ATTEMPTS, so a 6-digit code cannot be brute-forced within its TTL even
+  // by an IP-rotating attacker who defeats the per-IP throttle.
+  attempts    Int       @default(0)
+  createdAt   DateTime  @default(now())
+
+  @@index([destination, purpose])
+}
+
+enum WillStatus {
+  DRAFT // editable
+  SIGNED // owner has digitally signed; edits locked; awaiting witnesses
+  WITNESSED // the required number of witnesses have signed
+  SEALED // executed & final ("published"); only a SEALED will can be released on death
+  SUPERSEDED // replaced by a sealed revision — kept as history, excluded from caps/lists
+}
+
+model Will {
+  id                   String           @id @default(uuid())
+  ownerId              String
+  owner                User             @relation(fields: [ownerId], references: [id])
+  tier                 SubscriptionTier @default(BASIC)
+  locked               Boolean          @default(false) // true once Basic is issued = immutable
+  pdfUrl               String?
+  personalMessage      String? // private letter to the family, released with the will;
+  // plain text only (server-sanitised — no markup/code)
+  // --- execution / signing lifecycle ---
+  status               WillStatus       @default(DRAFT)
+  signatureData        String? // the OWNER's captured signature (base64/vector), encrypted at rest
+  signedAt             DateTime? // when the owner signed
+  signedIp             String? // IP the owner signed from (evidentiary)
+  requiredWitnesses    Int              @default(2) // witnesses needed to reach WITNESSED (owner chose 2)
+  sealedAt             DateTime?
+  // --- publish lifecycle (spec §3: one published will + one draft) -----------
+  publishedAt          DateTime? // set at seal — SEALED means "published"
+  unpublishedAt        DateTime? // set when the owner returns a SEALED will to DRAFT
+  supersededAt         DateTime? // set when a sealed revision replaces this will
+  // A revision is a DRAFT copy of a published will; sealing it atomically marks the
+  // original SUPERSEDED. Self-relation; deleting the original detaches the revision
+  // (it becomes a plain draft that can seal normally, since nothing is published).
+  revisionOfId         String?
+  revisionOf           Will?            @relation("WillRevisions", fields: [revisionOfId], references: [id], onDelete: SetNull)
+  revisions            Will[]           @relation("WillRevisions")
+  // --- create-flow autosave (spec §3 autosave / acceptance #5) ---------------
+  // Opaque snapshot of the guided create flow (step, heir counters, bequest
+  // slider, wishes, words…), written ≤1s after each change so the draft survives
+  // reload on any device. Cleared when the will seals. Only DRAFT wills carry it.
+  draftState           Json?
+  // Funeral & burial wishes (spec §8: wishes{sunnah,simple,local,azaa}). Part of
+  // the will itself — survives sealing, unlike draftState.
+  funeralWishes        Json?
+  // Guardianship of minor children (create-flow step 3). Records WHO cares for
+  // heirs under 18: guardianMode is 'parent' (surviving parent — the default),
+  // 'islamic' (the sharia order of guardianship), or 'named' (a named guardian,
+  // whose contact details are held in the guardian* fields). Part of the will —
+  // survives sealing.
+  guardianMode         String?
+  guardianName         String?
+  guardianPhone        String?
+  guardianEmail        String?
+  disclaimerVersion    String // which version of the legal disclaimer text was shown
+  disclaimerAcceptedAt DateTime // user must explicitly accept before a will is created —
+  // see WillsService.create. No real legal/jurisdictional
+  // validity check happens yet (Phase 1 ships on disclaimer,
+  // not on counsel-reviewed per-state/province rules).
+  createdAt            DateTime         @default(now())
+  updatedAt            DateTime         @updatedAt
+
+  shariaShares ShariaShare[]
+  bequests     Bequest[]
+  witnesses    Witness[]
+  trustees     Trustee[]
+  deathClaims  DeathClaim[]
+  assets       Asset[]
+  heirContacts WillHeirContact[]
+  claimTokens  ClaimAccessToken[]
+}
+
+// Heir registry (create-flow step 2). The human roster of heirs and how to reach
+// them, so the will can be released to each at claim time — distinct from
+// ShariaShare (the computed fara'id split). Kept owner-scoped; cascades with the
+// will. `relation` is the free registry key (son/daughter/wife/husband/…/other);
+// `isMinor` drives the guardianship step (a minor's share is held in trust).
+model WillHeirContact {
+  id        String   @id @default(uuid())
+  willId    String
+  will      Will     @relation(fields: [willId], references: [id], onDelete: Cascade)
+  relation  String
+  name      String
+  phone     String?
+  email     String?
+  isMinor   Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([willId])
+}
+
+// Region-aware asset inventory. The frontend shows different asset-type options
+// depending on the will owner's region (e.g. RRSP for Canada, 401k for US),
+// driven by the AssetType enum's region-prefixed values plus the generic ones.
+model Asset {
+  id             String    @id @default(uuid())
+  willId         String
+  will           Will      @relation(fields: [willId], references: [id], onDelete: Cascade)
+  type           AssetType
+  label          String // user-facing name, e.g. "RBC RRSP account"
+  institution    String? // e.g. "RBC", "Fidelity", "Al Rajhi Bank"
+  estimatedValue Decimal?  @db.Decimal(14, 2)
+  currency       String? // e.g. 'CAD', 'USD', 'SAR'
+  notes          String?
+  // "So your heirs know exactly where the asset is and who to call" (prototype 9a):
+  // an institution contact plus an account/IBAN/deed reference. The reference is
+  // shown MASKED in the UI (last 4 only); the full string is stored here.
+  contactPhone   String?
+  contactEmail   String?
+  accountRef     String? // account no / IBAN / deed no / policy no
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}
+
+// The fixed, non-negotiable Sharia inheritance shares (spouse, children, parents, etc.)
+// Computed by the Sharia calculator service — never user-editable.
+model ShariaShare {
+  id           String   @id @default(uuid())
+  willId       String
+  will         Will     @relation(fields: [willId], references: [id], onDelete: Cascade)
+  heirRelation String // e.g. 'SPOUSE', 'SON', 'DAUGHTER', 'FATHER', 'MOTHER'
+  heirName     String
+  sharePercent Decimal  @db.Decimal(9, 6) // 6dp: 1/6 stores as 16.666667, not 16.66
+  createdAt    DateTime @default(now())
+}
+
+// The free, user-customizable up-to-1/3 portion. Enforced server-side: sum <= 33.33%.
+model Bequest {
+  id              String   @id @default(uuid())
+  willId          String
+  will            Will     @relation(fields: [willId], references: [id], onDelete: Cascade)
+  beneficiaryName String
+  sharePercent    Decimal  @db.Decimal(9, 6) // 6dp — see ShariaShare
+  notes           String?
+  createdAt       DateTime @default(now())
+}
+
+model Witness {
+  id            String        @id @default(uuid())
+  willId        String
+  will          Will          @relation(fields: [willId], references: [id], onDelete: Cascade)
+  fullName      String
+  phone         String
+  email         String? // used for posthumous retention/download reminders
+  status        WitnessStatus @default(PENDING)
+  signedAt      DateTime?
+  signatureData String? // captured signature (base64 or vector path), encrypted at rest
+  ipAddress     String?
+  userAgent     String? // captured at signing, for the completion certificate
+  // Whether the legal name they verified at signing matched the name on the will —
+  // the "ID MATCHED" chip (spec §6). A signature cannot complete while PENDING.
+  idMatchStatus IdMatchStatus @default(PENDING)
+  createdAt     DateTime      @default(now())
+}
+
+model Trustee {
+  id          String        @id @default(uuid())
+  willId      String
+  will        Will          @relation(fields: [willId], references: [id], onDelete: Cascade)
+  userId      String? // set if the trustee is also a platform user
+  user        User?         @relation("TrusteeUser", fields: [userId], references: [id])
+  fullName    String
+  phone       String
+  email       String? // used for posthumous retention/download reminders
+  status      TrusteeStatus @default(PENDING)
+  confirmedAt DateTime?
+  ipAddress   String? // captured at confirmation, for the completion certificate
+  userAgent   String?
+  createdAt   DateTime      @default(now())
+}
+
+// --- Directives beyond the will (financial POA / healthcare directive) -------
+// Life documents, not estate documents: each takes effect while the owner is
+// ALIVE and is deliberately excluded from the exported will PDF. One of each
+// type per user (the prototype's docsExtra state is a single poa + hcd pair),
+// hence the (userId, type) unique — saving again re-executes the same document.
+
+enum DirectiveType {
+  POA // financial power of attorney
+  HCD // healthcare directive
+}
+
+enum DirectiveStatus {
+  DRAFT
+  SIGNED
+}
+
+model DirectiveDocument {
+  id         String          @id @default(uuid())
+  userId     String
+  user       User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  type       DirectiveType
+  agentName  String
+  agentPhone String
+  agentEmail String
+  /// Treatment wishes — HCD only; a POA row keeps this null.
+  wishes     String?
+  status     DirectiveStatus @default(DRAFT)
+  signedAt   DateTime?
+  createdAt  DateTime        @default(now())
+  updatedAt  DateTime        @updatedAt
+
+  @@unique([userId, type])
+}
+
+/// Whether a witness's verified legal name matched the name on the will.
+enum IdMatchStatus {
+  PENDING
+  MATCHED
+}
+
+model Vault {
+  id        String   @id @default(uuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id])
+  /// Per-user random PBKDF2 salt (base64), set once at vault creation. Not secret —
+  /// it makes each user's key derivation unique and UNPREDICTABLE (vs the old
+  /// userId-derived salt). The passphrase + iterations remain the security.
+  kdfSalt   String?
+  /// A known plaintext encrypted under the KEK, so the CLIENT can tell a correct
+  /// passphrase from a wrong one BEFORE it writes anything.
+  ///
+  /// Without it, unlock could only check the passphrase's LENGTH: a mistyped passphrase
+  /// derived a different KEK, the vault rendered normally (labels are stored in plaintext,
+  /// so the list looked right), and every item added afterwards was encrypted under a key
+  /// nobody would ever hold again. The server has no plaintext and there is no recovery —
+  /// DECISIONS §19 — so those items were lost permanently, and the vault ended up holding
+  /// items under two different keys with nothing reporting a problem.
+  ///
+  /// Not a secret and not a weakening: it is one AES-GCM blob of a fixed string, and an
+  /// attacker who has it already has the item ciphertexts, which are equally usable as
+  /// brute-force targets. WRITE-ONCE — see VaultService.setKekVerifier for why overwriting
+  /// it would hand a typo the power to lock the real passphrase out.
+  kekVerifier String?
+  createdAt DateTime @default(now())
+
+  items VaultItem[]
+}
+
+// Server only ever sees ciphertext. Encryption happens client-side (AES-256-GCM via
+// the `cryptography` package) before upload: a random per-item dataKey encrypts the
+// value, and encryptedDataKey is that dataKey WRAPPED with a KEK the client derives
+// from the user's passphrase (PBKDF2-HMAC-SHA256, 210k iters, per-user random salt).
+// The server has no passphrase, no KEK and no plaintext — it cannot decrypt.
+// NOTE: `label` is stored in plaintext (it's the list-view name) — a DB breach reveals
+// what a secret is called, never its value. Encrypting labels too is a future option.
+model VaultItem {
+  id               String   @id @default(uuid())
+  vaultId          String
+  vault            Vault    @relation(fields: [vaultId], references: [id])
+  label            String // user-facing name, e.g. "Bank password" (plaintext — see note)
+  ciphertext       String // AES-256-GCM encrypted value (nonce.ciphertext.tag)
+  encryptedDataKey String // per-item dataKey, AES-GCM-wrapped with the passphrase-derived KEK
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model DeathClaim {
+  id                   String           @id @default(uuid())
+  willId               String
+  // Cascade so an OWNER-initiated hard delete can proceed; WillsService.remove refuses
+  // to delete a will that has any non-REJECTED claim, so live claims are never lost.
+  will                 Will             @relation(fields: [willId], references: [id], onDelete: Cascade)
+  submittedByName      String
+  submittedByPhone     String
+  submittedByRole      String? // 'WITNESS' | 'TRUSTEE' — the authenticated party who filed it
+  certificateFileUrl   String // stored encrypted at rest
+  // The file row that URL was derived from. Kept as an id, not only as a URL, because the
+  // reviewing admin needs the SERVER to resolve the object for them: the URL points at
+  // /files/:id/download, which is owner-scoped, and claim uploads are attributed to the
+  // DECEASED owner — so no admin can ever be that caller. Nullable for rows written
+  // before this column existed.
+  certificateFileId    String?
+  status               DeathClaimStatus @default(SUBMITTED)
+  reviewedBy           String? // admin user id, manual review (Phase 1)
+  reviewedAt           DateTime?
+  rejectionReason      String?
+  safetyCheckSentAt    DateTime? // SMS sent to deceased's phone as a fraud check
+  safetyCheckClearedAt DateTime? // no response within window = cleared
+  // A confirmed trustee can override the heir-confirmation requirement and force the
+  // release through. Recorded, never silent: the panel shows who overrode and when.
+  trusteeOverrideAt    DateTime?
+  trusteeOverrideBy    String? // Trustee id that exercised the override
+  releasedAt           DateTime?
+  // Release is the most consequential action (it starts the irreversible purge clock),
+  // so it is attributed here and not only in the application log — two-person integrity
+  // is only auditable if the releasing admin survives log rotation. See
+  // DeathClaimsService.release.
+  releasedBy           String? // admin user id that released the will
+  createdAt            DateTime         @default(now())
+
+  accessTokens      ClaimAccessToken[]
+  heirConfirmations HeirReleaseConfirmation[]
+}
+
+/// Which party a claim credential was issued to (spec §6).
+enum ClaimRole {
+  WITNESS
+  TRUSTEE
+  HEIR
+}
+
+/// What a claim credential is allowed to do. Deliberately narrow — a token minted to
+/// file a claim can never be replayed to read the released will.
+enum ClaimTokenScope {
+  CLAIM_SUBMIT // file a death claim; issued before any claim exists, so claimId is null
+  PORTAL_READ // read the released will in the heir/trustee portal, after release
+}
+
+// The credential a person with NO Wasiati account uses to reach the claim flow or the
+// post-release portal. Sent out-of-band (SMS/email) as a raw 256-bit token; only the
+// SHA-256 hash is stored, so a DB breach yields nothing replayable.
+//
+// SHA-256 + @unique, matching RefreshToken above — deliberately NOT bcrypt. bcrypt earns
+// its cost on LOW-entropy secrets (passwords, 6-digit OTPs) where slowness is the defence;
+// against a 256-bit random token brute force is already hopeless, so the cost buys
+// nothing. What it would cost is decisive: a per-row salt makes the hash unlookupable, so
+// verification would have to scan every candidate row and bcrypt-compare each one — and to
+// keep that bounded the caller would have to supply willId alongside the token. That is
+// precisely the hole this design closes: willId comes OUT of the token, so no portal route
+// ever accepts a will identifier and a token cannot be aimed at someone else's estate.
+// Single-use: consumedAt burns it.
+model ClaimAccessToken {
+  id            String          @id @default(uuid())
+  tokenHash     String          @unique // sha-256 of the opaque token — the lookup key
+  willId        String
+  will          Will            @relation(fields: [willId], references: [id], onDelete: Cascade)
+  // Null for a CLAIM_SUBMIT token, which is minted before the claim it will create.
+  claimId       String?
+  claim         DeathClaim?     @relation(fields: [claimId], references: [id])
+  role          ClaimRole
+  scope         ClaimTokenScope
+  subjectPhone  String // where the raw token was sent; the identity the holder claims
+  subjectEmail  String?
+  // Set when role is HEIR — the WillHeirContact this token speaks for. Not a relation:
+  // the roster can change after the token is issued and that must not orphan the audit.
+  heirContactId String?
+  expiresAt     DateTime
+  consumedAt    DateTime?
+  // Abuse bounds for the accountless upload path. A CLAIM_SUBMIT holder has no account,
+  // so there is no user to rate-limit and no quota of their own to spend — the bytes land
+  // against the DECEASED owner's 1 GB. Without a ceiling one leaked token could presign
+  // unlimited write URLs, or confirm phantom keys with a declared size that exhausts the
+  // estate's quota and locks out the real certificate.
+  //
+  // TWO counters, because the two operations bound different things. presign only hands
+  // out a write URL; confirm is what actually records a certificate. One shared budget of
+  // two meant a dropped PUT — which happens between the calls and never reaches the
+  // server, so it can never be refunded — spent the retry's presign and left nothing for
+  // confirm. A bereaved daughter on poor coverage was permanently locked out of filing,
+  // with no certificate stored and the retry button still on screen.
+  uploadCount   Int             @default(0) // presigns issued (retries are expected)
+  confirmCount  Int             @default(0) // certificates actually recorded: exactly one
+  createdAt     DateTime        @default(now())
+
+  @@index([willId, scope])
+}
+
+// One row per heir who has confirmed they are ready for the will to be released —
+// the prototype's "HEIR RELEASE CONFIRMATIONS" panel. Append-only in practice: a
+// confirmation is an evidentiary act, so ipAddress/userAgent are captured exactly as
+// they are for a witness signature. The unique constraint makes a double-tap a no-op
+// rather than two confirmations from one heir.
+model HeirReleaseConfirmation {
+  id            String     @id @default(uuid())
+  claimId       String
+  claim         DeathClaim @relation(fields: [claimId], references: [id], onDelete: Cascade)
+  // The WillHeirContact that confirmed. Not a relation, for the same reason as
+  // ClaimAccessToken.heirContactId: the roster must not be able to erase the record.
+  heirContactId String
+  confirmedAt   DateTime   @default(now())
+  ipAddress     String?
+  userAgent     String?
+
+  @@unique([claimId, heirContactId])
+}
+
+model Subscription {
+  id     String             @id @default(uuid())
+  userId String
+  user   User               @relation(fields: [userId], references: [id])
+  tier   SubscriptionTier
+  status SubscriptionStatus @default(INCOMPLETE)
+
+  // Provider-agnostic. We deliberately run our OWN billing cycle rather than
+  // Stripe Billing (so the port stays portable): this is OUR subscription id;
+  // providerSubscriptionId stays null unless a provider object is ever adopted.
+  provider               PaymentProvider @default(STRIPE)
+  providerSubscriptionId String?         @unique
+  providerPriceId        String?
+
+  // The provider does not run the billing cycle for us — we do, by choice. These
+  // drive the renewal job: charge the saved instrument when currentPeriodEnd passes.
+  interval            PriceInterval?
+  currentPeriodEnd    DateTime?
+  cancelAtPeriodEnd   Boolean        @default(false)
+  canceledAt          DateTime?
+  // Tokenised card ("source"/instrument) for merchant-initiated renewals. Never a PAN.
+  paymentInstrumentId String?
+  failedPaymentCount  Int            @default(0) // dunning
+  lastPaymentAt       DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status, currentPeriodEnd])
+}
+
+enum PaymentProvider {
+  STRIPE
+}
+
+enum CreditReason {
+  REFERRAL_REWARD
+  PURCHASE_APPLIED // negative row: credit spent against a purchase
+  MANUAL_ADJUSTMENT
+  REFUND
+}
+
+enum InvoiceStatus {
+  PAID
+  REFUNDED
+}
+
+/// A receipt for money actually taken (spec §2/§10 "Invoice"). OURS, not the PSP's:
+/// we run our own billing cycle, so Stripe has no Invoice object to list — a
+/// subscription renewal here is just a bare PaymentIntent, and a purchase paid
+/// entirely from account credit never reaches the provider at all. Without this
+/// table the "Manage billing" invoice list would have nothing truthful to show.
+///
+/// Written at exactly the points where money/credit is accounted: the approved
+/// payment webhook, a credit-covered checkout, and each renewal.
+model Invoice {
+  id     String @id @default(uuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  /// Dedupe key, so one payment is one invoice. The provider payment id when a card
+  /// was charged (Stripe fires BOTH checkout.session.completed and
+  /// payment_intent.succeeded for a single paid session — two event ids, one
+  /// PaymentIntent), else a synthetic deterministic key for a purchase covered by
+  /// account credit, which the provider never sees.
+  idempotencyKey String @unique
+
+  /// What was bought, in words, for the receipt line.
+  description        String
+  /// Total value of the invoice in MINOR units: what the plan cost after discounts,
+  /// INCLUDING any part settled from account credit. `amountMinor - creditAppliedMinor`
+  /// is what the card was actually charged.
+  amountMinor        Int
+  currency           String
+  /// Part of `amountMinor` settled from the account-credit ledger rather than a card.
+  /// Shown on the receipt so a zero-charge invoice reads honestly instead of as free.
+  creditAppliedMinor Int    @default(0)
+
+  status   InvoiceStatus     @default(PAID)
+  tier     SubscriptionTier?
+  interval PriceInterval?
+
+  provider          PaymentProvider @default(STRIPE)
+  /// Null for a credit-covered purchase — there was no provider payment.
+  providerPaymentId String?
+
+  issuedAt   DateTime  @default(now())
+  refundedAt DateTime?
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+
+  @@index([userId, issuedAt])
+}
+
+/// Internal account-credit ledger. Deliberately OURS — no provider customer-balance
+/// object is used. Append-only: never mutate a row, write a reversing
+/// entry instead. Credits are consumed at checkout before charging the card.
+model AccountCredit {
+  id          String       @id @default(uuid())
+  userId      String
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  // Positive = credit granted, negative = credit consumed/reversed. MINOR units.
+  amountMinor Int
+  currency    String
+  reason      CreditReason
+  description String?
+  // Ties a grant back to what caused it (e.g. a Referral id) for audit + idempotency.
+  sourceType  String?
+  sourceId    String?
+  /// When this credit becomes spendable. NULL = immediately. Referral rewards are
+  /// held for 100 days so a refunded purchase can be clawed back before the money
+  /// is spent. Consumption ignores rows that have not matured.
+  maturesAt   DateTime?
+  createdAt   DateTime     @default(now())
+
+  @@unique([sourceType, sourceId, userId])
+  @@index([userId, currency])
+  @@index([userId, currency, maturesAt])
+}
+
+// Burial/funeral cost estimation for the Ultimate tier (US/CA only). Phase 1 is
+// deliberately simple: project today's local cost forward using a historical
+// inflation rate so the client sees a realistic ballpark. Actual fulfillment is
+// manual — the admin calls local mosques to get a real quote once the client
+// asks to proceed. No automated funeral-insurance integration yet.
+enum BurialRequestStatus {
+  ESTIMATED // automated inflation-adjusted estimate shown, no human involved yet
+  QUOTE_REQUESTED // client asked to proceed; admin needs to contact local mosques manually
+  QUOTED // admin has a real manually-sourced quote
+  CONFIRMED // client accepted the manual quote
+  CANCELLED
+}
+
+model BurialEstimateRequest {
+  id                   String              @id @default(uuid())
+  userId               String
+  user                 User                @relation(fields: [userId], references: [id])
+  region               Region // ULTIMATE tier is US/CA only
+  city                 String
+  baseAmount           Decimal             @db.Decimal(10, 2) // today's typical local cost
+  currency             String // 'USD' or 'CAD'
+  baseYear             Int // year the baseAmount was sourced — set explicitly by the service, not DB-generated
+  inflationRatePercent Decimal             @default(4.0) @db.Decimal(4, 2) // annual %, default from market research
+  projectionYears      Int                 @default(10)
+  projectedAmount      Decimal             @db.Decimal(10, 2) // baseAmount compounded over projectionYears
+  status               BurialRequestStatus @default(ESTIMATED)
+  manualQuoteAmount    Decimal?            @db.Decimal(10, 2) // filled in after admin calls local mosques
+  manualQuoteNotes     String?
+  quotedBy             String? // admin user id
+  quotedAt             DateTime?
+  createdAt            DateTime            @default(now())
+  updatedAt            DateTime            @updatedAt
+}
+
+model IntakeSession {
+  id            String   @id @default(uuid())
+  userId        String
+  transcript    Json
+  extractedData Json?
+  completed     Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+// One row per Nafath MFA verification attempt (KSA). Nafath returns a random
+// number the user must match in the Nafath app; we poll (or receive a callback)
+// for the outcome. nationalId is PII — encrypt at rest in production.
+model NafathVerification {
+  id         String             @id @default(uuid())
+  userId     String
+  user       User               @relation(fields: [userId], references: [id])
+  nationalId String
+  transId    String             @unique // Nafath transaction id
+  random     String? // the number shown to the user to match in the Nafath app
+  status     VerificationStatus @default(PENDING)
+  createdAt  DateTime           @default(now())
+  updatedAt  DateTime           @updatedAt
+
+  @@index([userId])
+}
+
+enum BurialPlanStatus {
+  ACTIVE // still receiving contributions
+  FULLY_FUNDED // the grave's price is fully prepaid
+  CANCELLED // stopped by the user — contributions are refundable
+}
+
+// A grave reserved today at today's price and PREPAID by contributions. The money is
+// the customer's, held in trust: cancelling stops contributions and refunds them, and
+// it never blocks cancelling the subscription. It is prepayment, not credit.
+model BurialPrepaymentPlan {
+  id             String           @id @default(uuid())
+  userId         String
+  user           User             @relation(fields: [userId], references: [id])
+  currency       String
+  totalAmount    Int // minor units — the grave's full price, fixed at today's rate
+  amountPaid     Int              @default(0) // contributed so far; the customer's own money
+  status         BurialPlanStatus @default(ACTIVE)
+  maturesAt      DateTime? // optional term end
+  /// Set when a plan is cancelled: what we owe the customer back. Contributions are
+  /// held in trust, so cancelling always returns them — never forfeits them.
+  refundDueMinor Int?
+  cancelledAt    DateTime?
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+
+  @@index([userId])
+}
+
+// Anonymized tombstone proving a posthumous data purge happened, kept for legal /
+// compliance record. Deliberately holds NO personal data — only opaque ids + counts.
+model DataPurgeLog {
+  id             String   @id @default(uuid())
+  deceasedUserId String // the (now-deleted) user's uuid — not personal data
+  deathClaimId   String?
+  recordsDeleted Json? // per-table counts, for audit
+  purgedAt       DateTime @default(now())
+}
+
+// ---------------------------------------------------------------------------
+// Phase 1 — auth & platform hardening
+// ---------------------------------------------------------------------------
+
+// Rotating refresh tokens with reuse detection. We store only a HASH of the token
+// (never the token itself). Rotation: each use issues a new token in the same
+// `familyId` and marks the old one `replacedById`. If a token that was already
+// rotated (or revoked) is presented again, the whole family is revoked — that is
+// the classic stolen-refresh-token reuse defense.
+/// Single-use backup codes — the escape hatch when the second factor is unreachable.
+///
+/// This is what makes it safe NOT to enrol a phone. Losing your only authenticator on a
+/// will platform is catastrophic in a way it is not elsewhere: the account holds the
+/// document your family needs, and there is no support path that can verify you without
+/// re-creating exactly the impersonation risk MFA exists to stop. Ten offline codes cost
+/// nothing, work with no signal, and are a natural fit for a product already asking people
+/// to keep documents somewhere safe.
+///
+/// Stored as a SHA-256 hash and looked up BY that hash, following the refresh-token
+/// precedent above rather than the OTP one: a recovery code carries ~60 bits of entropy, so
+/// it needs no slow KDF, and hashing to a unique index means verification is one indexed
+/// read instead of bcrypt-comparing against every code the user holds.
+model RecoveryCode {
+  id        String    @id @default(uuid())
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  codeHash  String    @unique // sha-256 of the code, normalised (upper-case, no dashes)
+  /// Set the moment it is spent. Rows are KEPT rather than deleted so "you used a backup
+  /// code" is answerable afterwards — an unexplained one is how a user learns of a breach.
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([userId])
+}
+
+model RefreshToken {
+  id           String    @id @default(uuid())
+  userId       String
+  user         User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tokenHash    String    @unique // sha-256 of the opaque refresh token
+  familyId     String // shared across a rotation lineage
+  expiresAt    DateTime
+  revokedAt    DateTime?
+  replacedById String? // id of the token that superseded this one (rotation)
+  userAgent    String?
+  ipAddress    String?
+  createdAt    DateTime  @default(now())
+
+  @@index([userId])
+  @@index([familyId])
+}
+
+// Single-use email-verification tokens (hashed). Consumed on verify.
+model EmailVerificationToken {
+  id         String    @id @default(uuid())
+  userId     String
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tokenHash  String    @unique
+  expiresAt  DateTime
+  consumedAt DateTime?
+  createdAt  DateTime  @default(now())
+
+  @@index([userId])
+}
+
+// Single-use password-reset tokens (hashed). Consumed on reset.
+model PasswordResetToken {
+  id         String    @id @default(uuid())
+  userId     String
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tokenHash  String    @unique
+  expiresAt  DateTime
+  consumedAt DateTime?
+  createdAt  DateTime  @default(now())
+
+  @@index([userId])
+}
+
+// Proof that someone completed the PASSWORD step of login, so they can ask for a new
+// login_mfa code without re-typing the password. Minted by AuthService.validatePassword,
+// spent (repeatedly, until it expires) by POST /auth/login/resend-mfa.
+//
+// OPAQUE AND HASHED, NOT A JWT — deliberately. TokenService signs access tokens with the
+// single app SESSION_SECRET and JwtStrategy.validate accepts ANY payload signed with it
+// without checking a `typ` claim, so a signed "challenge" JWT would be one forgotten guard
+// away from being accepted as an access token. A separate table with its own lookup makes
+// that confusion structurally impossible rather than merely unlikely. Same shape as
+// RefreshToken / EmailVerificationToken / PasswordResetToken: 256 random bits, only the
+// SHA-256 hash stored, the raw value never persisted.
+//
+// NO consumedAt: one challenge covers every resend inside its window (the client holds one
+// token and may need more than one code), and the abuse ceiling is the per-destination
+// cooldown + hourly cap in AuthService.issueLoginMfa, not the token count.
+//
+// TTL is 15 minutes — deliberately LONGER than the 10-minute OTP TTL, so the user whose
+// code expired is exactly the user who can still resend.
+model LoginChallenge {
+  id        String   @id @default(uuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  tokenHash String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+// Append-only audit trail for privileged / security-sensitive events
+// (admin actions, auth events, payments, KYC, releases). Never updated or deleted.
+model AuditLog {
+  id         String   @id @default(uuid())
+  actorId    String? // user id when known (null for anonymous/system)
+  actorRole  String?
+  action     String // e.g. 'auth.login', 'death_claim.release', 'payment.subscription.active'
+  targetType String? // e.g. 'DeathClaim', 'User', 'Subscription'
+  targetId   String?
+  metadata   Json? // non-sensitive contextual detail
+  ipAddress  String?
+  userAgent  String?
+  region     String?
+  createdAt  DateTime @default(now())
+
+  @@index([actorId])
+  @@index([action])
+  @@index([createdAt])
+}
+
+// Webhook idempotency — one row per processed event id so a redelivered event is a
+// no-op. Providers guarantee at-least-once delivery, so this is required.
+model ProcessedPaymentEvent {
+  id          String   @id // the payment provider's event id
+  type        String
+  processedAt DateTime @default(now())
+}
+
+/// Idempotency for identity (Sumsub) webhooks. Sumsub sends no unique event id, so
+/// the key is a SHA-256 of the RAW signed body: a verbatim replay of a captured
+/// "GREEN" webhook (the attack — flipping a revoked user back to VERIFIED) produces
+/// the same hash and is a no-op.
+model ProcessedIdentityEvent {
+  id          String   @id // sha256 of the raw webhook body
+  status      String
+  processedAt DateTime @default(now())
+}
+
+// ---------------------------------------------------------------------------
+// Admin-managed commerce catalog — pricing, promotions, offers.
+// Everything here is editable at runtime by an admin (API / admin UI) with NO
+// code change or redeploy. unitAmount here is charged directly, so a price change is
+// no-code. The app reads the public catalog to render pricing dynamically.
+// ---------------------------------------------------------------------------
+
+enum PriceInterval {
+  ONE_TIME
+  MONTH
+  YEAR
+}
+
+enum PromotionType {
+  PERCENT // value = 1..100
+  AMOUNT // value = minor units in `currency`
+}
+
+model PricingPlan {
+  id                String           @id @default(uuid())
+  tier              SubscriptionTier
+  region            Region
+  currency          String // 'USD' | 'CAD' | 'SAR'
+  unitAmount        Int // minor units (cents / halalas) — the DISPLAYED price
+  interval          PriceInterval    @default(MONTH)
+  displayName       String
+  description       String?
+  features          Json? // string[] of feature bullets shown on the card
+  badge             String? // e.g. 'Most popular'
+  sortOrder         Int              @default(0)
+  active            Boolean          @default(true)
+  provider          PaymentProvider  @default(STRIPE)
+  providerProductId String? // provider-side product (per tier/region), if any
+  providerPriceId   String? // provider-side price id, if the provider has one
+  updatedBy         String? // admin user id of last editor
+  createdAt         DateTime         @default(now())
+  updatedAt         DateTime         @updatedAt
+
+  @@unique([tier, region, interval])
+  @@index([region, active])
+}
+
+model Promotion {
+  id               String             @id @default(uuid())
+  code             String             @unique // e.g. LAUNCH25
+  type             PromotionType
+  value            Int // percent (1-100) or minor-unit amount
+  currency         String? // required for AMOUNT type
+  appliesToTiers   SubscriptionTier[] // empty = all tiers
+  appliesToRegions Region[] // empty = all regions
+  description      String?
+  maxRedemptions   Int?
+  timesRedeemed    Int                @default(0)
+  firstTimeOnly    Boolean            @default(false)
+  startsAt         DateTime?
+  endsAt           DateTime?
+  active           Boolean            @default(true)
+  // Discounts are applied by OUR engine at checkout — no provider coupon object
+  // is mirrored (Stripe Coupons are deliberately unused), so there are no
+  // provider coupon ids here.
+  updatedBy        String?
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+
+  @@index([active])
+}
+
+model Offer {
+  id          String    @id @default(uuid())
+  title       String
+  subtitle    String?
+  body        String?
+  badge       String?
+  region      Region? // null = all regions
+  promotionId String? // optional linked promotion (code shown/applied)
+  ctaLabel    String?
+  sortOrder   Int       @default(0)
+  active      Boolean   @default(true)
+  startsAt    DateTime?
+  endsAt      DateTime?
+  updatedBy   String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([active])
+}
+
+/// Admin-editable, publish-live settings (the Content tab). Key/value so a new
+/// string does not need a migration.
+///
+/// `zakat.charityUrl` gates the "Pay your zakah" button: no published link means no
+/// button. We never send a user to a charity we have not vetted.
+model AppSetting {
+  key       String   @id
+  value     String
+  updatedBy String?
+  updatedAt DateTime @updatedAt
+}
+
+/// The admin Content tab (spec §7): every user-facing string, EN + AR, published
+/// live. The app ships the ARB bundle as its compile-time default and merges these
+/// overrides on top, so a string can be corrected without an app release.
+model ContentString {
+  /// The ARB key it overrides, e.g. "prBasicSub" or "cwDisclaimer".
+  key       String   @id
+  valueEn   String
+  valueAr   String
+  /// A short human note on what this string is / where it appears.
+  note      String?
+  published Boolean  @default(true)
+  updatedBy String?
+  updatedAt DateTime @updatedAt
+
+  revisions ContentRevision[]
+
+  @@index([published])
+}
+
+/// Append-only audit of every content edit — who changed what, when. Never updated
+/// or deleted, so the history of a legal string can always be reconstructed.
+model ContentRevision {
+  id        String        @id @default(uuid())
+  key       String
+  content   ContentString @relation(fields: [key], references: [key], onDelete: Cascade)
+  valueEn   String
+  valueAr   String
+  editedBy  String?
+  createdAt DateTime      @default(now())
+
+  @@index([key, createdAt])
+}
+
+/// A file uploaded to object storage (ID document, legacy video). The bytes live in
+/// storage; this row records ownership + size so we can enforce a per-user quota and
+/// resolve a key back to a download. Confirmed AFTER the client's direct PUT.
+model FileObject {
+  id          String   @id @default(uuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  kind        String // 'id_document' | 'video_legacy' | 'death_certificate'
+  key         String   @unique // the storage object key <prefix>/<userId>/<uuid>.<ext>
+  contentType String
+  sizeBytes   Int
+  // Malware-scan gate. When MALWARE_SCAN_ENABLED, a new upload lands PENDING and is
+  // NOT served until an out-of-band scanner (GuardDuty Malware Protection for S3, via
+  // an EventBridge → /files/scan-callback webhook) flips it to CLEAN; INFECTED is
+  // never served and is reaped. Defaults CLEAN so existing rows and scanner-less dev
+  // keep working. See docs/UPLOAD_SECURITY_AWS.md.
+  scanStatus  String   @default("CLEAN") // CLEAN | PENDING | INFECTED
+  createdAt   DateTime @default(now())
+
+  @@index([userId])
+}

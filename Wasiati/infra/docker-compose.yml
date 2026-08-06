@@ -1,0 +1,89 @@
+# Local development infrastructure for Wasiati.
+# Production uses managed, region-pinned equivalents (RDS/ElastiCache/S3/SES) per
+# the four-region data-residency model — this compose file is DEV ONLY.
+#
+# Ports are bound to 127.0.0.1 so these unauthenticated/dev-credentialled dev services
+# (Postgres with a weak password, Redis with no auth, MinIO, Mailhog) are reachable only
+# from this machine, never from the LAN. Docker publishes ports past the host firewall,
+# so a bare "5432:5432" would otherwise expose the dev DB to the local network.
+#
+#   Postgres  : primary database (region-local in prod)
+#   Redis     : passkey-challenge cache + BullMQ queues
+#   MinIO     : S3-compatible object storage (vault blobs, death certs, IDs)
+#   Mailhog   : catches transactional email (verify/reset) in place of AWS SES
+#
+# Bring up:  docker compose -f infra/docker-compose.yml up -d
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: wasiati-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: wasiati
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: wasiati_us
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - ./data/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U wasiati -d wasiati_us"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    container_name: wasiati-redis
+    restart: unless-stopped
+    command: ["redis-server", "--appendonly", "yes"]
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - ./data/redis:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  minio:
+    image: minio/minio:latest
+    container_name: wasiati-minio
+    restart: unless-stopped
+    command: ["server", "/data", "--console-address", ":9001"]
+    environment:
+      MINIO_ROOT_USER: wasiati
+      MINIO_ROOT_PASSWORD: wasiati-dev-secret
+    ports:
+      - "127.0.0.1:9000:9000"   # S3 API
+      - "127.0.0.1:9001:9001"   # web console
+    volumes:
+      - ./data/minio:/data
+    healthcheck:
+      test: ["CMD", "mc", "ready", "local"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  # Creates the four region-pinned dev buckets on startup, then exits.
+  minio-init:
+    image: minio/mc:latest
+    container_name: wasiati-minio-init
+    depends_on:
+      minio:
+        condition: service_started
+    entrypoint: >
+      /bin/sh -c "
+      until mc alias set local http://minio:9000 wasiati wasiati-dev-secret; do sleep 2; done;
+      mc mb -p local/wasiati-ksa local/wasiati-ca local/wasiati-us local/wasiati-qa;
+      echo 'buckets ready';
+      "
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: wasiati-mailhog
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:1025:1025"   # SMTP
+      - "127.0.0.1:8025:8025"   # web UI

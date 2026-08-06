@@ -1,0 +1,124 @@
+name: flutter
+
+on:
+  push:
+    paths: ["app/**", ".github/workflows/flutter.yml"]
+  pull_request:
+    paths: ["app/**", ".github/workflows/flutter.yml"]
+
+# Least privilege — these jobs only read the repo and upload build artifacts; they never
+# need write access to repo contents.
+permissions:
+  contents: read
+
+jobs:
+  analyze-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          # PINNED to the dev machine's SDK. Unpinned "stable" analyzed with a newer
+          # Flutter whose deprecations (value→initialValue, activeColor→activeThumbColor)
+          # do not exist in 3.29.0 — so CI failed on 12 infos no local run can reproduce,
+          # and "fixing" them would break the local build, whose SDK lacks the
+          # replacements. CI's job is to verify the SDK the app is actually built with;
+          # bump this together with the dev machine, deliberately.
+          flutter-version: 3.29.0
+          cache: true
+      # NO melos. `dart pub global activate melos` grabs the latest major, and melos 7
+      # dropped melos.yaml for pub workspaces — so `melos bootstrap` died with "not a
+      # Melos workspace" on every run this job has ever had. Nothing local uses melos
+      # either (it is not even installed on the dev machine; the daily loop is plain
+      # `flutter test` in each package). Enumerating the workspace globs from
+      # app/melos.yaml (apps/**, packages/**) in bash does the same work with nothing
+      # to version-drift.
+      - name: Analyze every package
+        run: |
+          set -e
+          for d in apps/* packages/*; do
+            [ -f "$d/pubspec.yaml" ] || continue
+            echo "── analyze $d"
+            (cd "$d" && flutter pub get && flutter analyze)
+          done
+      - name: Test every package that has tests
+        run: |
+          set -e
+          for d in apps/* packages/*; do
+            [ -f "$d/pubspec.yaml" ] && [ -d "$d/test" ] || continue
+            echo "── test $d"
+            (cd "$d" && flutter test)
+          done
+      # `melos run test` is plain `flutter test`, which SKIPS @TestOn('browser') files.
+      # Without this step the web pause/resume proof never executes anywhere: it cannot
+      # run on a Windows dev box (the browser harness times out after 12 minutes during
+      # "loading", for any browser test — verified with a bare `expect(1 + 1, 2)`), and
+      # nothing else invokes --platform chrome. A test that runs nowhere is decoration.
+      #
+      # Named explicitly rather than bare `--platform chrome`: that would try every test
+      # file in the browser, including widget tests and the integration suites that talk
+      # to a local API.
+      - name: Browser test — web pause/resume reaches MediaRecorder
+        working-directory: app/apps/wasiati
+        # ubuntu-latest ships Google Chrome; pin it so the failure is "no browser" rather
+        # than another silent 12-minute load timeout if the image ever drops it.
+        env:
+          CHROME_EXECUTABLE: /usr/bin/google-chrome
+        run: flutter test --platform chrome test/web_camera_pause_chrome_test.dart
+
+  build-web:
+    runs-on: ubuntu-latest
+    needs: analyze-test
+    # One bundle per REGION define. Launch is a single stack serving every market
+    # (DECISIONS §25), so only the US bundle deploys today — CA/KSA stay in the
+    # matrix because they are their own builds the moment a dedicated stack exists,
+    # and building them continuously keeps them deployable. QA is gone: the Region
+    # enum no longer has it, so a QA bundle registers users the API must reject.
+    #
+    # API_BASE_URL/APP_URL are REQUIRED here: without them Env.apiBaseUrl falls back
+    # to http://localhost:4000 — and the loopback carve-out in env.dart means that
+    # broken bundle builds without a single complaint.
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - region: US
+            api_base_url: https://api.wasiati.com
+            app_url: https://app.wasiati.com
+          - region: CA
+            api_base_url: https://api.ca.wasiati.com
+            app_url: https://ca.wasiati.com
+          - region: KSA
+            api_base_url: https://api.sa.wasiati.com
+            app_url: https://sa.wasiati.com
+    defaults:
+      run:
+        working-directory: app/apps/wasiati
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.29.0
+          cache: true
+      - run: flutter pub get
+      - name: Build web (${{ matrix.region }})
+        # GOOGLE_CLIENT_ID_WEB is a repository VARIABLE, not a secret: an OAuth web client
+        # id is public by design — it ships inside the bundle. Left unset,
+        # Env.googleSignInAvailable is false and the Google button simply does not render,
+        # which is the correct degradation rather than a failed build.
+        run: |
+          flutter build web --release \
+            --dart-define=FLAVOR=prod \
+            --dart-define=REGION=${{ matrix.region }} \
+            --dart-define=API_BASE_URL=${{ matrix.api_base_url }} \
+            --dart-define=APP_URL=${{ matrix.app_url }} \
+            --dart-define=GOOGLE_CLIENT_ID_WEB=${{ vars.GOOGLE_CLIENT_ID_WEB }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: web-${{ matrix.region }}
+          path: app/apps/wasiati/build/web

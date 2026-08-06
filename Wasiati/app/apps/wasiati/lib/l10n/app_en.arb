@@ -1,0 +1,2238 @@
+{
+  "@@locale": "en",
+  "appName": "Wasiati",
+  "navHome": "Home",
+  "navWills": "Wills",
+  "navVault": "Vault",
+  "navBurial": "Burial",
+  "navGuided": "Guided",
+  "navLegacy": "Legacy",
+  "navIdentity": "Identity",
+  "navPlans": "Plans",
+  "navAdmin": "Admin",
+  "navUsers": "Users",
+  "navClaims": "Claims",
+  "navMore": "More",
+  "navSettings": "Settings",
+  "commonSave": "Save",
+  "commonCancel": "Cancel",
+  "commonAdd": "Add",
+  "commonDelete": "Delete",
+  "commonRetry": "Retry",
+  "commonSeePlans": "See plans",
+  "commonSignOut": "Sign out",
+  "commonBack": "Back",
+  "commonBackToWill": "Back to will",
+  "wdBackToWills": "My wills",
+  "brandTrustStrip": "Sealed · Witnessed · Verified",
+  "settingsTitle": "Settings",
+  "settingsAppearance": "Appearance",
+  "settingsThemeLight": "Light",
+  "settingsThemeDark": "Dark",
+  "settingsThemeDarkMode": "Dark mode",
+  "settingsThemeMatchSystem": "Match system theme",
+  "settingsRegionLanguage": "Region & language",
+  "settingsRegion": "Region",
+  "settingsLanguage": "Language",
+  "settingsLanguageSystem": "Match device",
+  "settingsLanguageEnglish": "English",
+  "settingsLanguageArabic": "العربية",
+  "settingsRegionNote": "Your region sets currency, tax rules and regional accounts. It's fixed to your account for data-residency reasons.",
+  "settingsSecurity": "Security",
+  "settingsFaceApp": "Face ID to open the app",
+  "settingsFaceVault": "Face ID for the vault",
+  "settingsChangePassword": "Change password",
+  "settingsChangePasswordSub": "We'll email you a secure reset link.",
+  "settingsIdentity": "Identity verification",
+  "settingsIdentitySub": "Manage or complete ID verification.",
+  "settingsSignOutSub": "Sign out on this device.",
+  "settingsLegal": "Legal & support",
+  "settingsPrivacy": "Privacy policy",
+  "settingsTerms": "Terms of service",
+  "settingsContact": "Contact support",
+  "settingsDeleteTitle": "Delete my account",
+  "settingsDeleteBody": "Deletion is handled by a person to protect against fraud on an account that holds a will. Email us and we'll verify and erase your data within 30 days.",
+  "settingsRequestDeletion": "Request deletion",
+  "settingsResetSent": "Password reset link sent to {email}.",
+  "@settingsResetSent": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "settingsLinkError": "Couldn't open the link.",
+  "settingsRoleAdmin": "Admin",
+  "authWelcomeTagline": "A dignified, Sharia-compliant will and legacy — sealed, witnessed, and verified.",
+  "authCreateYourWill": "Create your will",
+  "authAlreadyHaveAccount": "I already have an account",
+  "authRegionsLine": "Saudi Arabia · Canada · United States",
+  "authWelcomeBack": "Welcome to Wasiati",
+  "authLoginSubtitle": "Region and currency are detected from your location — you’ll confirm them while creating your will.",
+  "authEmail": "Email",
+  "authPassword": "Password",
+  "authSignIn": "Sign in",
+  "authForgotPassword": "Forgot password?",
+  "authNoAccountCreate": "Don't have an account? Create one",
+  "authMoreWaysSoon": "more ways to sign in — soon",
+  "authCreateAccount": "Create your account",
+  "authRegisterSubtitle": "Your will, encrypted vault, and legacy — in one place.",
+  "authRegion": "Region",
+  "authPhoneOptional": "Phone (optional, for SMS MFA)",
+  "authPhone": "Phone number",
+  "authPhoneWhy": "Used to sign you in and to reach your witnesses, trustee and family.",
+  "authPhoneRequired": "Enter the phone number we can reach you on.",
+  "authVerifyPhoneTitle": "Confirm your phone",
+  "authVerifyPhoneSubtitle": "We sent a 6-digit code to the number you just gave us. This is the number we use to sign you in, and to reach your witnesses, trustee and family.",
+  "authVerifyPhoneCta": "Confirm phone",
+  "authPhoneCodeResent": "A new code is on its way.",
+  "addrCountry": "Country",
+  "addrLine1": "Address",
+  "addrLine1Required": "Enter your street address.",
+  "addrLine2Optional": "Apartment, suite (optional)",
+  "addrCity": "City",
+  "addrCityRequired": "Enter your city.",
+  "addrState": "State",
+  "addrProvince": "Province",
+  "addrEmirate": "Emirate",
+  "addrRegion": "Region",
+  "addrAreaRequired": "This is required for your country.",
+  "addrPostalCode": "ZIP / postal code",
+  "addrPostalCodeOptional": "Postal code (optional)",
+  "addrPostalRequired": "Enter your postal code.",
+  "addrPostalInvalid": "That postal code does not look right for this country.",
+  "addrWhy": "Your address sets which law your will is written under, and appears in the final document.",
+  "authPasswordHelper": "At least 10 characters",
+  "authCreateAccountButton": "Create account",
+  "authHaveAccountSignIn": "Already have an account? Sign in",
+  "authInvalidEmail": "Enter a valid email",
+  "authEnterPassword": "Enter your password",
+  "authUseTenChars": "Use at least 10 characters",
+  "authGenericError": "Something went wrong. Please try again.",
+  "regionUnitedStates": "United States",
+  "regionCanada": "Canada",
+  "regionSaudiArabia": "Saudi Arabia",
+  "willOpeningInsert": "Insert an Islamic opening",
+  "willOpeningSubtitle": "Begin with the bismillah and the shahada, grounded in Qur'an and Sunnah. Optional — keep it, edit it, or clear it.",
+  "willOpeningFull": "Full",
+  "willOpeningShort": "Short",
+  "willOpeningInserted": "Opening inserted — edit or clear it as you wish.",
+  "mfaTitle": "Enter the 6-digit code",
+  "mfaResendWait": "Resend in {n}s",
+  "@mfaResendWait": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "mfaResendReady": "Didn’t get it?",
+  "mfaResend": "Resend code",
+  "mfaSubtitleSms": "We sent an SMS with a 6-digit code to your phone.",
+  "mfaSubtitleWhatsapp": "We sent a 6-digit code to your WhatsApp.",
+  "@mfaSubtitleWhatsapp": {
+    "description": "MFA prompt when the code was delivered over WhatsApp rather than SMS."
+  },
+  "mfaSubtitleTotp": "Open your authenticator app and enter the 6-digit code it shows.",
+  "@mfaSubtitleTotp": {
+    "description": "MFA prompt when the account uses an authenticator app — nothing was sent to them."
+  },
+  "secRcTitle": "Backup codes",
+  "@secRcTitle": {
+    "description": "Security settings: heading for single-use MFA recovery codes."
+  },
+  "secRcNone": "Not set up — you could be locked out if you lose your phone",
+  "secRcRemaining": "{count} of {total} left",
+  "@secRcRemaining": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "secRcLow": "Only {count} left — generate a new set",
+  "@secRcLow": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "secRcGenerate": "Generate backup codes",
+  "secRcRegenerate": "Generate a new set",
+  "secRcSaveNow": "Save these now. They are shown once and cannot be recovered — each one signs you in a single time if you lose your phone.",
+  "secRcReplaces": "Generating a new set immediately cancels your current codes.",
+  "secRcCopy": "Copy all",
+  "secRcCopied": "Backup codes copied.",
+  "secRcDone": "I have saved them",
+  "secTotpTitle": "Authenticator app",
+  "@secTotpTitle": {
+    "description": "Security settings: heading for the TOTP second factor."
+  },
+  "secTotpBlurb": "Sign in with a code from an app like Google Authenticator or 1Password. Free, works without signal, and safer than a text message.",
+  "secTotpOn": "On",
+  "secTotpOff": "Not set up",
+  "secTotpSetUp": "Set up",
+  "secTotpTurnOff": "Turn off",
+  "secTotpScan": "Scan this in your authenticator app, or paste the key below, then enter the 6-digit code it shows.",
+  "secTotpKey": "Setup key",
+  "secTotpConfirm": "Confirm",
+  "secTotpEnabled": "Authenticator app is on. You will no longer be texted a code.",
+  "secTotpDisabled": "Authenticator app turned off. Codes will be sent to you again.",
+  "secTotpCodeLabel": "6-digit code",
+  "mfaSubtitleEmail": "We emailed a 6-digit code to your inbox.",
+  "mfaVerify": "Verify",
+  "forgotTitle": "Reset your password",
+  "forgotSubtitle": "Enter your email and we'll send a 6-digit code.",
+  "forgotSentBody": "If an account exists for {email}, a reset link is on its way. The link expires in 1 hour.",
+  "@forgotSentBody": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "forgotSendCode": "Send code",
+  "forgotCodeSentBody": "If an account exists for {email}, a 6-digit code is on its way — by text message when a phone is on file, otherwise by email.",
+  "@forgotCodeSentBody": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "forgotBackToSignIn": "Back to sign in",
+  "forgotSendResetLink": "Send reset link",
+  "resetSuccess": "Password reset. Please sign in.",
+  "resetInvalidTitle": "Invalid reset link",
+  "resetInvalidSubtitle": "This link is missing or malformed. Request a new one.",
+  "resetRequestNew": "Request a new link",
+  "resetTitle": "Choose a new password",
+  "resetNewPasswordLabel": "New password",
+  "resetHelper": "At least 10 characters",
+  "resetValidator": "Use at least 10 characters",
+  "resetSubmit": "Reset password",
+  "verifyEmailSent": "Verification email sent.",
+  "verifyEmailVerifyingTitle": "Verifying your email",
+  "verifyEmailInvalid": "This verification link is invalid or has expired.",
+  "verifyEmailResend": "Resend verification email",
+  "verifyEmailVerified": "Your email is verified.",
+  "verifyEmailContinue": "Continue",
+  "verifyEmailSignIn": "Sign in",
+  "verifyEmailTitle": "Verify your email",
+  "verifyEmailSubtitle": "Check your inbox for a verification link.",
+  "dashGreeting": "Assalamu alaikum, {name}",
+  "@dashGreeting": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "dashStandardPlan": "Standard plan",
+  "dashCreateWill": "Create will",
+  "dashWillsLoadError": "We couldn't load your wills.",
+  "dashPrimaryWill": "Your primary will",
+  "dashPrimaryWillSealed": "Your will — sealed",
+  "dashHeirCount": "{count} heirs",
+  "@dashHeirCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dashBequest": "{pct}% in bequests",
+  "@dashBequest": {
+    "placeholders": {
+      "pct": {
+        "type": "String"
+      }
+    }
+  },
+  "dashSealed": "Sealed",
+  "dashDraft": "Draft",
+  "dashViewWill": "View will",
+  "dashSharesBreakdown": "Shares breakdown",
+  "dashBeginWill": "Begin your will",
+  "dashBeginBody": "A few minutes now spares your family months later. We compute the Sharia shares as you go.",
+  "dashCreateYourWill": "Create your will",
+  "dashPlanLoadError": "Couldn't load your plan.",
+  "dashYourPlan": "Your plan",
+  "dashCompedAccess": "Comped access",
+  "dashFeatureUnlimitedEdits": "Unlimited will edits",
+  "dashFeatureEncryptedVault": "Encrypted vault",
+  "dashFeatureVideoLegacy": "Video legacy messages — Premium",
+  "dashVerified": "Identity verified",
+  "dashUpgradePremium": "Upgrade to Premium",
+  "dashHeirs": "Heirs",
+  "dashHeirsCaption": "named in your will",
+  "dashWitnesses": "Witnesses",
+  "dashWitnessesCaption": "attesting your will",
+  "dashTrustees": "Trustees",
+  "dashTrusteesCaption": "who carry it out",
+  "dashIdPending": "Pending review",
+  "dashIdUnverified": "Identity not verified",
+  "dashChecklistTitle": "Your legacy, in order",
+  "dashChecklistCount": "{done} / {total}",
+  "@dashChecklistCount": {
+    "placeholders": {
+      "done": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "dashCkIdentity": "Identity verified",
+  "dashCkHeirs": "Heirs added",
+  "dashCkSealed": "Will sealed",
+  "dashCkVideo": "Record a video message",
+  "dashWillsSummaryTitle": "Your wills",
+  "dashSealedCountLine": "{count} sealed · witnessed",
+  "@dashSealedCountLine": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dashNoDraftLine": "nothing in draft",
+  "dashDraftLbl": "DRAFT",
+  "dashDraftStep": "Step {step} of 6",
+  "@dashDraftStep": {
+    "placeholders": {
+      "step": {
+        "type": "int"
+      }
+    }
+  },
+  "dashContinueDraft": "Continue",
+  "dashOpen": "Open",
+  "dashVault": "Vault",
+  "dashSecretsStored": "secrets stored",
+  "dashEncryptedLocked": "Client-side encrypted · locked",
+  "dashHeirContacts": "Heir contacts",
+  "dashContactsMissing": "missing",
+  "dashContactsComplete": "complete",
+  "dashContactsMeta": "Name, mobile & email per heir",
+  "dashConfirmed": "confirmed",
+  "dashTrustee": "Trustee",
+  "dashPendingCode": "pending code",
+  "dashResendSms": "Resend SMS code",
+  "dashFeatureVideoLegacyUnlocked": "Video legacy messages",
+  "dashRefReminder": "Share Wasiati, earn 2.5% of each friend’s first year — they get 10% off.",
+  "burialTitle": "Burial planning",
+  "burialSubtitle": "See what a dignified Islamic burial costs in your city today, and what that would come to in small, equal contributions — no interest, no profit.",
+  "burialCity": "City",
+  "burialCityHint": "Toronto, ON",
+  "burialCostToday": "Cost today",
+  "burialMaxPeriod": "10 years is the longest plan.",
+  "burialSavePlan": "Save this estimate",
+  "burialCovers": "Covers ghusl, kafan, janazah services, plot and burial. When prepayment opens, your grave would be reserved with a local mosque at today's price and your contributions held for you — we take no interest or profit. Ultimate plan, Canada & US.",
+  "burialYearsShort": "{years} yrs",
+  "@burialYearsShort": {
+    "placeholders": {
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "burialPlanHeader": "YOUR BURIAL ESTIMATE",
+  "burialPlanHeaderCity": "YOUR BURIAL ESTIMATE — {city}",
+  "@burialPlanHeaderCity": {
+    "placeholders": {
+      "city": {
+        "type": "String"
+      }
+    }
+  },
+  "burialAddedToSub": "Would be per month",
+  "burialPerMonth": "{money} /mo",
+  "@burialPerMonth": {
+    "placeholders": {
+      "money": {
+        "type": "String"
+      }
+    }
+  },
+  "burialFundedBy": "Fully funded by",
+  "burialWantRealNumber": "Want a real number?",
+  "burialQuoteDesc": "We'll request a quote from Islamic funeral providers near you.",
+  "burialRequestQuote": "Request a quote",
+  "burialUltimatePlan": "Ultimate plan (US & Canada)",
+  "burialUltimateDesc": "Burial planning is part of the Ultimate plan.",
+  "burialEstimateSummary": "{cost} · {months} equal contributions · no interest, no profit",
+  "@burialEstimateSummary": {
+    "placeholders": {
+      "cost": {
+        "type": "String"
+      },
+      "months": {
+        "type": "int"
+      }
+    }
+  },
+  "burialProviderQuote": "Provider quote: {amount}",
+  "@burialProviderQuote": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "burialProviderQuoteNotes": "Provider quote: {amount} · {notes}",
+  "@burialProviderQuoteNotes": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      },
+      "notes": {
+        "type": "String"
+      }
+    }
+  },
+  "burialQuoteRequested": "Quote requested — an admin is sourcing a real quote.",
+  "burialRequestRealQuote": "Request a real quote",
+  "burialSavedPlans": "Your saved plans",
+  "burialPlanSaved": "Estimate saved.",
+  "burialEnterCityCost": "Enter a city and today's cost.",
+  "adminCommerceEyebrow": "ADMIN — COMMERCE",
+  "adminCommerceTitle": "Catalog, promotions & offers",
+  "adminCommerceTabPlans": "Plans",
+  "adminCommerceTabPromotions": "Promotions",
+  "adminCommerceTabOffers": "Offers",
+  "adminConsoleTitle": "Console",
+  "adminConsolePill": "ADMIN",
+  "adminPlanPriceLabel": "Price ({currency})",
+  "@adminPlanPriceLabel": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "adminPlanPriceUpdated": "Price updated — live everywhere.",
+  "adminPlanEditPrice": "Edit price",
+  "adminPromoNewTitle": "New promotion",
+  "adminPromoCodeLabel": "Code (e.g. LAUNCH25)",
+  "adminPromoTypeLabel": "Type",
+  "adminPromoTypePercent": "Percent off",
+  "adminPromoTypeAmount": "Amount off (USD)",
+  "adminPromoValuePercentLabel": "Percent (1-100)",
+  "adminPromoValueAmountLabel": "Amount (cents)",
+  "adminPromoCreate": "Create",
+  "adminPromoCreated": "Promotion created.",
+  "adminPromoNewButton": "New promo",
+  "adminPromoEmpty": "No promotions yet.",
+  "adminPromoUsed": "used {count}×",
+  "@adminPromoUsed": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "adminPromoLimitsSection": "Limits",
+  "adminPromoMaxRedemptionsLabel": "Max redemptions",
+  "adminPromoMaxRedemptionsHelper": "Leave empty for unlimited",
+  "adminPromoStartsAtLabel": "Starts",
+  "adminPromoEndsAtLabel": "Ends",
+  "adminPromoDateAny": "Any time",
+  "adminPromoDateClear": "Clear",
+  "adminPromoErrorEndBeforeStart": "The end date must be after the start date.",
+  "adminPromoErrorCodeRequired": "Enter a code.",
+  "adminPromoUsedOf": "{used} of {max} used",
+  "@adminPromoUsedOf": {
+    "placeholders": {
+      "used": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      }
+    }
+  },
+  "adminPromoWindowFrom": "from {date}",
+  "@adminPromoWindowFrom": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "adminPromoWindowUntil": "until {date}",
+  "@adminPromoWindowUntil": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "adminPromoStatusLive": "Live",
+  "adminPromoStatusScheduled": "Scheduled",
+  "adminPromoStatusExpired": "Expired",
+  "adminPromoStatusExhausted": "Limit reached",
+  "adminPromoStatusInactive": "Inactive",
+  "adminPromoEditTitle": "Edit promotion",
+  "adminPromoEditTooltip": "Edit",
+  "adminPromoUpdated": "Promotion updated.",
+  "adminPromoArchive": "Archive",
+  "adminPromoArchived": "Promotion archived — it can be reinstated at any time.",
+  "adminPromoReinstate": "Reinstate",
+  "adminPromoReinstated": "Promotion reinstated.",
+  "adminPromoFirstTimeOnlyLabel": "First subscription only",
+  "adminPromoFirstTimeOnlyHelper": "Customers who have bought before are refused this code.",
+  "adminOfferEmpty": "No offers yet.",
+  "adminOfferLive": "Live",
+  "adminOfferOff": "Off",
+  "adminOfferEditTitle": "Edit offer",
+  "adminOfferEditTooltip": "Edit",
+  "adminOfferTitleLabel": "Title",
+  "adminOfferSubtitleLabel": "Subtitle",
+  "adminOfferBadgeLabel": "Badge",
+  "adminOfferCtaLabel": "Button label",
+  "adminOfferErrorTitleRequired": "A title is required.",
+  "adminOfferSaved": "Offer updated.",
+  "adminOfferActivated": "Offer is live.",
+  "adminOfferDeactivated": "Offer switched off.",
+  "adminOfferDeleteTitle": "Delete this offer?",
+  "adminOfferDeleteBody": "It disappears from the storefront immediately. Unlike a promotion, a deleted offer cannot be reinstated.",
+  "adminOfferDeleted": "Offer deleted.",
+  "relHusband": "Husband",
+  "relWife": "Wife",
+  "relSon": "Son",
+  "relDaughter": "Daughter",
+  "relFather": "Father",
+  "relMother": "Mother",
+  "relGrandfather": "Grandfather",
+  "relGrandmother": "Grandmother",
+  "relBrother": "Brother (full)",
+  "relSister": "Sister (full)",
+  "relMaternalSibling": "Sibling (maternal half)",
+  "relSonSon": "Son's son (grandson)",
+  "relSonDaughter": "Son's daughter (granddaughter)",
+  "relPaternalGrandmother": "Grandmother (paternal)",
+  "relMaternalGrandmother": "Grandmother (maternal)",
+  "relConsanguineBrother": "Brother (paternal half)",
+  "relConsanguineSister": "Sister (paternal half)",
+  "relFullNephew": "Brother's son (full)",
+  "relConsanguineNephew": "Brother's son (paternal half)",
+  "relFullUncle": "Paternal uncle (full)",
+  "relConsanguineUncle": "Paternal uncle (paternal half)",
+  "relFullCousin": "Paternal uncle's son (full)",
+  "relConsanguineCousin": "Paternal uncle's son (paternal half)",
+  "cwPageTitle": "Create your will",
+  "cwStep1": "Step 1 of 4 — Family & heirs",
+  "cwFamilyHeirs": "Family & heirs",
+  "cwWhoHeirs": "Who are your heirs?",
+  "cwHeirsSubtitle": "Add family members; shares are computed automatically to the fara'id.",
+  "cwSavedAuto": "Draft saved — you can leave and continue later",
+  "cwFillAi": "Ask Ameen to fill it",
+  "cwBack": "‹ Back",
+  "cwContinueBequests": "Continue to bequests ›",
+  "cwStep2": "STEP 2 OF 4 — BEQUEST",
+  "cwBequestTitle": "The free third",
+  "cwBequestSubtitle": "Up to one third of your estate may go to charity or to someone who does not inherit — a stepchild, a friend. Your heirs' fixed shares are never touched.",
+  "cwBequestWhoLabel": "Who receives it",
+  "cwBequestWhoHint": "A charity, a stepchild, a friend…",
+  "cwBequestAmount": "Bequest",
+  "cwOfEstate": "of the estate",
+  "cwOfFreeThird": "of the free third",
+  "cwWithinCap": "Within the one-third cap",
+  "cwBequestHelp": "Drag to set how much to leave. It can never exceed one third (⅓) — the fara'id shares always come first.",
+  "cwCreateMyWill": "Create my will ›",
+  "cwBequestNameNeeded": "Name who receives the bequest first.",
+  "cwContinueWords": "Continue to words ›",
+  "cwStep3": "STEP 3 OF 4 — WORDS",
+  "cwWordsTitle": "Words for my family",
+  "cwWordsSubtitle": "A personal message inside your will — released with it, up to 5,000 characters.",
+  "cwWordsHint": "In the name of Allah, the Most Gracious, the Most Merciful. This is what I enjoin upon my family: I testify that there is no god but Allah…    ↵ Press Enter to start from the classic wasiyya — or write your own",
+  "cwWordsDefault": "In the name of Allah, the Most Gracious, the Most Merciful.\n\nThis is what I enjoin upon my family: I testify that there is no god but Allah, alone without partner, and that Muhammad صلى الله عليه وسلم is His servant and Messenger; that Paradise is true, the Fire is true, and the Hour is coming without doubt, and Allah will resurrect those in the graves.\n\nI enjoin you to fear Allah, to set right what is between you, and to obey Allah and His Messenger if you are believers. Hold to prayer, be dutiful to one another, and forgive me my shortcomings. Settle my debts, and remember me in your duʿa'.",
+  "cwRelation": "Relation",
+  "cwName": "Name",
+  "cwLivePreview": "LIVE FARA’ID PREVIEW",
+  "cwLivePreviewShort": "FARA'ID",
+  "cwHeirCount": "{count, plural, =1{1 heir} other{{count} heirs}}",
+  "@cwHeirCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "cwUpdatesAsType": "updates as you type",
+  "cwPreviewFootnote": "Shares follow the fara'id for the heirs you've entered. The server recomputes and enforces the final split when you continue.",
+  "cwAddHeirPrompt": "Add an heir to see the live breakdown.",
+  "cwSexLabel": "I am",
+  "cwMale": "Male",
+  "cwFemale": "Female",
+  "cwWivesLabel": "Spouses",
+  "cwSpousesHelp": "Up to 4 wives — the spousal share is divided equally among them.",
+  "cwHusbandLabel": "Husband",
+  "cwChildrenLabel": "Children",
+  "cwParentsLabel": "Parents",
+  "cwFamilyFootnote": "Only living heirs at the time of death inherit. You'll confirm your region while creating your will.",
+  "cwAddExtended": "Add extended family — grandparents, siblings, uncles, cousins",
+  "cwExtendedFamily": "Extended family",
+  "cwSettleFootnote": "Debts you owe and any bequest (≤ ⅓) are settled before these shares.",
+  "cwBeforeShares": "BEFORE SHARES ARE DIVIDED",
+  "cwStep1Funeral": "Funeral expenses",
+  "cwStep2Debts": "Debts you owe (owed money) — settled in full first",
+  "cwStep3Bequest": "Bequest — up to one third of what remains",
+  "cwSharesApplyRest": "The shares below apply to the rest of the estate.",
+  "cwMadhhabQuestion": "Which school of jurisprudence (fiqh) do you follow?",
+  "cwMadhhabJumhur": "Jumhūr — the majority position as applied today, followed by Mālikī, Shāfiʿī and Ḥanbalī communities",
+  "cwMadhhabHanafi": "Ḥanafī — differs where a grandfather inherits alongside siblings",
+  "cwMadhhabMaliki": "Maliki",
+  "cwMadhhabShafii": "Shafi'i",
+  "cwMadhhabHanbali": "Hanbali",
+  "cwMadhhabNote": "The schools differ in one place for these heirs: whether a grandfather shares with siblings (majority) or blocks them (Ḥanafī). On returning a surplus to the heirs (radd), contemporary practice across the schools agrees.",
+  "cwComputedPer": "Computed per: {school}",
+  "@cwComputedPer": {
+    "placeholders": {
+      "school": {
+        "type": "String"
+      }
+    }
+  },
+  "cwDisclaimer": "I understand this document expresses my wishes under Islamic inheritance principles and that Wasiati does not provide legal advice. Requirements vary by jurisdiction; I may need witnesses or notarization for enforceability.",
+  "cwStepOf": "Step {step} of 6 — {name}",
+  "@cwStepOf": {
+    "placeholders": {
+      "step": {
+        "type": "String"
+      },
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "cwStepName1": "Family & heirs",
+  "cwStepName2": "Heir registry",
+  "cwStepName3": "Witnesses, trustee & guardian",
+  "cwStepName4": "Your estate & bequest",
+  "cwStepName5": "Wishes & words",
+  "cwStepName6": "Review & confirm",
+  "cwNavBack": "Back",
+  "cwNavContinue": "Continue",
+  "cwEstateTitle": "Your estate today",
+  "cwEstateEdit": "Edit assets & loans",
+  "cwShowAllRows": "Show all {n} assets & loans",
+  "@cwShowAllRows": {
+    "placeholders": {
+      "n": {
+        "type": "String"
+      }
+    }
+  },
+  "cwFxNote": "Foreign amounts converted to {currency} — your local currency, from your region — at today's rate.",
+  "@cwFxNote": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "cwEstateAssets": "ASSETS",
+  "cwEstateLoans": "DEBTS",
+  "cwEstateNet": "NET ESTATE",
+  "cwEstateNote": "From your inventory. Funeral costs and debts are settled first, then your bequest (max ⅓), then fara'id shares. Vault secrets stay out of the will — they release separately, encrypted.",
+  "cwEstateEmpty": "Nothing here yet — list what you own and owe so your family never has to search.",
+  "cwBequestCardTitle": "Bequest — the free third",
+  "cwBequestCardSub": "For charity, sadaqah jariyah, or people who don't inherit (a step-child, a friend). Capped at one third of the estate; heirs' shares are never touched.",
+  "cwBequestPctLabel": "Bequest — % of the free third",
+  "cwBequestHelpLead": "Up to one third of the estate may be bequeathed outside the fara'id. Your current bequest equals",
+  "cwOfEstateDot": "of the estate.",
+  "cwWishesCardTitle": "Funeral & burial wishes",
+  "cwWish1": "Ghusl and shrouding per the Sunnah",
+  "cwWish2": "A simple burial — no extravagance, no delay",
+  "cwWish3": "Bury me in the nearest Muslim cemetery",
+  "cwWish4": "Hold an ʿazāʾ (condolence gathering) — three days, no more",
+  "cwWish4No": "No ʿazāʾ gathering — duʿāʾ suffices",
+  "cwWishesNote": "Recorded in your will so your family isn't guessing at the hardest moment.",
+  "cwSealBtn": "Create & seal",
+  "cwMotherLbl": "Mother living",
+  "cwFatherLbl": "Father living",
+  "cwGmotherLbl": "Grandmother living",
+  "cwGmotherMaternalLbl": "Grandmother — mother’s mother",
+  "cwGmotherPaternalLbl": "Grandmother — father’s mother",
+  "cwGfatherLbl": "Grandfather (paternal) living",
+  "cwExtendedHead": "EXTENDED FAMILY — COUNTED ONLY WHEN THEY QUALIFY",
+  "cwBrothersLbl": "Brothers (full)",
+  "cwSistersLbl": "Sisters (full)",
+  "cwUnclesLbl": "Paternal uncles",
+  "cwCousinsLbl": "Cousins (uncle's sons)",
+  "cwDhawuNote": "If you have a son, your siblings, uncles and cousins inherit nothing — he blocks them entirely; with only daughters, an uncle may still take what remains after the fixed shares. Aunts, maternal uncles and their children are dhawu al-arham: Hanafis let them inherit when no sharer or residuary exists; Maliki and Shafi'i schools classically do not. Step-parents, step-children and adopted children do not inherit by sharia — provide for them through your bequest (up to ⅓) in the next step.",
+  "cwPreviewNote": "Shares update as you edit. Each share carries its basis — shown in the review step.",
+  "cwHeirRegTitle": "Heir registry",
+  "cwHeirRegSub": "Full name, mobile number and email for every heir — required so the will can be released to each of them at claim time.",
+  "cwFullNameLbl": "FULL NAME",
+  "cwFullNamePh": "Full legal name",
+  "cwPhoneLbl": "PHONE",
+  "cwEmailLbl": "EMAIL",
+  "cwPhonePh": "+966 55 123 4567",
+  "cwEmailPh": "care@bank.com",
+  "cwMinorLbl": "Under 18",
+  "cwGuardianNote": "Under 18 — the share is held in trust for them until they come of age, under the guardian set in the will flow (default: the surviving parent). Contact details route to the guardian.",
+  "cwHeirRegSeeded": "Pre-loaded from your family answers — these are the heirs who inherit under the fara'id. Anyone blocked from inheriting is left out. Edit, add or remove rows as you need.",
+  "cwAddHeirBtn": "+ Add heir",
+  "cwHeirRegMissing": "Every heir needs a full name, mobile number and email before the will can be sealed.",
+  "cwHeirRegDone": "All heirs have complete contact details",
+  "cwRelOther": "Other",
+  "cwWitTrustTitle": "Witnesses & trustee",
+  "cwWitTrustSub": "Two witnesses and a trustee confirm by SMS before the will can be sealed. You can review everything without them.",
+  "cwRoleWitness": "Witness",
+  "cwRoleTrustee": "Trustee",
+  "cwPendingLbl": "PENDING",
+  "cwConfirmedLbl": "CONFIRMED",
+  "cwWitGateNote": "Sealing unlocks once both witnesses and the trustee confirm — reviewing stays open meanwhile.",
+  "cwAddWitness": "+ Add witness",
+  "cwWitnessCountReq": "{added} of {required} required",
+  "@cwWitnessCountReq": {
+    "description": "Inline witness-minimum counter on create-will step 3, e.g. \"1 of 2 required\". Both numbers are pre-formatted in the locale's digits.",
+    "placeholders": {
+      "added": {
+        "type": "String"
+      },
+      "required": {
+        "type": "String"
+      }
+    }
+  },
+  "cwWitnessMinNote": "Add at least {required} witnesses to continue — a will cannot be signed or sealed with fewer.",
+  "@cwWitnessMinNote": {
+    "placeholders": {
+      "required": {
+        "type": "String"
+      }
+    }
+  },
+  "cwAddTrustee": "+ Add trustee",
+  "cwAdd": "Add",
+  "cwCancel": "Cancel",
+  "cwGuardTitle": "Guardianship of minor children",
+  "cwGuardSub": "Who cares for your children under 18. By default the surviving parent; or follow the Islamic order of guardianship; or name someone you trust.",
+  "cwGParentLbl": "Surviving parent (default)",
+  "cwGIslamicLbl": "Islamic order of guardianship",
+  "cwGNamedLbl": "Name a guardian",
+  "cwGParentNote": "The other parent is recorded as guardian of the person and of each minor's share until they come of age.",
+  "cwGIslamicNote": "This option names no one. It directs that your children’s care, and guardianship of their share, be settled under the sharia rules and the competent court applying at the time — the schools differ, and the two need not fall to the same person. To choose the person yourself, which every school allows, use “Name a guardian”.",
+  "cwReviewTitle": "Review & confirm",
+  "cwReviewPeople": "Witnesses, trustee & guardian",
+  "cwReviewGuardianLine": "Guardian of minors: {who}",
+  "@cwReviewGuardianLine": {
+    "placeholders": {
+      "who": {
+        "type": "String"
+      }
+    }
+  },
+  "cwWordsCount": "{count} / 5000",
+  "@cwWordsCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "cwSealNeedsDisclaimer": "Tick the confirmation above to seal.",
+  "cwEstateSummaryTitle": "Estate summary",
+  "cwUpgrade": "Upgrade",
+  "draftWillTitle": "My will — in progress",
+  "draftLbl": "DRAFT",
+  "draftContinue": "Continue",
+  "draftAutosaved": "autosaved",
+  "rsVideoTitle": "A VIDEO FOR YOUR FAMILY",
+  "rsVideoGateNote": "Video messages are a Premium feature. Upgrade to record encrypted video for your loved ones.",
+  "rsVideoRecord": "Record video",
+  "rsVideoUpload": "Upload video",
+  "rsVideoSkip": "Skip for now",
+  "rsVideoNote": "Record now or upload a file — encrypted like the vault, released with the will. Heirs see only that a message exists.",
+  "rsVideoSavedNote": "Encrypted · stored in your vault · plays after release",
+  "rsVideoDelete": "Delete",
+  "rsVideoDeferredNote": "Deferred — your will is complete without it; you can add a video any time.",
+  "rsVideoRecordNow": "Record now",
+  "rsVideoSavedToast": "Video encrypted and saved to your vault",
+  "rsVideoDeferredToast": "Skipped — you can add a video from your will any time",
+  "rsVideoMsgLabel": "Video message",
+  "rsVideoBadFile": "Choose an mp4, webm or mov video file.",
+  "wlTitle": "Your wills",
+  "wlSubtitle": "A sealed will can be reopened for editing on Standard and above.",
+  "wlCreateWill": "Create will",
+  "wlCapNote": "You can keep up to 3 drafts — delete one to start another.",
+  "wlNoWillsTitle": "No wills yet",
+  "wlNoWillsSubtitle": "Your will takes about ten minutes. We guide you through every step.",
+  "wlCreateYourWill": "Create your will",
+  "wlPrimaryWill": "My primary will",
+  "wlAdditionalWill": "Additional will",
+  "wlSealed": "Sealed",
+  "wlDraftNotSealed": "Draft — not yet sealed",
+  "wlMetaSealed": "sealed",
+  "wlMetaDraft": "draft",
+  "wlMetaBequest": "bequest {pct}% of the free third",
+  "@wlMetaBequest": {
+    "placeholders": {
+      "pct": {
+        "type": "String"
+      }
+    }
+  },
+  "wlTitleSealed": "{title} — sealed",
+  "@wlTitleSealed": {
+    "placeholders": {
+      "title": {
+        "type": "String"
+      }
+    }
+  },
+  "wlMetaWitnesses": "{confirmed} of {required} witnesses confirmed",
+  "@wlMetaWitnesses": {
+    "placeholders": {
+      "confirmed": {
+        "type": "int"
+      },
+      "required": {
+        "type": "int"
+      }
+    }
+  },
+  "wlMetaUpdated": "updated {date}",
+  "@wlMetaUpdated": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "wlSealedSupersede": "sealed {date} — a newer sealed will supersedes it automatically",
+  "@wlSealedSupersede": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "wlSecondWillTitle": "A second will",
+  "wlSecondWillBody": "For assets in another country or a different madhhab preference.",
+  "wlStart": "Start",
+  "wlOpen": "Open",
+  "wlSharesBreakdown": "Shares breakdown",
+  "wlContinue": "Continue",
+  "wlCreateAnotherPrompt": "Need a separate will for another jurisdiction? ",
+  "wlCreateAnother": "Create another will",
+  "wlLoadErrorTitle": "Could not load your wills.",
+  "wlTryAgain": "Try again",
+  "wlDeleteWill": "Delete will",
+  "wlDocsExtraTitle": "Directives — beyond the will",
+  "wlPoaTitle": "Financial power of attorney",
+  "wlPoaSub": "Authorizes a trusted agent to manage your finances if you become unable to — separate from your will, effective in life.",
+  "wlHcdTitle": "Healthcare directive",
+  "wlHcdSub": "Your treatment wishes and a healthcare agent, recorded with Islamic guidance in mind — separate from your will, effective in life.",
+  "wlDocSigned": "Signed",
+  "wlDocNotStarted": "Not started",
+  "wlDocPrepare": "Prepare & sign",
+  "wlDocEdit": "Edit",
+  "wlDocSaveSign": "Save & sign",
+  "wlDocAgentNameLbl": "AGENT FULL NAME",
+  "wlDocWishesLbl": "TREATMENT WISHES",
+  "wlDocWishesPh": "e.g. no prolonged life support; consult my healthcare agent and a scholar",
+  "wlDocAgentLine": "Agent: {name} · witnessed digitally",
+  "@wlDocAgentLine": {
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "wlDocToastSigned": "Signed & witnessed digitally · stored with your documents",
+  "wlDocGatedNudge": "Included with Premium and Ultimate.",
+  "wlDirectivesLink": "separate documents, effective during your life. Manage them from the Wills page.",
+  "wlManage": "Manage",
+  "wlDeleteWillTitle": "Delete this will?",
+  "wlDeleteWillBody": "This permanently deletes the sealed will, its shares and bequests, and the assets recorded on it. Your vault is not touched. We need to confirm it is really you.",
+  "wlDeleteDraftTitle": "Delete this draft?",
+  "wlDeleteDraftBody": "This permanently deletes the draft and everything recorded on it — heirs, shares, bequests and assets. It has not been signed or witnessed, so nothing else is affected. Your vault is not touched. We need to confirm it is really you.",
+  "wlDeleteOtpLabel": "Enter the SMS code we sent",
+  "wlDeleteDone": "Will deleted.",
+  "sealTitle": "Your will is sealed",
+  "sealBody": "Witnessed, computed to the fara'id, encrypted and safe. May it not be needed for a very long time.",
+  "sealWry": "“Thank God they'll only be reading this when I'm gone.”",
+  "sealViewWill": "View will",
+  "sealDownloadPdf": "Export PDF",
+  "sealBackHome": "Back to home",
+  "sealPdfComingSoon": "PDF export is being prepared for release.",
+  "rsStep3": "STEP 6 OF 6 — REVIEW & SEAL",
+  "rsReadTitle": "Read it as your family will",
+  "rsReadSubtitle": "Check every line. After sealing, changes need a reopen (Standard and above).",
+  "rsHeirsTitle": "Heirs & shares — computed to the fara'id",
+  "rsEditHeirs": "Edit heirs",
+  "rsNoHeirs": "No heirs recorded.",
+  "rsBequestsTitle": "Bequests — the free third",
+  "rsEditBequests": "Edit bequests",
+  "rsBequestNone": "None — up to a third may be left outside the shares.",
+  "rsWithinCap": "Within the ⅓ cap.",
+  "rsMessageTitle": "Words for my family",
+  "rsEditMessage": "Edit message",
+  "rsNoMessage": "No personal message added yet.",
+  "rsPeopleTitle": "Witnesses & trustee",
+  "rsEditPeople": "Edit people",
+  "rsNoneAdded": "none added",
+  "rsWitnessTrusteeLine": "Witnesses: {witnesses}   ·   Trustee: {trustees} (code sent on sealing)",
+  "@rsWitnessTrusteeLine": {
+    "placeholders": {
+      "witnesses": {
+        "type": "String"
+      },
+      "trustees": {
+        "type": "String"
+      }
+    }
+  },
+  "rsWitnessesInline": "Witnesses:",
+  "rsTrusteeInline": "Trustee:",
+  "rsCodeSentSuffix": "(code sent on sealing)",
+  "rsDocPreview": "DOCUMENT PREVIEW",
+  "rsLastWill": "Last Will & Testament",
+  "rsFullText": "Full text · English + العربية · PDF after sealing",
+  "rsReviewedConfirm": "I understand Wasiati provides a fara'id calculation for guidance and is not a fatwa or legal advice; my estate is divided according to the sharia (fara'id). I confirm the details above are accurate.",
+  "rsSealMyWill": "Seal my will",
+  "rsSignMyWill": "Sign my will",
+  "rsWaitingWitnesses": "Waiting for witnesses",
+  "rsSignedWaitingNote": "You've signed. Your will seals once your witnesses confirm by SMS ({signed} of {required} signed).",
+  "@rsSignedWaitingNote": {
+    "placeholders": {
+      "signed": {},
+      "required": {}
+    }
+  },
+  "rsSignNote": "Your digital signature locks the will; your witnesses are then asked to confirm by SMS.",
+  "rsSignedNoWitnesses": "You've signed. Add your witnesses in the will details so they can confirm by SMS — then you can seal.",
+  "rsWitnessCodesNote": "Witness SMS codes are sent the moment you seal.",
+  "rsVerifyEmailNotice": "Confirm your email address before sealing — it's the address your witnesses, trustee and heirs will be contacted at.",
+  "rsVerifyEmailCta": "Verify my email",
+  "wdMyPrimaryWill": "My primary will",
+  "wdSealedEstate": "Sealed · {tier} estate",
+  "@wdSealedEstate": {
+    "placeholders": {
+      "tier": {
+        "type": "String"
+      }
+    }
+  },
+  "wdDraftNotSealed": "Draft — not yet sealed",
+  "wdReopenToEdit": "Reopen to edit",
+  "wdReopenSnack": "Reopen to edit is available on Standard and above.",
+  "wdReviseOpened": "A revision draft has been opened. Your sealed will stays in force until you seal the new version.",
+  "dashRefOpen": "View referrals",
+  "settingsReferrals": "Referrals & account credit",
+  "settingsReferralsSub": "Your invite code, share link and earned credit.",
+  "wdDownloadPdf": "Download PDF",
+  "wdExportWaitingOn": "Waiting on: {parties}",
+  "@wdExportWaitingOn": {
+    "description": "Note under a disabled Download PDF button naming who has not signed/confirmed yet. {parties} is a ' · '-joined list, e.g. '1 witness · trustee'.",
+    "placeholders": {
+      "parties": {
+        "type": "String",
+        "example": "1 witness · trustee"
+      }
+    }
+  },
+  "wdExportWaitingWitnesses": "{count, plural, =1{1 witness} other{{count} witnesses}}",
+  "@wdExportWaitingWitnesses": {
+    "description": "The outstanding-witness fragment of the export 'Waiting on:' note — how many witnesses still have to sign.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wdExportWaitingTrustee": "trustee",
+  "@wdExportWaitingTrustee": {
+    "description": "The outstanding-trustee fragment of the export 'Waiting on:' note — the trustee has not confirmed yet."
+  },
+  "wdExportChecking": "Checking signatures…",
+  "@wdExportChecking": {
+    "description": "Note under a disabled Download PDF button while the witness/trustee rosters are still loading."
+  },
+  "wdReviewSeal": "Review & seal ›",
+  "wdAssetsTitle": "Assets & debts your heirs should know",
+  "wdAssetsSubtitle": "An inventory — accounts, property, and any money owed.",
+  "wdLegacyTitle": "Messages for your family",
+  "wdLegacySubtitle": "Record video & voice messages — released with your will.",
+  "wdShariaShares": "Shares — Fara'id",
+  "wdThHeir": "HEIR",
+  "wdThBasis": "BASIS",
+  "wdThShare": "SHARE",
+  "wdNoHeirs": "No heirs recorded yet.",
+  "wdTotalToHeirs": "Total to heirs",
+  "wdAddBequest": "Add bequest",
+  "wdBequestUsed": "{pct}% of estate used",
+  "@wdBequestUsed": {
+    "placeholders": {
+      "pct": {
+        "type": "String"
+      }
+    }
+  },
+  "wdBequestCap": "cap 33.3%",
+  "wdNoBequests": "No bequests yet — up to a third may be left outside the fara'id shares.",
+  "wdAddBequestTitle": "Add a bequest",
+  "wdBeneficiary": "Beneficiary",
+  "wdPercentOfEstate": "% of estate",
+  "wdFreeThirdHelper": "Free third: max 33.33% total",
+  "wdReviewerNote": "On your passing, a trustee submits a claim. A Wasiati reviewer verifies it before anything is released — nothing happens automatically.",
+  "wdMessageHint": "My dearest family — forgive my shortcomings, keep your prayers, and stay close to one another…",
+  "wdMessagePartOfWill": "Part of your will · released with it",
+  "wdSaveMessage": "Save message",
+  "wdMessageSaved": "Message saved with your will.",
+  "wdWitnesses": "Witnesses",
+  "wdTrustees": "Trustees",
+  "wdAddWitnessTitle": "Add witness",
+  "wdAddTrusteeTitle": "Add trustee",
+  "wdAddWitnessBtn": "+ Add witness",
+  "wdAddTrusteeBtn": "+ Add trustee",
+  "wdFullName": "Full name",
+  "wdPhone": "Phone (+…)",
+  "wdEmailOptional": "Email (optional)",
+  "wdInviteUnreached": "We couldn't reach them by text or email — check their number, or contact them yourself.",
+  "wdResend": "Resend",
+  "wdSendCode": "Send code",
+  "wdNoneAddedYet": "None added yet.",
+  "wdStatusConfirmed": "Confirmed by SMS",
+  "wdStatusCodeSent": "Code sent · awaiting confirmation",
+  "wdStatusPending": "Pending — no code sent yet",
+  "wdIdMatched": "ID matched",
+  "wdCodeSentSms": "Verification code sent by SMS.",
+  "wdCodeSentDev": "Code sent (dev): {code}",
+  "@wdCodeSentDev": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "wdUnpublish": "Unpublish",
+  "wdUnpublishTitle": "Unpublish this will?",
+  "wdUnpublishBody": "The will goes back to draft and is no longer in force. Your signature and every witness signature are cleared — sealing again is a fresh ceremony — and witnesses who signed will be told.",
+  "wdStepUpSmsSent": "Enter the confirmation code we sent to your phone by SMS.",
+  "wdStepUpEmailSent": "Enter the confirmation code we sent to your email.",
+  "wdStepUpCodeLabel": "Confirmation code",
+  "wdUnpublishDone": "The will is unpublished and back in draft.",
+  "wdErrorLoadTitle": "Could not load this will.",
+  "assetEyebrow": "MY PRIMARY WILL — ASSETS",
+  "assetTitle": "What should your heirs know about?",
+  "assetSubtitle": "An inventory, not valuations — so nothing is lost or forgotten.",
+  "assetAddButton": "Add asset",
+  "assetAddLoan": "Add loan",
+  "assetSectionAssets": "ASSETS",
+  "assetSectionLoans": "LOANS & LIABILITIES",
+  "assetInvTitle": "Add to the inventory",
+  "assetInvEditTitle": "Edit inventory item",
+  "assetExport": "Export to Excel",
+  "assetInvAsset": "Asset",
+  "assetInvLoan": "Loan",
+  "assetColAsset": "ASSET",
+  "assetColCategory": "CATEGORY",
+  "assetColHeldWith": "HELD WITH",
+  "assetColPhone": "PHONE",
+  "assetColEmail": "EMAIL",
+  "assetColValue": "VALUE",
+  "assetColStatus": "STATUS",
+  "assetFieldName": "NAME",
+  "assetFieldHeldWith": "HELD WITH / LENDER",
+  "assetFieldLender": "OWED TO / LENDER",
+  "assetFieldCategory": "CATEGORY",
+  "assetFieldValueCurrency": "VALUE & CURRENCY",
+  "assetFieldPhone": "PHONE",
+  "assetFieldEmail": "EMAIL",
+  "assetFieldAccountRef": "ACCOUNT / IBAN",
+  "assetHintName": "e.g. Gold — safe deposit",
+  "asNameRequired": "Give this asset a name so your family can identify it.",
+  "asValueInvalid": "Enter the value as a number, for example 250,000.",
+  "assetHintHeldWith": "e.g. SNB",
+  "assetHintValue": "250,000",
+  "assetHintPhone": "+966 55 123 4567",
+  "assetHintEmail": "care@bank.com",
+  "assetHintAccountRef": "e.g. SA03 8000 0000 6080 1016 7519",
+  "assetRefHelper": "Account or IBAN plus a contact, so your heirs know exactly where the asset is and who to call. Shown masked in the list.",
+  "assetCurrencyHelper": "The value is recorded in the currency you pick here and posts to your will exactly as entered — no conversion.",
+  "assetStatusManual": "Manual",
+  "assetTotalsTitle": "ESTATE TOTALS",
+  "assetTotalAssets": "Assets",
+  "assetNetEstate": "Net estate (after debts)",
+  "assetRegionNote": "Canada shows RRSP · TFSA · RESP · RRIF; the US shows 401(k) · IRA · Roth · 529. Debts you owe are settled in full before the fara'id shares are divided.",
+  "assetErrorHint": "Tap a suggestion above to add your first item.",
+  "assetEmptyHint": "No assets added yet — tap a suggestion above to start.",
+  "assetVaultNote": "Assets link to vault secrets: heirs see the asset exists; only the trustee unlocks the details after a claim is approved.",
+  "assetZakatTitle": "Zakat estimate",
+  "assetZakatSubline": "as of your hawl date · tap for the full calculation",
+  "assetZakatCaption": "estimated zakat due",
+  "assetAddTitle": "Add an asset",
+  "assetLabelField": "Label (e.g. Apartment, Riyadh)",
+  "assetKindField": "Kind",
+  "assetNotesField": "Notes (optional)",
+  "assetSuggestedFor": "SUGGESTED FOR {region}",
+  "@assetSuggestedFor": {
+    "placeholders": {
+      "region": {
+        "type": "String"
+      }
+    }
+  },
+  "assetDebtsHeading": "DEBTS & LIABILITIES — settled before shares",
+  "assetRegionKsa": "🇸🇦 KSA",
+  "assetRegionCa": "🇨🇦 CANADA",
+  "assetRegionUs": "🇺🇸 US",
+  "assetKindRealEstate": "Real estate",
+  "assetKindBank": "Bank / account",
+  "assetKindPension": "Pension",
+  "assetKindVehicle": "Vehicle",
+  "assetKindBusiness": "Business",
+  "assetKindLiability": "Debt / owed money",
+  "assetKindOther": "Other",
+  "assetRealEstate": "Real estate",
+  "assetBankAccount": "Bank account",
+  "assetVehicle": "Vehicle",
+  "assetBusiness": "Business",
+  "assetGold": "Gold / jewellery",
+  "assetEndOfService": "End-of-service benefits",
+  "assetGosiPension": "GOSI pension",
+  "assetLoanOwed": "Loan / owed money",
+  "assetMortgage": "Mortgage",
+  "assetCreditCard": "Credit card balance",
+  "assetUnpaidZakat": "Unpaid zakat / dues",
+  "assetValueField": "Estimated value (optional)",
+  "assetAmountOwed": "Amount owed (optional)",
+  "assetCurrencyField": "Currency",
+  "lgEyebrow": "LEGACY MESSAGES",
+  "lgTitle": "A few words they'll keep",
+  "lgSubtitle": "Released to your family alongside your will — never before. Say what a document can't.",
+  "lgLoadError": "We couldn't load your wills just now.",
+  "lgCreateFirst": "Create your will first — your message is kept with it.",
+  "lgWrittenMessage": "Written message",
+  "lgHint": "To my family — thank you for everything. When you read this…",
+  "lgSealedNote": "Your will is sealed — editing the message reopens it for re-sealing.",
+  "lgPrivateNote": "Kept private until your will is released to your heirs.",
+  "lgMessageSaved": "Message saved.",
+  "lgVideoTitle": "Video & voice messages",
+  "lgVideoBadge": "Premium · soon",
+  "lgVideoBody": "Record a short video or voice note for each person you name — encrypted end-to-end and released only with your will. We're building this on the same encrypted vault your documents already use; it isn't switched on yet, so we're not pretending it is.",
+  "lgNotifySnack": "We'll let you know the moment video messages are ready.",
+  "lgNotifyButton": "Notify me when it's ready",
+  "lgStartWill": "Start a will",
+  "kycTitle": "Identity verification",
+  "kycSubtitle": "Required once before your will can be sealed. Handled by Nafath in Saudi Arabia — or Stripe Identity elsewhere.",
+  "kycLoadError": "Could not load your verification status.",
+  "kycNafathSnack": "Nafath verification appears when your IP is in Saudi Arabia — enabled at launch.",
+  "kycVerifiedTitle": "You're verified",
+  "kycVerifiedBody": "Your wills can be sealed and your trustee claims will be honoured.",
+  "kycInProgress": "Verification in progress",
+  "kycNeedsRetry": "Needs another try",
+  "kycVerifyTitle": "You're not verified yet",
+  "kycPendingBody": "We're reviewing your documents — usually under two minutes.",
+  "kycRejectedBody": "We couldn't verify your ID. Please try again with a different document.",
+  "kycVerifyBody": "Verify once and your wills can be sealed, and your trustee's claims will be honoured.",
+  "kycVerifyNafath": "Verify with Nafath",
+  "kycNafathSub": "Saudi national digital identity",
+  "kycContinueVerification": "Continue verification",
+  "kycAllStates": "ALL STATES",
+  "kycStateUnverified": "Unverified",
+  "kycStateUnverifiedSub": "Verify with Nafath (KSA) or Stripe Identity",
+  "kycOutsideNote": "Outside Saudi Arabia? You'll be verified with Stripe Identity instead.",
+  "kycStatePending": "Pending review",
+  "kycStatePendingSub": "Usually under 2 minutes; we notify you",
+  "kycStateVerified": "Verified",
+  "kycStateVerifiedSub": "Unlocks sealing and claims",
+  "kycStateRejected": "Rejected",
+  "kycStateRejectedSub": "Reason shown; try again with a different document",
+  "vaultPassphraseShort": "Your passphrase must be at least 10 characters.",
+  "vaultAddSecretTitle": "Add a secret",
+  "vaultLabelField": "Label (e.g. Bank login)",
+  "vaultSecretField": "Secret value (password, PIN, key…)",
+  "vaultSiteField": "Site or app (optional)",
+  "vaultUserField": "Username or email (optional)",
+  "vaultNotesField": "Notes (optional — recovery codes, which branch, whom to call)",
+  "vaultAddHint": "One entry per account. Record the site or app, the username you sign in with, and the secret itself — the person who will one day need this is not you, and a password with no site and no username helps nobody.",
+  "vaultEncryptSave": "Encrypt & save",
+  "vaultUnlockTitle": "Vault is locked",
+  "vaultUnlockSubtitle": "Everything inside is encrypted on your device. Wasiati can never read it.",
+  "vaultFaceIdSnack": "Face ID unlock is enabled on your device at launch.",
+  "vaultUnlockFaceId": "Unlock with Face ID",
+  "vaultOr": "or passphrase",
+  "vaultPassphraseHint": "Your vault passphrase",
+  "vaultUnlockPassphrase": "Unlock",
+  "vaultForgotWarn": "If you lose your passphrase and Face ID, this vault cannot be recovered — not even by us. That is the point.",
+  "vaultTitle": "Vault",
+  "vaultSubtitle": "Encrypted on your device before it ever leaves. We store only ciphertext.",
+  "vaultUnlocked": "Unlocked",
+  "vaultAutoLockIn": "Auto-locks in {n}s",
+  "@vaultAutoLockIn": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "vaultRevealFootnote": "Reveals hide automatically after 10 seconds.",
+  "vaultDecryptFailed": "This secret can’t be decrypted with the current passphrase. It may have been saved under a different one — lock the vault and try another passphrase.",
+  "vaultAddSecretBtn": "Add secret",
+  "vaultLockNow": "Lock now",
+  "vaultEmptyTitle": "Your vault is empty",
+  "vaultEmptySubtitle": "Add a secret your family will need — a bank IBAN, a deed, a recovery phrase.",
+  "vaultWarnCallout": "If you forget your passphrase, these secrets cannot be recovered — by us or anyone. Consider sharing a hint with your trustee.",
+  "vaultUpgradeTitle": "The vault is part of Standard",
+  "vaultUpgradeBody": "It keeps account numbers, deeds and passwords encrypted for your family.",
+  "dcRejectTitle": "Reject claim",
+  "dcReason": "Reason",
+  "dcRejectReasonRequired": "A written reason is required to reject.",
+  "dcReject": "Reject",
+  "dcEyebrow": "ADMIN — DEATH CLAIMS",
+  "dcTitle": "Claims queue",
+  "dcCareNote": "Human review, always. Rejection requires a reason. Release is a separate, logged action.",
+  "dcNoPending": "No pending claims.",
+  "dcSubmittedBy": "Submitted by {phone}",
+  "@dcSubmittedBy": {
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      }
+    }
+  },
+  "dcSubmittedByFor": "Submitted by {phone} · for {email}",
+  "@dcSubmittedByFor": {
+    "placeholders": {
+      "phone": {
+        "type": "String"
+      },
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "dcCertificateOnFile": "Certificate on file",
+  "dcViewCertificate": "View certificate",
+  "dcCertificateOpenFailed": "That certificate could not be opened. Do not approve this claim until you have seen it.",
+  "dcStartReview": "Start review",
+  "dcApprove": "Approve",
+  "dcRelease": "Release",
+  "dcStatusSubmitted": "Submitted",
+  "dcStatusUnderReview": "Under review",
+  "dcStatusApproved": "Approved",
+  "dcStatusReleased": "Released",
+  "dcStatusRejected": "Rejected",
+  "navBurialQuotes": "Burial quotes",
+  "bqEyebrow": "ADMIN — BURIAL QUOTES",
+  "bqTitle": "Quote requests",
+  "bqCareNote": "A request means the client wants a real price. Call mosques and funeral homes in their city, then record the quote here — the client sees it on their Burial page.",
+  "bqNoPending": "No quote requests waiting.",
+  "bqRequestedBy": "Requested by {email}",
+  "@bqRequestedBy": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "bqEstimateLine": "Base {base} · projected {projected} over {years} yrs",
+  "@bqEstimateLine": {
+    "placeholders": {
+      "base": {
+        "type": "String"
+      },
+      "projected": {
+        "type": "String"
+      },
+      "years": {
+        "type": "int"
+      }
+    }
+  },
+  "bqQuotedLine": "Quoted: {amount}",
+  "@bqQuotedLine": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "bqStatusRequested": "Quote requested",
+  "bqStatusQuoted": "Quoted",
+  "bqRecordQuote": "Record quote",
+  "bqQuoteDialogTitle": "Record the sourced quote",
+  "bqAmountLabel": "Amount ({currency})",
+  "@bqAmountLabel": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "bqNotesLabel": "Notes (optional)",
+  "bqNotesHelper": "e.g. which mosque quoted it and what it covers",
+  "bqErrorAmountRequired": "Enter the quoted amount.",
+  "bqQuoteSaved": "Quote recorded — the client can now see it.",
+  "auEyebrow": "ADMIN — USERS",
+  "auUsersCount": "{count} users",
+  "@auUsersCount": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "auRefresh": "Refresh",
+  "auByRegion": "Users by region",
+  "auIdVerification": "ID verification",
+  "auByRole": "By role",
+  "auNoData": "No data",
+  "auAllUsers": "All users",
+  "auColEmail": "Email",
+  "auColPhone": "Phone",
+  "auColRegion": "Region",
+  "auColRole": "Role",
+  "auColId": "ID",
+  "auColEmailVerified": "Email verified",
+  "auColComp": "Comp",
+  "auColLastIp": "Last IP",
+  "auColJoined": "Joined",
+  "auTitle": "Users",
+  "auExportExcel": "Export to Excel",
+  "auStatTotalUsers": "TOTAL USERS",
+  "auStatSealedWills": "SEALED WILLS",
+  "auStatIdVerified": "ID VERIFIED",
+  "auStatDeltaWeek": "+{count} this week",
+  "@auStatDeltaWeek": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "auStatInReview": "{pct}% in review",
+  "@auStatInReview": {
+    "placeholders": {
+      "pct": {
+        "type": "int"
+      }
+    }
+  },
+  "auColUser": "User",
+  "auColPlan": "Plan",
+  "auColIdentity": "Identity",
+  "auPlanFree": "Free",
+  "auPlanBasic": "Basic",
+  "auPlanStandard": "Standard",
+  "auPlanPremium": "Premium",
+  "auPlanUltimate": "Ultimate",
+  "auCompTitle": "Comped access",
+  "auCompBody": "Grant {email} a tier with no payment — investor demos, QA and support accounts run on this.",
+  "@auCompBody": {
+    "placeholders": {
+      "email": {
+        "type": "String"
+      }
+    }
+  },
+  "auCompTierLabel": "Tier",
+  "auCompGrant": "Grant",
+  "auCompRevoke": "Revoke comp",
+  "auCompGranted": "Comp granted.",
+  "auCompRevoked": "Comp revoked.",
+  "auCompChip": "Comp · {tier}",
+  "@auCompChip": {
+    "placeholders": {
+      "tier": {
+        "type": "String"
+      }
+    }
+  },
+  "prLoadError": "Could not load pricing:",
+  "prPlansFor": "Plans for {region}",
+  "@prPlansFor": {
+    "placeholders": {
+      "region": {
+        "type": "String"
+      }
+    }
+  },
+  "prPricesIn": "Prices in {currency} · set by region · admin-editable at runtime",
+  "@prPricesIn": {
+    "placeholders": {
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "prNoPlans": "No plans configured for this region yet.",
+  "prChoose": "Choose {plan}",
+  "@prChoose": {
+    "placeholders": {
+      "plan": {
+        "type": "String"
+      }
+    }
+  },
+  "prUltimateTitle": "Ultimate — burial & funeral planning",
+  "prNotInRegion": "NOT IN YOUR REGION",
+  "prUltimateSub": "Prepaid burial contributions added to your subscription.",
+  "prLearnMore": "Learn more",
+  "prAlreadySubscribed": "Already subscribed?",
+  "prBillingSub": "Invoices, payment method, cancel anytime.",
+  "prManageBilling": "Manage billing",
+  "prPromoTitle": "Promo code",
+  "prPromoHint": "e.g. RAMADAN30",
+  "prApply": "Apply",
+  "prCouldNotCheck": "Could not check code.",
+  "prCodeApplied": "Code applied",
+  "prInvalidCode": "Invalid code",
+  "prGatedTitle": "The encrypted vault keeps account numbers, deeds and passwords safe for your family.",
+  "prGatedSub": "It's part of Standard — shown here as a soft prompt, never a hard wall.",
+  "prUpgrade": "Upgrade",
+  "prBillingMonthly": "Monthly",
+  "prBillingAnnual": "Annual",
+  "prCycleOnce": "One-time",
+  "prCycleYearly": "Yearly",
+  "prTwoMonthsFree": "2 months free",
+  "prOneTimeNote": "One-time: pay once, keep your will, vault and inventory for life. Updates and re-sealing included; burial contributions still require an active Ultimate subscription.",
+  "prPlansTitle": "Plans",
+  "prPlansSubtitle": "Prices set automatically for your region — {region} · {currency}",
+  "@prPlansSubtitle": {
+    "placeholders": {
+      "region": {
+        "type": "String"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "prCycleYearlySave": "SAVE 10%",
+  "prMonthlyCommit": "All subscription plans carry a minimum one-year, non-refundable commitment. You can upgrade or downgrade between plans on monthly billing only. One-time and yearly options are billed up front.",
+  "prNoUltimateNote": "Ultimate is not offered in {region} — burial carries no cost here, so there is nothing to pre-plan or finance. It appears automatically for members in the US and Canada.",
+  "@prNoUltimateNote": {
+    "placeholders": {
+      "region": {
+        "type": "String"
+      }
+    }
+  },
+  "prChoosePlan": "Choose plan",
+  "prMostPopular": "MOST POPULAR",
+  "prLiveLabel": "LIVE",
+  "aiFatal503": "AI intake isn't switched on for this server yet. You can still build your will by hand.",
+  "aiResumed": "Welcome back — your conversation continues where it left off.",
+  "aiGuidedIntake": "GUIDED INTAKE",
+  "aiPremium": "Premium",
+  "aiTalkThrough": "Let's talk it through",
+  "aiComposerHint": "Type your answer…",
+  "aiMicListen": "Speak to Ameen",
+  "aiMicStop": "Stop",
+  "aiMicListening": "Listening… speak now",
+  "aiCaptured": "WHAT I'VE CAPTURED",
+  "aiHeirs": "Heirs",
+  "aiHeirsNone": "None yet — I'll list them here as we talk.",
+  "aiAssets": "Assets",
+  "aiAssetsNone": "None yet.",
+  "aiReadyTitle": "Ready when you are",
+  "aiReadyBody": "I'll turn this into a proper will you can review, edit and seal.",
+  "aiTurnIntoWill": "Turn this into a will",
+  "aiHintCard": "Nothing here is final. Everything you say becomes an editable draft — the Sharia shares are computed for you afterwards.",
+  "aiGatedBadge": "Premium feature",
+  "aiGatedTitle": "Talk your will into being",
+  "aiGatedBody": "Guided intake lets you build your will by conversation instead of forms — describe your family and estate in your own words, and we structure it for you. It's part of Premium and Ultimate.",
+  "aiBuildByHand": "Build a will by hand",
+  "prBillingCancelSub": "Cancel subscription",
+  "prBillingResume": "Resume subscription",
+  "kycVerifyDocument": "Verify my identity",
+  "kycUnavailable": "Identity verification is being switched on. Nothing is needed from you yet.",
+  "prPromoCheckoutNote": "Also works at Stripe.",
+  "prUltimateRegionSub": "Available in Canada & US only.",
+  "relBaytAlMal": "Bayt al-mal (public treasury)",
+  "@burialContributionSummary": {
+    "placeholders": {
+      "months": {
+        "type": "int"
+      },
+      "cost": {
+        "type": "String"
+      }
+    }
+  },
+  "burialContributionPeriod": "Contribution period",
+  "burialContributionSummary": "{months} equal contributions · total {cost} exactly — no interest, no profit.",
+  "burialTerms": "This is an estimate, not a payment plan. Nothing has been charged and no money is being held for you yet — prepayment is not available on your account, and we will ask before anything is ever taken. The figures show what a grave in this city costs today and what that would come to each month, so you can plan. When prepayment opens, your contributions would be your own money, held for you and refundable at any time.",
+  "cwMadhhabMalikiShafii": "Mālikī / Shāfiʿī — classical view",
+  "refTitle": "Invite a friend",
+  "refSubtitle": "They get 10% off. You earn 2.5% of their first year or one-time purchase.",
+  "refYourCode": "Your referral code",
+  "refCopyLink": "Copy link",
+  "refCopied": "Share link copied",
+  "refInvited": "Invited",
+  "refRewarded": "Rewarded",
+  "refCapped": "Capped",
+  "refCreditAvailable": "Credit available",
+  "refCreditHeld": "Held",
+  "refCreditHeldNote": "Referral credit becomes spendable {days} days after your friend’s purchase — that covers the refund window.",
+  "refEarnedThisYear": "Earned this year",
+  "refYearlyCap": "of {cap} yearly cap",
+  "refHaveCode": "Have a referral code?",
+  "refEnterCode": "Enter code",
+  "refApply": "Apply",
+  "refApplied": "Referral code applied.",
+  "refCodeChip": "Referral code {code} will be applied",
+  "refTerms": "Applies to annual and one-time plans only. Monthly plans do not qualify.",
+  "refLoadError": "Couldn’t load your referral details.",
+  "refHistoryTitle": "Credit history",
+  "refHistoryEmpty": "No credit activity yet.",
+  "refHistoryError": "Couldn’t load your credit history.",
+  "refHistoryReasonReferral": "Referral reward",
+  "refHistoryReasonPurchase": "Applied to a purchase",
+  "refHistoryReasonAdjustment": "Adjustment",
+  "refHistoryReasonRefund": "Refund",
+  "refHistorySpendable": "spendable {date}",
+  "@refHistorySpendable": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "navReferrals": "Invite a friend",
+  "@refCreditHeldNote": {
+    "placeholders": {
+      "days": {
+        "type": "int"
+      }
+    }
+  },
+  "@refYearlyCap": {
+    "placeholders": {
+      "cap": {
+        "type": "String"
+      }
+    }
+  },
+  "@refCodeChip": {
+    "placeholders": {
+      "code": {
+        "type": "String"
+      }
+    }
+  },
+  "navZakat": "Zakat",
+  "zakatBackToAssets": "‹ Back to assets",
+  "@zakatBackToAssets": {
+    "description": "Breadcrumb on the zakat screen returning to the assets page the user opened it from."
+  },
+  "zakatBackToDashboard": "‹ Back to dashboard",
+  "@zakatBackToDashboard": {
+    "description": "Breadcrumb on the zakat screen when it was opened directly (deep link), so there is no prior page to return to."
+  },
+  "zakatTitle": "Zakat estimate",
+  "zakatSubtitle": "On your cash, bank balances, shares and gold.",
+  "zakatDue": "Zakat due",
+  "zakatNoneDue": "No zakat due",
+  "zakatBelowNisab": "Your zakatable wealth is below the nisab of {nisab}.",
+  "zakatBase": "Zakatable total",
+  "zakatNisab": "Nisab (85g of gold)",
+  "zakatRate": "Rate — one quarter of one tenth (rubʿ al-ʿushr)",
+  "zakatHawl": "Hawl date",
+  "zakatHawlNotSet": "Not set",
+  "zakatSetHawl": "Set hawl date",
+  "zakatHawlHijriOnly": "Hijri only — the day (1–30) and month of your zakat anniversary.",
+  "zakatHawlDay": "Day",
+  "zakatHawlMonth": "Month",
+  "zakatHawlSaved": "Hawl date saved",
+  "zakatCryptoExcluded": "Crypto is not counted in the zakat base.",
+  "zakatUnconverted": "{count} holding(s) in {currency} are not counted: we have no fixed exchange rate to your currency and will not guess one.",
+  "zakatPayNow": "Pay your zakah",
+  "zakatDisclaimer": "This estimate may not be calculated correctly for your situation and is not a religious ruling. It assumes shares are held for trading, excludes your home, vehicles and pension, ignores debts deductible against zakat, and uses an approximate nisab. Real estate held for trade, business inventory and other cases have their own rules — verify with a scholar or your local zakat authority before paying.",
+  "zakatUnavailable": "The zakat estimate is unavailable right now.",
+  "zakatBasisCash": "Cash on hand — zakatable in full.",
+  "zakatBasisBank": "Bank balances — treated as cash.",
+  "zakatBasisShares": "Shares — zakatable at their market value, held for trading.",
+  "zakatBasisGold": "Gold — zakatable by value.",
+  "checkinTitle": "Inactivity check-in",
+  "checkinSubtitle": "We will ask, now and then, whether you are still with us. Two unanswered reminders alert your trustee — nothing is released.",
+  "checkinEnable": "Enable check-in",
+  "checkinFrequency": "How often",
+  "checkinMonthly": "Monthly",
+  "checkinQuarterly": "Quarterly",
+  "checkinYearly": "Yearly",
+  "checkinLoadError": "We couldn't load your latest check-in settings — showing defaults.",
+  "checkinLastConfirmed": "Last confirmed",
+  "checkinNever": "Never",
+  "checkinConfirmNow": "I am still here",
+  "checkinConfirmed": "Thank you. Your reminders have been reset.",
+  "checkinTrusteeAlerted": "Your trustee has been alerted that you missed your check-ins.",
+  "claimPolicyTitle": "Who may report my death",
+  "claimPolicyTrustee": "My trustee only",
+  "claimPolicyHeirs": "Heirs, with documents",
+  "claimPolicyBoth": "Either",
+  "claimPolicySaved": "Saved",
+  "settingsSaveFailed": "Could not save that change.",
+  "hijriMonth1": "Muharram",
+  "hijriMonth2": "Safar",
+  "hijriMonth3": "Rabiʿ I",
+  "hijriMonth4": "Rabiʿ II",
+  "hijriMonth5": "Jumada I",
+  "hijriMonth6": "Jumada II",
+  "hijriMonth7": "Rajab",
+  "hijriMonth8": "Shaʿban",
+  "hijriMonth9": "Ramadan",
+  "hijriMonth10": "Shawwal",
+  "hijriMonth11": "Dhu al-Qaʿdah",
+  "hijriMonth12": "Dhu al-Hijjah",
+  "@zakatBelowNisab": {
+    "placeholders": {
+      "nisab": {
+        "type": "String"
+      }
+    }
+  },
+  "@zakatUnconverted": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "currency": {
+        "type": "String"
+      }
+    }
+  },
+  "zakatCatCash": "Cash",
+  "zakatCatBank": "Bank balances",
+  "zakatCatShares": "Shares",
+  "zakatCatGold": "Gold",
+  "assetKindCash": "Cash",
+  "assetKindShares": "Shares",
+  "assetKindGold": "Gold",
+  "assetKindCrypto": "Crypto",
+  "exportTitle": "Download your will",
+  "exportFormat": "Format",
+  "exportFormatTable": "Structured listing",
+  "exportFormatTableSub": "Heirs, shares and bequests as tables.",
+  "exportFormatEssay": "Narrative will",
+  "exportFormatEssaySub": "The same, written as a testamentary essay.",
+  "wpPreviewHead": "Preview",
+  "wpEstateFormat": "ESTATE FORMAT",
+  "wpFormatTable": "Table",
+  "wpFormatNarrative": "Narrative",
+  "wpSharesAs": "SHARES AS",
+  "wpSharesPercent": "%",
+  "wpSharesFraction": "Fraction",
+  "wpFormatHelp": "How your assets & loans read in the exported will — a listed table, or flowing will language written for you.",
+  "wpPreviewFailed": "The preview could not be rendered. Please try again.",
+  "wpPreviewRetry": "Retry",
+  "exportLanguage": "Language",
+  "exportLangEnglish": "English",
+  "exportLangArabic": "العربية",
+  "exportDownload": "Download",
+  "adminContentTitle": "Content",
+  "adminContentSubtitle": "Edit user-facing strings. Changes publish live over the app’s built-in copy.",
+  "adminContentKey": "Key",
+  "adminContentEn": "English",
+  "adminContentAr": "Arabic",
+  "adminContentNote": "Note (optional)",
+  "adminContentPublished": "Published",
+  "adminContentDraft": "Draft",
+  "adminContentAdd": "Add string",
+  "adminContentEdit": "Edit",
+  "adminContentSave": "Publish",
+  "adminContentRemove": "Remove override",
+  "adminContentRemoved": "Reverted to the built-in string.",
+  "adminContentSaved": "Published live.",
+  "adminContentHistory": "History",
+  "adminContentEmpty": "No overrides yet. Add one to change a string without an app release.",
+  "adminContentBothRequired": "Both English and Arabic are required.",
+  "adminContentEditedBy": "{who} · {when}",
+  "navAdminContent": "Content",
+  "@adminContentEditedBy": {
+    "placeholders": {
+      "who": {
+        "type": "String"
+      },
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "wsChooseTitle": "How would you like to write your will?",
+  "wsChooseSubtitle": "Both paths end at the same review — you confirm every detail before anything is sealed.",
+  "wsAmeenTitle": "Talk to Ameen",
+  "wsAmeenSub": "Answer a few questions in plain words; Ameen drafts your will. Nothing is added without your confirmation.",
+  "wsAmeenBadge": "INCLUDED IN YOUR PLAN",
+  "wsAmeenVerse": "Al-Ameen — the trustworthy — the name the Prophet ṣallā Allāhu ʿalayhi wa-sallam was known by",
+  "wsFormTitle": "Guided form",
+  "wsFormSub": "Fill it in yourself, step by step, with a live view of the shares.",
+  "wsFormMeta": "≈ 5 minutes · autosaves as you go",
+  "wsChooseNote": "You can switch anytime — Ameen's confirmed items appear in the form, and the form's answers are visible to Ameen.",
+  "wsAmeenPremium": "Premium feature",
+  "vaultExport": "Export",
+  "vaultExportWarnTitle": "Export secrets as readable text?",
+  "vaultExportWarnBody": "The file this creates is NOT encrypted — anyone who can read it holds every secret in this vault. Save it only somewhere as safe as the vault itself, such as a home safe or a bank deposit box, and delete the file once it has served its purpose.",
+  "vaultExportConfirm": "Export as plain text",
+  "vaultExportHeader": "Wasiati vault — exported {date}",
+  "@vaultExportHeader": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "vaultExportHeaderWarn": "This file is not encrypted. Anyone who can read it can read every secret below. Delete it after use.",
+  "vaultExportDone": "Exported {count} secrets to wasiati-vault.txt. Delete the file once it has served its purpose.",
+  "@vaultExportDone": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "vaultExportSkipped": "{count} items could not be decrypted and were left out.",
+  "@vaultExportSkipped": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "vaultImport": "Import passwords",
+  "vaultImportTitle": "Import from Chrome or Apple Passwords",
+  "vaultImportHow": "Export your passwords to a CSV, then paste its contents below. Everything is encrypted on this device before it is saved — the text you paste never leaves your device unencrypted.",
+  "vaultImportPaste": "Paste your exported CSV here",
+  "vaultImportPreview": "{count} passwords found",
+  "vaultImportNone": "No passwords found — is this a Chrome or Apple Passwords export?",
+  "vaultImportSkipped": "{count} rows skipped (no password).",
+  "vaultImportRun": "Import {count}",
+  "vaultImporting": "Importing…",
+  "vaultImportDone": "Imported {count} passwords.",
+  "vaultImportDeleteFile": "Now delete the exported CSV file from your device — it is not encrypted.",
+  "@vaultImportPreview": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@vaultImportSkipped": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@vaultImportRun": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@vaultImportDone": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "vidTitle": "Video messages",
+  "vidSubtitle": "A recorded message for your family, released with your will. Encrypted; only you can see it until then.",
+  "vidStorage": "{used} of {quota} used",
+  "vidStorageFull": "Your 1 GB storage is full. Delete a video, or email us for a secure upload link.",
+  "vidNone": "No videos yet.",
+  "vidAdd": "Add a video",
+  "vidUploadFile": "Upload a file",
+  "vidRecord": "Record now",
+  "vidRecordSoon": "Recording is coming soon — upload a file for now.",
+  "vidDelete": "Delete",
+  "vidDeleted": "Video deleted.",
+  "vidUnavailable": "Video storage isn’t enabled yet.",
+  "vidDeleteConfirm": "Delete this video? This cannot be undone.",
+  "@vidStorage": {
+    "placeholders": {
+      "used": {
+        "type": "String"
+      },
+      "quota": {
+        "type": "String"
+      }
+    }
+  },
+  "vidBadType": "Please choose an MP4, WEBM or MOV file.",
+  "vidUploaded": "Video uploaded.",
+  "vidPlay": "Play video",
+  "vidPlayError": "Could not open this video. Please try again.",
+  "vidScanPending": "This video is still being checked. Try again shortly.",
+  "vidScanFailed": "This video failed a security check and cannot be played.",
+  "vrTitle": "Record a message",
+  "vrStart": "Start recording",
+  "vrStop": "Stop",
+  "vrPause": "Pause",
+  "@vrPause": {
+    "description": "Pauses a recording in progress, keeping what has been recorded."
+  },
+  "vrResume": "Resume",
+  "vrPauseFailed": "That could not be paused. Your recording is still running.",
+  "vrTimeLeft": "{time} left",
+  "@vrSecondsLeft": {
+    "description": "Time remaining, shown over the last five minutes before the automatic stop.",
+    "placeholders": {
+      "time": {
+        "type": "String"
+      }
+    }
+  },
+  "vrMaxLengthReached": "One hour reached — your recording is saved and ready to review.",
+  "@vrMaxLengthReached": {
+    "description": "Shown when a recording hits the maximum length and is stopped automatically."
+  },
+  "vrRetake": "Retake",
+  "vrUse": "Use this video",
+  "vrPermission": "Camera and microphone access is needed to record.",
+  "vrNoCamera": "No camera found on this device.",
+  "vrBusy": "Your camera is in use by another app. Close it and try again.",
+  "vrInsecure": "Recording needs a secure (https) connection.",
+  "vrUnsupported": "This browser can't record video. Try Chrome, Edge or Safari — or upload a file instead.",
+  "vrFailed": "Recording stopped unexpectedly. Please try again.",
+  "vrTooLarge": "That recording is too large to upload. Record a shorter message, or upload a file instead.",
+  "vrRecording": "Recording…",
+  "vrUploading": "Uploading…",
+  "authContinueGoogle": "Google",
+  "authContinueApple": "Apple",
+  "authUsePasskey": "Continue with passkey",
+  "authContinueNafath": "Continue with Nafath",
+  "authContinueEmail": "Continue with email",
+  "authRecommended": "RECOMMENDED",
+  "authOr": "or",
+  "authGoogleFailed": "Google sign-in did not complete. Please try again.",
+  "@authGoogleFailed": {
+    "description": "Generic failure of the Google sign-in ceremony."
+  },
+  "authGoogleMisconfigured": "Google sign-in is not fully set up on this app yet. Please use another method.",
+  "@authGoogleMisconfigured": {
+    "description": "Google returned no id_token, which means a missing server client id."
+  },
+  "authMethodSoon": "This sign-in option isn’t enabled in this build yet — use email for now.",
+  "authDetectedRegion": "Detected region: {info}",
+  "@authDetectedRegion": {
+    "placeholders": {
+      "info": {
+        "type": "String"
+      }
+    }
+  },
+  "lndHeroTitle": "Don’t let two nights pass without a will!",
+  "lndHeroSub": "Honored in minutes — shares computed, secrets vaulted, your words delivered to the people you love.",
+  "lndCtaStart": "Start my will",
+  "lndCtaPlans": "See plans",
+  "lndWhyTitle": "Why Wasiati",
+  "lndWhy1t": "Your whole legacy, one place",
+  "lndWhy1d": "Will, vault, zakat estimate, video messages and burial wishes — everything your family will need, kept together and always current.",
+  "lndWhy2t": "Your language, your school of thought",
+  "lndWhy2d": "Fully Arabic or English — down to the exported will. Shares follow the majority view of the scholars, or your own school: Hanafi, Maliki, Shafi’i or Hanbali.",
+  "lndWhy3t": "It doesn’t stop at sealing",
+  "lndWhy3d": "Gentle check-ins while you live; at claim time a human reviews the documents, then your will, vault and videos reach your heirs.",
+  "lndWhy4t": "Minutes, not billable hours",
+  "lndWhy4d": "Four guided steps, live shares as you type, sealed today — at a fraction of a lawyer’s fee, in Arabic or English, with Nafath sign-in.",
+  "lndWhy5t": "Simple, by design",
+  "lndWhy5d": "One plain question at a time — no legal jargon, no forms that feel like court. If it isn’t needed, you’re never asked.",
+  "lndDisclaimer": "Wasiati is not a law firm, and its employees are not lawyers. Nothing on this site is intended to create a lawyer–client relationship, and your use of Wasiati does not and will not create one between you and Wasiati. Wasiati is not a substitute for the advice of a lawyer and does not give legal advice or legal recommendations of any kind. We provide a service that lets you answer a series of questions and complete your own will. For more information, see our Disclaimer & Terms of Use.",
+  "lndLegalLink": "Disclaimer & Terms of Use",
+  "lndPrivacyLink": "Privacy Policy",
+  "lndCopyright": "© 2026 Wasiati Inc.",
+  "prPerMonth": "/mo",
+  "prPerYear": "/yr",
+  "prUltimateNotOneTime": "Ultimate is a subscription. Its burial pre-planning is funded by contributions over 3, 5 or 10 years, so it isn’t available as a one-time purchase — choose Monthly or Yearly to include it.",
+  "billingTitle": "Billing",
+  "billingSubtitle": "Your plan, payment method and invoices.",
+  "billingCurrentPlan": "CURRENT PLAN",
+  "billingRenewsOn": "Renews {date} · {price}",
+  "@billingRenewsOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      },
+      "price": {
+        "type": "String"
+      }
+    }
+  },
+  "billingRenewsOnPlain": "Renews {date}",
+  "@billingRenewsOnPlain": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "billingEndsOn": "Access ends {date}",
+  "@billingEndsOn": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "billingCancelling": "Cancelling at period end — your will and vault stay yours.",
+  "billingPastDueLine": "Payment failed on {date}",
+  "@billingPastDueLine": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "billingPastDueHelp": "We couldn’t charge your card and will retry. Update your card below to keep your plan — after several failed attempts it is cancelled.",
+  "billingPaymentMethod": "PAYMENT METHOD",
+  "billingChangeCard": "Change card",
+  "billingCardOnFile": "Card on file",
+  "billingNoCard": "No card saved",
+  "billingCardUnavailable": "Card management is unavailable on this environment.",
+  "billingInvoices": "INVOICES",
+  "billingNoInvoices": "No invoices yet. Your receipts appear here after your first payment.",
+  "billingPaid": "PAID",
+  "billingRefunded": "REFUNDED",
+  "billingCreditApplied": "{amount} paid from account credit",
+  "@billingCreditApplied": {
+    "placeholders": {
+      "amount": {
+        "type": "String"
+      }
+    }
+  },
+  "billingProviderNote": "Payments and card data are handled by Stripe — Wasiati never stores your card.",
+  "billingNoPlanTitle": "You have no active subscription",
+  "billingNoPlanBody": "Choose a plan to start. Your will and vault stay yours either way.",
+  "billingSeePlans": "See plans",
+  "billingInvoiceError": "Could not download that invoice.",
+  "billingCancelConfirmTitle": "Cancel your subscription?",
+  "billingCancelConfirmBody": "Your access continues to the end of the period you have paid for. Your will and vault stay yours. Any burial contributions stop and are returned to you.",
+  "billingCancelConfirmKeep": "Keep my plan",
+  "billingCancelled": "Your subscription will end at the close of this period.",
+  "billingResumed": "Your subscription will continue.",
+  "billingLoadError": "Could not load your billing details.",
+  "portalTitle": "Heir & trustee portal",
+  "portalSub": "Read-only access for heirs and the trustee. It opens only after a human reviewer approves the claim and the will is released.",
+  "portalRoleHeir": "I am an heir",
+  "portalRoleTrustee": "I am the trustee",
+  "portalEmailPh": "Email registered in the will",
+  "portalContinue": "Continue",
+  "portalCodeTitle": "Confirm it's you",
+  "portalCodeSub": "Enter the 6-digit code sent to your registered mobile.",
+  "portalCodeSubEmail": "Enter the 6-digit code sent to your registered email address.",
+  "portalCodeResendWait": "You can ask for another code in {seconds}s",
+  "@portalCodeResendWait": {
+    "placeholders": {
+      "seconds": {
+        "type": "int"
+      }
+    }
+  },
+  "portalCodeResendReady": "Didn't get it?",
+  "portalCodeResend": "Send another code",
+  "portalChipHeir": "HEIR",
+  "portalChipTrustee": "TRUSTEE",
+  "portalReadOnly": "READ-ONLY",
+  "portalSignOut": "Exit portal",
+  "portalPendingTitle": "Claim under review",
+  "portalPendingSub": "A human reviewer is checking the documents. Access opens the moment the claim is approved and released — we'll notify you.",
+  "portalApprovedTitle": "Approved — awaiting release",
+  "portalApprovedSub": "The claim was approved. The will is released once every registered heir confirms — or the trustee overrides.",
+  "heirApprovalsTitle": "HEIR RELEASE CONFIRMATIONS",
+  "heirConfirmBtn": "Confirm release of the will",
+  "heirConfirmedNote": "Your confirmation is recorded",
+  "portalWaitOthers": "Waiting for the remaining confirmations — or a trustee override.",
+  "trusteeOverrideBtn": "Override — release without full confirmations",
+  "overrideOnNote": "Trustee override recorded — release is unlocked.",
+  "portalConfirmedMark": "Confirmed",
+  "portalAwaitingMark": "Awaiting",
+  "portalRejectedTitle": "This claim was not approved",
+  "portalRejectedSub": "A reviewer could not approve the claim from the documents provided. If you believe this is a mistake, reply to the message we sent you and we will look again.",
+  "portalIstirjaa": "إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ",
+  "heirTitle": "The will of {estateName} has been released to you",
+  "@heirTitle": {
+    "placeholders": {
+      "estateName": {
+        "type": "String"
+      }
+    }
+  },
+  "heirSub": "The claim was verified and approved. Everything below is now yours to see — take your time.",
+  "wordsTitle": "WORDS FOR MY FAMILY",
+  "heirSharesTitle": "DIVISION OF THE ESTATE",
+  "heirBequestsTitle": "BEQUESTS",
+  "heirVideoTitle": "A video message for you",
+  "heirVideoMeta": "Recorded {date}",
+  "@heirVideoMeta": {
+    "placeholders": {
+      "date": {
+        "type": "String"
+      }
+    }
+  },
+  "heirVideoOpen": "Play the video message",
+  "heirNoWords": "No written message was left on this will.",
+  "portalDebtsNote": "Debts are settled before shares are distributed.",
+  "portalLoadError": "Could not load this will. Please use the link we sent you.",
+  "portalReportDeath": "I need to report a death",
+  "pcLookupTitle": "Report a death",
+  "pcLookupSub": "If someone you know has died and you believe they left a will with us, tell us how to find them. We will contact the people named on the will directly — we cannot tell you whether a will exists.",
+  "pcDeceasedLbl": "THE PERSON WHO HAS DIED",
+  "pcDeceasedPh": "Their email address or mobile number",
+  "pcClaimantLbl": "YOU",
+  "pcClaimantPh": "Your own email address or mobile number",
+  "pcLookupBtn": "Continue",
+  "pcAckTitle": "Thank you",
+  "pcAckBody": "If a will exists, we've notified the people named on it. Anyone named will receive a message with a link to continue. Nothing else is needed from you now.",
+  "pcAckClose": "Done",
+  "pcInviteTitle": "Begin the release of a will",
+  "pcInviteSub": "You are named on a will held with us, and someone has asked us to begin the process of releasing it. Take your time — nothing is released until a person here has reviewed it.",
+  "pcNameLbl": "YOUR FULL NAME",
+  "pcNamePh": "Your full legal name",
+  "pcCertTitle": "Death certificate",
+  "pcCertSub": "A photograph or scan of the death certificate. A reviewer checks it by hand; nothing is released automatically.",
+  "pcCertChoose": "Attach the certificate",
+  "pcCertUploading": "Sending…",
+  "pcCertAttached": "{fileName} attached",
+  "@pcCertAttached": {
+    "placeholders": {
+      "fileName": {
+        "type": "String"
+      }
+    }
+  },
+  "pcCertRequired": "The certificate is needed before this can be sent.",
+  "pcCertTooLarge": "That file is larger than {size}. Please attach a smaller photograph or scan.",
+  "@pcCertTooLarge": {
+    "placeholders": {
+      "size": {
+        "type": "String"
+      }
+    }
+  },
+  "pcCertBadType": "That file type cannot be accepted. Please attach a PDF or a photograph.",
+  "pcCertOnce": "This link carries one certificate. If this is the wrong file, reply to the message we sent you and we will send a fresh link.",
+  "pcSubmitBtn": "Send for review",
+  "pcDoneTitle": "We have it",
+  "pcDoneSub": "A reviewer will look at the certificate by hand. We will write to you when there is news — you do not need to do anything else. May Allah ease this for you.",
+  "pcLinkInvalidTitle": "This link is no longer valid",
+  "pcLinkInvalidSub": "The link may have expired or already been used. If you still need to report a death, you can start again.",
+  "pcStartOver": "Start again",
+  "burialEstimateOnlyNote": "Estimate only — no payment has been set up.",
+  "tcTitle": "You have been named a trustee",
+  "tcSub": "Assalamu alaikum. The owner of a will held with Wasiati has asked you to be its trustee.",
+  "tcDuties": "As trustee you would: confirm their passing to Wasiati, start the claim with the death certificate, and see the will released to their heirs. You never see the will's contents while they are alive.",
+  "tcAcceptBtn": "Accept the role",
+  "tcDecline": "Decline",
+  "tcCodeSub": "Enter the 6-digit code we sent to the mobile number on the will.",
+  "tcDoneTitle": "You are now the trustee",
+  "tcDoneSub": "May you never be needed. We'll only contact you for annual confirmation — and, one day, for the claim.",
+  "wcTitle": "You have been asked to witness a will",
+  "wcSub": "Assalamu alaikum. The owner of a will held with Wasiati has named you as one of its witnesses.",
+  "wcDuties": "As a witness you confirm, under your legal name, that the owner declared this to be their will, made freely. You do not see the will's contents — only that it was made.",
+  "wcLegalNameLbl": "Your legal name",
+  "wcLegalNamePh": "Exactly as on your ID",
+  "wcLegalNameHelp": "It must match the name the owner put on the will, or the signature will not be recorded.",
+  "wcSignBtn": "Continue to sign",
+  "wcCodeSub": "Enter the 6-digit code we sent to the mobile number on the will. Entering it records your witness signature.",
+  "wcDoneTitle": "Your witness signature is recorded",
+  "wcDoneSub": "JazakAllahu khairan — your part is done. Nothing more is needed from you.",
+  "confirmClosePage": "You can close this page.",
+  "confirmDeclinedTitle": "No action was taken",
+  "confirmDeclinedSub": "Nothing has been recorded or sent. If you change your mind, open the link from the SMS again.",
+  "confirmLinkInvalidTitle": "This link is no longer valid",
+  "confirmLinkInvalidSub": "The link may be incomplete, or the invitation may have been withdrawn. Please contact the person who named you.",
+  "portalWillPdfTitle": "THE WILL ITSELF",
+  "portalWillPdfSub": "The executed will, as it was sealed. Keep a copy — you may need it for a court, a bank or a land registry.",
+  "portalWillPdfDownload": "Download the will (PDF)",
+  "passkeyErrorUnsupported": "This browser doesn’t support passkeys. Use another sign-in method.",
+  "passkeyErrorCancelled": "Passkey sign-in was cancelled — or this device has no passkey for Wasiati yet. You can add one in Settings after signing in.",
+  "passkeyErrorRegisterCancelled": "Passkey setup was cancelled before it finished. Nothing was saved.",
+  "passkeyErrorAlreadyRegistered": "This device already holds a passkey for your account — you can sign in with it now.",
+  "passkeyErrorGeneric": "The passkey attempt didn’t complete. Try again, or use another sign-in method.",
+  "settingsAddPasskey": "Add a passkey",
+  "settingsAddPasskeySub": "Sign in with your face, fingerprint or device PIN — no code needed",
+  "pkSetupTitle": "Sign in without a code",
+  "@pkSetupTitle": {
+    "description": "Title of the post-signup passkey enrolment screen."
+  },
+  "pkSetupBlurb": "One more step, and it saves you every time after",
+  "pkSetupWhy": "Use Face ID, Touch ID or Windows Hello to sign in. No text message, nothing to wait for — and it cannot be phished.",
+  "pkSetupCta": "Set up",
+  "pkSetupSkip": "Not now",
+  "pkSetupLater": "Your password still works, and you can set this up any time in Settings.",
+  "passkeyAdded": "Passkey added — you can now use it to sign in on this device.",
+  "mfaResendSent": "A new code is on its way.",
+  "adminContentKeyHelp": "Only strings the app can actually show are listed.",
+  "wdContinueDraft": "Continue your draft",
+  "commonBackToLegacy": "Messages to my family",
+  "@commonBackToLegacy": {
+    "description": "Back link from the video recorder to the list of family messages."
+  },
+  "cwToReview": "Continue to review",
+  "rsGuardianTitle": "Guardianship",
+  "@cwToReview": {
+    "description": "Forward button on the last guided step; leaves the wizard for the Review & seal page."
+  },
+  "@rsGuardianTitle": {
+    "description": "Review section heading for the guardian named for minor children."
+  },
+  "wdocTitle": "Your will, as it will be read",
+  "wdocSubtitle": "The document itself — the same file the download produces. Choose how it reads below.",
+  "wdViewDocument": "View document",
+  "@wdocTitle": {
+    "description": "Title of the dedicated will-document page."
+  },
+  "@wdocSubtitle": {
+    "description": "Subtitle of the will-document page, explaining it is the real file."
+  },
+  "@wdViewDocument": {
+    "description": "Button on the will detail header that opens the document page."
+  },
+  "wdocSigningNote": "You sign by confirming below; your two witnesses and your trustee then confirm by SMS. Nothing is released until all three have.",
+  "@wdocSigningNote": {
+    "description": "Callout on the will-document page explaining how the document gets signed."
+  },
+  "wdocOf": "of {name}",
+  "@wdocOf": {
+    "description": "Will document header: the testator, e.g. 'of Ahmed Al-Rashid'.",
+    "placeholders": {
+      "name": {}
+    }
+  },
+  "wdocWillNumber": "Will #{id}",
+  "@wdocWillNumber": {
+    "description": "Will document header/footer: the short will identifier.",
+    "placeholders": {
+      "id": {}
+    }
+  },
+  "wdocSealedMeta": "sealed {date}",
+  "@wdocSealedMeta": {
+    "description": "Will document meta line: the seal date.",
+    "placeholders": {
+      "date": {}
+    }
+  },
+  "wdocWitnessesConfirmed": "{count, plural, =1{1 witness confirmed} other{{count} witnesses confirmed}}",
+  "@wdocWitnessesConfirmed": {
+    "description": "Will document meta line: how many witnesses have confirmed.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "wdocDraftSubtitle": "Draft — not yet sealed",
+  "wdocWordsTitle": "Words for my family",
+  "wdocWishesTitle": "Funeral & burial wishes",
+  "wdocEstateTitle": "Assets & liabilities",
+  "wdocNetEstate": "Net estate",
+  "wdocEstateNote": "Estate inventory as recorded at sealing; debts are settled before the shares are distributed.",
+  "wdocEssayAssetsLead": "I declare that, as of the sealing of this will, I own the following assets: ",
+  "wdocEssayLiabilitiesLead": "I further declare the following debts and obligations, to be settled from my estate before any distribution: ",
+  "wdocEssayHeldWith": ", held with {institution}",
+  "@wdocEssayHeldWith": { "placeholders": { "institution": {} } },
+  "wdocEssayValuedAt": ", valued at approximately {amount}",
+  "@wdocEssayValuedAt": { "placeholders": { "amount": {} } },
+  "wdocEssayOwedTo": ", owed to {institution}",
+  "@wdocEssayOwedTo": { "placeholders": { "institution": {} } },
+  "wdocEssayInAmount": ", in the amount of {amount}",
+  "@wdocEssayInAmount": { "placeholders": { "amount": {} } },
+  "wdocEssayNetEstate": "After settlement of these obligations, my net estate today amounts to approximately {amount}.",
+  "@wdocEssayNetEstate": { "placeholders": { "amount": {} } },
+  "wdocEssayListJoin": "; ",
+  "wdocEssayListJoinLast": "; and ",
+  "wdocEssayNetJoin": " and ",
+  "wdocDivisionTitle": "Division of the estate",
+  "wdocNoHeirs": "No heirs recorded.",
+  "wdocBequest": "Bequest",
+  "wdocBequestBasis": "From the free third — outside the fara’id",
+  "wdocWitnessesTitle": "Witnesses & trustee",
+  "wdocWitnessesCol": "Witnesses",
+  "wdocTrusteeCol": "Trustee",
+  "wdocWitnessRole": "Witness",
+  "wdocTrusteeRole": "Trustee",
+  "wdocTestatorRole": "Testator",
+  "wdocSignedDigitally": "Signed digitally",
+  "wdocPending": "pending",
+  "wdocPendingCode": "pending code",
+  "wdocNoneRecorded": "None recorded.",
+  "wdocSealLine": "Sealed & witnessed via Wasiati",
+  "wdocGuidance": "The fara’id shares herein are computed for guidance and are not a fatwa or legal advice; the estate is divided according to the sharia (fara’id) per the school selected by the testator.",
+  "vrLensFront": "Front camera",
+  "@vrLensFront": {
+    "description": "Label for the front-facing lens in the camera picker."
+  },
+  "vrLensBack": "Back camera",
+  "@vrLensBack": {
+    "description": "Label for the rear-facing lens in the camera picker."
+  },
+  "vrSwitchCamera": "Switch camera",
+  "@vrSwitchCamera": {
+    "description": "Opens the list of available cameras on the video recorder."
+  },
+  "vrReviewTake": "Your recording",
+  "@vrReviewTake": {
+    "description": "Heading over playback of a just-recorded video, before Retake/Use."
+  },
+  "vrPlaybackFailed": "That recording cannot be previewed here, but it did save — you can still use it.",
+  "@vrPlaybackFailed": {
+    "description": "Shown when the recorded video cannot be decoded for preview."
+  },
+  "vrCameraOff": "Turn camera off",
+  "vrCameraOn": "Turn camera on",
+  "vrCameraOffNote": "Camera off — your webcam light should be out.",
+  "@vrCameraOff": {
+    "description": "Button that releases the camera device on the recorder screen."
+  },
+  "@vrCameraOn": {
+    "description": "Button that re-acquires the camera after it was turned off."
+  },
+  "@vrCameraOffNote": {
+    "description": "Shown over the dark viewfinder when the owner turned the camera off."
+  },
+  "cwExpandAll": "Expand all",
+  "cwCollapseAll": "Collapse all",
+  "cwHeirNeedsDetails": "Needs details",
+  "@cwExpandAll": {
+    "description": "Opens every heir card on the heir registry step."
+  },
+  "@cwCollapseAll": {
+    "description": "Closes every heir card on the heir registry step."
+  },
+  "@cwHeirNeedsDetails": {
+    "description": "Shown on a collapsed heir card still missing a name, phone or email."
+  },
+  "portalAcceptTrusteeTitle": "Accept your trusteeship",
+  "portalAcceptTrusteeBody": "You were named trustee of this will, but you have not yet accepted the role. Accept it to open the estate and to act on behalf of the family.",
+  "portalAcceptTrusteeBtn": "Accept the trusteeship",
+  "portalAssetRef": "REFERENCE",
+  "portalInventoryNote": "Account references and contacts are shown in full so you can locate each asset. This list is erased with the rest of the estate at the end of the retrieval window — save what you need now.",
+  "apiOffline": "Cannot reach the server. Check your connection.",
+  "dcGateWaitingHeirs": "{count, plural, =1{1 heir has not confirmed} other{{count} heirs have not confirmed}}",
+  "@dcGateWaitingHeirs": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "dcGateWindow": "Safety window opens {when}",
+  "@dcGateWindow": {
+    "placeholders": {
+      "when": {
+        "type": "String"
+      }
+    }
+  },
+  "dcGateNotSealed": "This will was never sealed",
+  "dcGateNoTrustee": "No trustee has confirmed",
+  "dcGateOverride": "Heir confirmations overridden by a trustee",
+  "dcGateReadyNote": "Everything release requires is satisfied.",
+  "vaultPassphraseWrong": "That passphrase does not open this vault. Nothing was changed — check it and try again."
+}

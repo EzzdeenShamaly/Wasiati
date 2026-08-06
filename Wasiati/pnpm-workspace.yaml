@@ -1,0 +1,29 @@
+packages:
+  - "backend"
+
+# Security overrides for transitive deps flagged by `pnpm audit`. Neither is on a
+# live request path (multer: no FileInterceptor — uploads go direct-to-storage via
+# presigned PUT; js-yaml: config parsing only), but we pin the patched versions to
+# keep the audit clean. lodash (no published fix >4.17.21 and never imported) and
+# file-type (v21 is an ESM-only major; not on the upload path) remain accepted
+# transitive risk — see docs/SECURITY_SWEEP.md.
+overrides:
+  multer: ">=2.2.0"
+  js-yaml: ">=4.1.1"
+
+# pnpm 10+ blocks dependency lifecycle (postinstall/build) scripts by default as a
+# supply-chain safeguard. Approve only the trusted packages that genuinely need them:
+#   - prisma / @prisma/*  : download & place the query engine binaries
+#   - @nestjs/core        : benign postinstall
+# bcrypt is intentionally absent — we use pure-JS bcryptjs (no native build).
+# msgpackr-extract is an OPTIONAL native accelerator for BullMQ's msgpackr; the
+# pure-JS fallback works fine, so we skip its native build (false) for portability.
+allowBuilds:
+  '@nestjs/core': true
+  '@prisma/client': true
+  '@prisma/engines': true
+  msgpackr-extract: false
+  prisma: true
+  # false: Chromium is provided by the system (PUPPETEER_SKIP_DOWNLOAD + EXECUTABLE_PATH),
+  # so puppeteer's postinstall download script is neither needed nor trusted to run.
+  puppeteer: false

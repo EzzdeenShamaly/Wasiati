@@ -1,0 +1,146 @@
+name: mobile
+
+# Store-packaging proof for the two mobile companions. flutter.yml already gives PR
+# feedback on app code (analyze/test/web build); this workflow exists to prove the
+# ANDROID and IOS release packaging keeps working — Gradle signing config, manifests,
+# plists, plugin registration, the pieces no web build exercises. That is why there is
+# no pull_request trigger: duplicating it per-PR would mostly re-run flutter.yml's
+# coverage, and the iOS job runs on a macOS runner, which bills at 10x minutes on a
+# private repo. Once per push to app code + on demand is the right cost/coverage point.
+on:
+  push:
+    paths: ["app/**", ".github/workflows/mobile.yml"]
+  workflow_dispatch:
+
+# Least privilege — these jobs only read the repo and upload build artifacts; they never
+# need write access to repo contents.
+permissions:
+  contents: read
+
+# One binary per store, pointed at the production stack. Unlike the web matrix in
+# flutter.yml (one bundle per region host), a store app cannot ship per-region
+# binaries — and doesn't need to: launch is a single stack serving every market
+# (DECISIONS §25), so the store binary targets api.wasiati.com like the deployed US
+# web bundle. API_BASE_URL/APP_URL are REQUIRED here for a subtler reason than on
+# web: on NATIVE builds env.dart's missing-define fallback is loopback
+# (10.0.2.2/localhost), which the https guard deliberately exempts — so a release
+# built without these defines ships pointed at the developer's own machine without a
+# single complaint.
+env:
+  DART_DEFINES: >-
+    --dart-define=FLAVOR=prod
+    --dart-define=REGION=US
+    --dart-define=API_BASE_URL=https://api.wasiati.com
+    --dart-define=APP_URL=https://app.wasiati.com
+
+jobs:
+  android:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: app/apps/wasiati
+    env:
+      # Secrets CANNOT be referenced in step `if:` expressions — GitHub documents
+      # this exact limitation ("Secrets cannot be directly referenced in if:
+      # conditionals"). A step gated on `secrets.X != ''` would never fire, so
+      # every build would silently take the debug-signing fallback even AFTER the
+      # secrets were configured — the precise failure this workflow exists to
+      # prevent. The documented pattern: hoist the presence check into job-level
+      # env (where the secrets context IS available) and gate steps on that.
+      HAS_UPLOAD_KEYSTORE: ${{ secrets.ANDROID_KEYSTORE_BASE64 != '' }}
+    steps:
+      - uses: actions/checkout@v4
+      # AGP 8.7 (android/settings.gradle.kts) requires Java 17+. flutter.yml never
+      # builds Android so it never noticed, but this job must not depend on
+      # whatever default JAVA_HOME the runner image ships this month.
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.29.0
+          cache: true
+      - run: flutter pub get
+
+      # Real upload-key signing happens only when the four ANDROID_* secrets exist.
+      # Until Raed generates the upload keystore (docs/MOBILE_RELEASE.md) this step
+      # skips, Gradle's signing config finds no key.properties, and the release
+      # falls back to debug signing — so the workflow is green today and starts
+      # producing Play-uploadable artifacts the moment the secrets appear, with no
+      # workflow change. The keystore itself is written OUTSIDE the repo checkout
+      # ($RUNNER_TEMP) and key.properties is gitignored: nothing secret can end up
+      # in git, even from a CI misstep. Secret VALUES flow through step env, never
+      # `${{ }}` inside the script: interpolation pastes raw text into bash source,
+      # so a password containing $, quotes or backticks would corrupt
+      # key.properties — or execute.
+      - name: Materialize upload keystore from secrets
+        if: env.HAS_UPLOAD_KEYSTORE == 'true'
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          STORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+          KEY_PASSWORD: ${{ secrets.ANDROID_KEY_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
+        run: |
+          printf '%s' "$KEYSTORE_BASE64" | base64 --decode > "$RUNNER_TEMP/upload-keystore.jks"
+          cat > android/key.properties <<EOF
+          storePassword=$STORE_PASSWORD
+          keyPassword=$KEY_PASSWORD
+          keyAlias=$KEY_ALIAS
+          storeFile=$RUNNER_TEMP/upload-keystore.jks
+          EOF
+
+      - name: Warn when building without a signing key
+        if: env.HAS_UPLOAD_KEYSTORE != 'true'
+        run: echo "::notice::ANDROID_KEYSTORE_BASE64 is not set — release artifacts are DEBUG-signed and exist only to prove the build; Play will reject them. See docs/MOBILE_RELEASE.md."
+
+      # The .aab is what Play Console takes; the .apk exists for direct-install
+      # smoke testing on a physical device without a store round trip.
+      - name: Build app bundle (Play upload format)
+        run: flutter build appbundle --release $DART_DEFINES --dart-define=GOOGLE_CLIENT_ID_WEB=${{ vars.GOOGLE_CLIENT_ID_WEB }}
+      - name: Build APK (direct-install testing)
+        run: flutter build apk --release $DART_DEFINES --dart-define=GOOGLE_CLIENT_ID_WEB=${{ vars.GOOGLE_CLIENT_ID_WEB }}
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android-release
+          path: |
+            app/apps/wasiati/build/app/outputs/bundle/release/app-release.aab
+            app/apps/wasiati/build/app/outputs/flutter-apk/app-release.apk
+
+  ios:
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: app/apps/wasiati
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.29.0
+          cache: true
+      - run: flutter pub get
+
+      # --no-codesign until certificates exist: signing needs an Apple Developer
+      # membership and a distribution certificate, which only Raed's Mac + Apple
+      # account can mint (docs/MOBILE_RELEASE.md). This still compiles all Swift/ObjC,
+      # runs pod install, and produces the Xcode archive — i.e. it catches broken
+      # plists, plugin registration and native compile errors, which is everything CI
+      # *can* catch pre-enrollment. Flutter skips the .ipa EXPORT step under
+      # --no-codesign, so no artifact is uploaded: an unsigned archive cannot be
+      # installed on anything and would only burn storage. GOOGLE_CLIENT_ID_IOS is a
+      # repo VARIABLE like the web id (an OAuth client id ships inside the binary; it
+      # is public by design); unset, the Google button simply does not render on
+      # iOS — correct degradation.
+      #
+      # COMPANION-APP RULE (DECISIONS §25): payment stays on the web. Nothing in this
+      # job — and no future step here — may add a purchase SDK or StoreKit wiring;
+      # selling in-app would trigger Apple's 15–30% cut, the largest avoidable cost
+      # in the product.
+      - name: Build iOS (unsigned archive)
+        run: >-
+          flutter build ipa --release --no-codesign $DART_DEFINES
+          --dart-define=GOOGLE_CLIENT_ID_WEB=${{ vars.GOOGLE_CLIENT_ID_WEB }}
+          --dart-define=GOOGLE_CLIENT_ID_IOS=${{ vars.GOOGLE_CLIENT_ID_IOS }}

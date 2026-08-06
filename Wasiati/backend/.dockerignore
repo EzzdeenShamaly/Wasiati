@@ -1,0 +1,33 @@
+# Keep secrets and local junk OUT of the Docker build context and image layers.
+# `COPY . .` in the builder stage would otherwise capture a real backend/.env (Stripe,
+# Twilio, Sumsub keys) into a build layer — leaked to anyone with the layer or build cache.
+#
+# The `**/` variants are load-bearing, not belt-and-braces: a bare `.env`/`node_modules`
+# pattern only matches at the context root, so a nested checkout (e.g. an agent worktree
+# under .claude/worktrees/) would smuggle its own .env — with real keys — into a layer,
+# and drag its node_modules along for the ride.
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+*.pem
+*.p8
+**/*.pem
+**/*.p8
+
+node_modules
+**/node_modules
+dist
+**/dist
+coverage
+
+# Local agent worktrees: full nested checkouts of this repo, none of which belong in a
+# build. tsconfig.build.json's include already keeps their sources out of the program;
+# this keeps them out of the context entirely.
+.claude
+.git
+*.log
+Dockerfile
+docker-compose*.yml
+.dockerignore

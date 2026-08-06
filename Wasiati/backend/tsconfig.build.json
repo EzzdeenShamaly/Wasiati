@@ -1,0 +1,24 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    // Pins the emit root so the entrypoint lands at dist/main.js — the path that both
+    // `start:prod` and the Dockerfile CMD hard-code. Without it tsc infers the root from
+    // the widest common directory of the program, so a single .ts outside src/ silently
+    // re-nests everything under dist/src/ and breaks both. Inference is what broke them:
+    // prisma/seed-*.ts pulled the root up to the backend directory.
+    "rootDir": "./src",
+    // Must stay inside outDir. With rootDir set, tsc derives this path relative to
+    // rootDir, which lands it at the backend root — outside what deleteOutDir clears. A
+    // stale copy there convinces tsc the emit is already current, so rebuilds produce no
+    // dist/ while still exiting 0. Co-locating it means output and build-info die together.
+    "tsBuildInfoFile": "./dist/tsconfig.build.tsbuildinfo"
+  },
+  // An allow-list, NOT an exclude-list: the program is exactly the server's own source.
+  // Excluding known strays (prisma/, .claude/worktrees/, scratch files) only works until
+  // the next unanticipated directory appears — and each one is a silent re-nest or a
+  // "not under rootDir" build break. Anything outside src/ simply cannot enter the build.
+  "include": ["src/**/*"],
+  // Tests are not shipped: they were being compiled into the production image (47 .spec.js
+  // files). jest reads tsconfig.json via ts-jest, so it is unaffected by this.
+  "exclude": ["**/*.spec.ts", "**/*.e2e-spec.ts"]
+}

@@ -1,0 +1,13 @@
+-- Abuse bound for the accountless death-certificate upload path.
+--
+-- A CLAIM_SUBMIT token holder has NO account: there is no user id to rate-limit against and
+-- no storage quota of their own to spend. The uploaded certificate is attributed to the
+-- DECEASED owner (so it purges with the estate and needs no schema change to FileObject),
+-- which means an unbounded token could (a) mint unlimited presigned write URLs, and (b)
+-- confirm phantom keys with a client-declared size that exhausts the owner's 1 GB quota and
+-- locks out the real certificate. This counter is consumed atomically by BOTH /claim/uploads
+-- routes, capped at 2 — one presign + one confirm, i.e. exactly one death certificate.
+--
+-- IF NOT EXISTS for the same reason as the tokenHash index migration: the development
+-- database may already carry the column. Idempotent either way.
+ALTER TABLE "ClaimAccessToken" ADD COLUMN IF NOT EXISTS "uploadCount" INTEGER NOT NULL DEFAULT 0;
