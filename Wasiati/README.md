@@ -1,74 +1,83 @@
-# Wasiati — Monorepo
+# Wasiati (وصيتي)
 
-Sharia-compliant digital will & legacy platform (iOS + Android + web), launching in KSA / QA / CA / US.
+A digital Islamic will platform for Muslim communities in North America — helping users create a Sharia-compliant will (wasiyya), calculate Fara'id (Islamic inheritance shares) across different schools of jurisprudence, securely store important documents, and manage trustees, witnesses, and heirs.
 
-- **Client:** Flutter (one codebase → iOS, Android, web) — Riverpod + Freezed, go_router.
-- **Backend:** NestJS + Prisma + PostgreSQL, hardened for production.
-- **API contract:** typed Dart client **generated from the backend's OpenAPI spec**.
+Wasiati placed in the top 50 out of 500+ submissions at the Gaza Stars (نجوم غزة) innovation competition.
 
-> This build overrides the original build plan's Next.js/Expo/Turborepo frontend choice: the entire
-> client is Flutter. See `../.claude/plans/…` for the full staged plan.
+## My Role
 
-## Layout
-```
-wasiati/
-├─ backend/            NestJS + Prisma (pnpm)
-├─ app/                Flutter workspace (Melos)
-│  ├─ apps/wasiati/    the application (flavored dev/staging/prod)
-│  └─ packages/
-│     ├─ api_client/     OpenAPI-generated Dart client
-│     └─ design_system/  brand tokens, theme, fonts, Seal widget
-├─ infra/              docker-compose (dev) + terraform (placeholder)
-└─ .github/workflows/  CI (backend + Flutter)
-```
+This is a team project. My contribution was the Flutter frontend application, located at app/apps/wasiati](./app/apps/wasiati). The backend (NestJS/Prisma), infrastructure (Terraform), and landing page were built by other team members. This repository is shared as a full monorepo with the team's permission to showcase the complete product.
 
-## Prerequisites
-| Tool | Version | Notes |
-|---|---|---|
-| Node.js | 20 LTS | backend + tooling |
-| pnpm | 9+ | `corepack enable` or `npm i -g pnpm` |
-| Flutter | stable | includes Dart |
-| Docker | latest | local infra (postgres/redis/minio/mailhog) |
-| git | latest | version control |
+## Screenshots
 
-## Quick start (local dev)
+| Sign in | Create Will — Fara'id | Vault | Security Settings |
+|---|---|---|---|
+| ![Login](app/apps/wasiati/docs/screenshots/login.png) | ![Create Will](app/apps/wasiati/docs/screenshots/create-will.png) | ![Vault](app/apps/wasiati/docs/screenshots/vault.png) | ![Security](app/apps/wasiati/docs/screenshots/security-settings.png) |
 
-One command brings up the infra, migrates, seeds an admin + pricing + demo, and
-writes a working `backend/.env` (random `SESSION_SECRET`, MinIO + Mailhog wired,
-`OTP_DEV_ECHO=true` so SMS codes come back in the API response — no Twilio needed):
+## Flutter App — Key Features
 
-```bash
-./scripts/dev-bootstrap.sh
-```
+- Islamic Will Creation — step-by-step will builder with live Fara'id (inheritance share) calculation, supporting multiple schools of jurisprudence (Jumhūr / Ḥanafī)
+- - Passkey / WebAuthn Authentication — passwordless sign-in alongside traditional email/password
+  - - Encrypted Vault — client-side encrypted storage for sensitive documents and passwords; not even the backend can read it
+    - - Heir, Witness & Trustee Management — structured contact and confirmation flows
+      - - Death Claims & Burial Services — claim submission and burial quote requests
+        - - AI Intake Assistant — guided will-filling assistant ("Ameen")
+          - - Billing & Subscriptions — Stripe-based pricing and entitlements
+            - - Bilingual — full Arabic/English localization (RTL supported)
+              - - Light & Dark Themes
+               
+                - ## Architecture
+               
+                - The Flutter app follows Clean Architecture with a clear feature-based structure:
+               
+                - ```
+                  lib/
+                  ├── core/           # routing, network (Dio), theming, storage, l10n
+                  ├── features/       # 20+ features, each split into:
+                  │   ├── data/           # API clients
+                  │   ├── domain/         # models, business rules
+                  │   ├── application/    # Riverpod providers/state
+                  │   └── presentation/   # screens & widgets
+                  └── l10n/           # Arabic & English translations
+                  ```
 
-Then start the two processes:
+                  Each feature auth, wills, vault, commerce, death_claims, burial, zakat, identity, referrals, etc.) is self-contained and independently testable.
 
-```bash
-# Backend — http://localhost:4000 (Swagger at /docs)
-cd backend && pnpm start:dev
+                  ## Tech Stack (Flutter app)
 
-# Flutter app — origin must match PASSKEY_ORIGIN / CORS
-cd app && dart pub global activate melos && melos bootstrap
-cd apps/wasiati && flutter run -d chrome --web-port=3000
-```
+                  - State management: Riverpod (with code generation)
+                  - - Routing: go_router
+                    - - Networking: Dio
+                      - - Auth: Passkey/WebAuthn, Google Sign-In, JWT
+                        - - Storage: flutter_secure_storage, shared_preferences
+                          - - Encryption: cryptography package (client-side vault encryption)
+                            - - Media: camera, video_player, speech_to_text, flutter_tts
+                              - - Documents: PDF generation/export printing, file_saver)
+                                - - Charts: fl_chart
+                                  - - Code generation: Freezed, json_serializable, riverpod_generator
+                                   
+                                    - ## Full Monorepo Structure
+                                   
+                                    - ```
+                                      Wasiati/
+                                      ├── app/          # Flutter application (my contribution)
+                                      ├── backend/      # NestJS + Prisma + PostgreSQL
+                                      ├── infra/        # Terraform infrastructure
+                                      └── landing/      # Marketing landing page
+                                      ```
 
-- Emails (verify / reset) land in **Mailhog** → http://localhost:8025
-- Object storage is **MinIO** → http://localhost:9001 (`wasiati` / `wasiati-dev-secret`)
-- Drop real `STRIPE_SECRET_KEY` / `STRIPE_WEBHOOK_SECRET` / `TWILIO_*` / `SUMSUB_*` keys into
-  `backend/.env` when you have them.
+                                      The backend exposes REST endpoints (e.g. /payments/webhook, /files/presign) and integrates Stripe, Redis, and MinIO/S3 for file storage.
 
-Payment webhooks: use the Stripe CLI (`stripe listen --forward-to
-localhost:4000/payments/webhook`) or your own tunnel pointed at `POST /payments/webhook`.
-Signatures are verified against `STRIPE_WEBHOOK_SECRET`.
+                                      ## Running the Flutter App Locally
 
-### Required local `.env` overrides (backend)
-```
-PASSKEY_RP_ID=localhost
-PASSKEY_ORIGIN=http://localhost:3000
-REDIS_URL=redis://localhost:6379
-CORS_ORIGIN=http://localhost:3000
-```
+                                      ```bash
+                                      cd app/apps/wasiati
+                                      flutter pub get
+                                      flutter run
+                                      ```
 
-## Regions & data residency
-Each region (KSA/QA/CA/US) runs its **own** backend + database + S3 bucket + SES sender. Never point one
-region's `DATABASE_URL` at another region's database. FCM push carries **metadata only**.
+                                      > Note: the app depends on the backend API being reachable (see lib/core/config/env.dart for the expected environment variables). Some features will not load without a running backend instance.
+                                      >
+                                      > ## Contact
+                                      >
+                                      > Built by Ezzdeen Shamaly and team.
