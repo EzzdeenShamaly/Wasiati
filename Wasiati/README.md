@@ -2,7 +2,7 @@
 
 A digital Islamic will platform for Muslim communities in North America — helping users create a Sharia-compliant will (wasiyya), calculate Fara'id (Islamic inheritance shares) across different schools of jurisprudence, securely store important documents, and manage trustees, witnesses, and heirs.
 
-Wasiati placed in the top 50 out of 500+ submissions at the Gaza Stars (نجوم غزة) innovation competition.
+Wasiati is a commercial product — I worked on the Flutter frontend as part of a paid team engagement.
 
 ## My Role
 
